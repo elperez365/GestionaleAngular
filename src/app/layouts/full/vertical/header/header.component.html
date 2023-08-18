@@ -21,46 +21,13 @@
   </button>
   <!-- --------------------------------------------------------------- -->
 
-  <!-- --------------------------------------------------------------- -->
-  <!--  Search -->
-  <!-- --------------------------------------------------------------- -->
-  <button
-    mat-icon-button
-    (click)="openDialog()"
-    class="d-flex justify-content-center"
-  >
-    <i-tabler name="search" class="icon-20 d-flex"></i-tabler>
-  </button>
-
+  
 
 
   <span class="flex-1-auto"></span>
 
 
-  <!-- --------------------------------------------------------------- -->
-  <!-- langugage Dropdown -->
-  <!-- --------------------------------------------------------------- -->
-  <button [matMenuTriggerFor]="flags" mat-icon-button class="m-r-5">
-    <img
-      [src]="selectedLanguage.icon"
-      class="rounded-circle object-cover icon-20"
-    />
-  </button>
-  <mat-menu #flags="matMenu" class="cardWithShadow">
-    <button
-      mat-menu-item
-      *ngFor="let lang of languages"
-      (click)="changeLanguage(lang)"
-    >
-      <div class="d-flex align-items-center">
-        <img
-          [src]="lang.icon"
-          class="rounded-circle object-cover m-r-8 icon-20"
-        />
-        <span class="mat-subtitle-1 f-s-14">{{ lang.language }}</span>
-      </div>
-    </button>
-  </mat-menu>
+  
 
   <!-- --------------------------------------------------------------- -->
   <!-- Messages Dropdown -->
@@ -171,7 +138,7 @@
   <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
     <ng-scrollbar
       class="position-relative"
-      style="height: 647px"
+      style="height: 300px"
     >
       <div class="p-x-32 p-y-16">
         <h6 class="f-s-16 f-w-600 m-0">User Profile</h6>
@@ -192,53 +159,7 @@
           </div>
         </div>
       </div>
-      <div class="p-x-32">
-        <a
-          class="p-y-16 text-decoration-none d-block text-hover-primary"
-          [routerLink]="[profile.link]"
-          *ngFor="let profile of profiledd"
-        >
-          <div class="d-flex align-items-center">
-            <button
-              mat-mini-fab
-              class="text-primary bg-light-primary shadow-none rounded"
-            >
-              <img [src]="profile.img" width="20" />
-            </button>
-
-            <div class="m-l-16">
-              <h5
-                class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1 hover-text"
-              >
-                {{ profile.title }}
-              </h5>
-              <span class="mat-body-1">{{ profile.subtitle }}</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- upgrade -->
-        <div
-          class="p-24 overflow-hidden bg-light-primary rounded position-relative m-y-16"
-        >
-          <div class="d-flex align-items-center">
-            <div>
-              <h5 class="f-s-18 m-0 f-w-600 m-b-12">
-                Unlimited <br />
-                Access
-              </h5>
-              <button mat-flat-button color="primary" class="text-white">Upgrade</button>
-            </div>
-            <div class="m-l-auto">
-              <img
-                src="/assets/images/backgrounds/unlimited-bg.png"
-                alt="upgrade-bg"
-                class="upgrade-bg"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       <div class="p-y-12 p-x-32">
         <a
