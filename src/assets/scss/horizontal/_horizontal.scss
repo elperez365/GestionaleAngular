@@ -129,7 +129,7 @@
   .horizontal-navbar {
     .parentBox {
       &.pactive > a, &.pactive > a:hover, &.pactive:hover > a{
-        color:white !important;
+        color:rgb(30, 129, 228) !important;
         border-radius:$border-radius ;
       }
     }
