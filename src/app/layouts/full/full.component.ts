@@ -19,6 +19,7 @@ import { HeaderComponent } from './vertical/header/header.component';
 import { AppHorizontalHeaderComponent } from './horizontal/header/header.component';
 import { AppHorizontalSidebarComponent } from './horizontal/sidebar/sidebar.component';
 import { CustomizerComponent } from './shared/customizer/customizer.component';
+import { FeatherModule } from 'angular-feather';
 
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
 const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
@@ -43,6 +44,7 @@ interface quicklinks {
   selector: 'app-full',
   standalone: true,
   imports: [
+    FeatherModule,
     RouterModule,
     AppNavItemComponent,
     MaterialModule,
