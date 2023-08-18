@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { StarterComponent } from './starter/starter.component';
+import { WorkersComponent } from './apps/workers/workers.component';
 
 export const PagesRoutes: Routes = [
   {
     path: '',
-    component: StarterComponent,
+    component: WorkersComponent,
     data: {
       title: 'Starter Page',
     },
