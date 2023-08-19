@@ -23,6 +23,8 @@ import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 
 import { FilterPipe } from './pipe/filter.pipe';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -40,6 +42,13 @@ import { ElencoOperaiComponent } from './pages/operai/elenco-operai/elenco-opera
 import { NuovaImpresaComponent } from './pages/imprese-appaltanti/nuova-impresa/nuova-impresa.component';
 import { ElencoImpreseComponent } from './pages/imprese-appaltanti/elenco-imprese/elenco-imprese.component';
 import { ImpostazioniComponent } from './pages/impostazioni/impostazioni.component';
+import { AppDailyActivitiesComponent } from './pages/dashboard/daily-activities/daily-activities.component';
+import { AppWelcomeCardComponent } from './pages/dashboard/welcome-card/welcome-card.component';
+import {
+  AppFullcalendarComponent,
+  CalendarDialogComponent,
+} from './pages/calendar/fullcalendar/fullcalendar.component';
+import { CalendarFormDialogComponent } from './pages/calendar/fullcalendar/calendar-form-dialog/calendar-form-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,7 +72,12 @@ export function HttpLoaderFactory(http: HttpClient): any {
     NuovaImpresaComponent,
     ElencoImpreseComponent,
     ImpostazioniComponent,
+    CalendarDialogComponent,
+    AppFullcalendarComponent,
+    CalendarFormDialogComponent,
   ],
+  exports: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -83,8 +97,12 @@ export function HttpLoaderFactory(http: HttpClient): any {
     }),
     NgScrollbarModule,
     FullComponent,
+    AppDailyActivitiesComponent,
+    AppWelcomeCardComponent,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
-  exports: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
