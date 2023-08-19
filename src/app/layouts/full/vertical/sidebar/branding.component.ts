@@ -17,7 +17,7 @@ import { CoreService } from 'src/app/services/core.service';
       </a>
       <a href="/" *ngIf="options.theme === 'dark'">
         <img
-          src="./assets/images/logos/logo-light.svg" 
+          src="./assets/images/logos/logo-light.svg"
           class="align-middle m-2"
           alt="logo"
         />
@@ -27,6 +27,6 @@ import { CoreService } from 'src/app/services/core.service';
 })
 export class BrandingComponent {
   options = this.settings.getOptions();
- 
+
   constructor(private settings: CoreService) {}
 }

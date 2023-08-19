@@ -1,15 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { PreparazioneGareComponent } from './pages/preparazione-gare/preparazione-gare.component';
+import { ElencoGareComponent } from './pages/preparazione-gare/elenco-gare/elenco-gare.component';
+import { NuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/nuova-gara.component';
+import { AppaltiAggiudicatiComponent } from './pages/appalti-aggiudicati/appalti-aggiudicati.component';
+import { OperaiComponent } from './pages/operai/operai.component';
+import { ElencoOperaiComponent } from './pages/operai/elenco-operai/elenco-operai.component';
+import { NuovoOperaioComponent } from './pages/operai/nuovo-operaio/nuovo-operaio.component';
+import { ImpreseAppaltantiComponent } from './pages/imprese-appaltanti/imprese-appaltanti.component';
+import { NuovaImpresaComponent } from './pages/imprese-appaltanti/nuova-impresa/nuova-impresa.component';
+import { ElencoImpreseComponent } from './pages/imprese-appaltanti/elenco-imprese/elenco-imprese.component';
+import { ImpostazioniComponent } from './pages/impostazioni/impostazioni.component';
 
 const routes: Routes = [
-  
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'calendario', component: CalendarComponent },
+  { path: 'gare', component: PreparazioneGareComponent },
+  { path: 'gare_elenco', component: ElencoGareComponent },
+  { path: 'gare_nuovo', component: NuovaGaraComponent },
+  { path: 'appalti', component: AppaltiAggiudicatiComponent },
+  { path: 'operai', component: OperaiComponent },
+  { path: 'operai_elenco', component: ElencoOperaiComponent },
+  { path: 'operai_nuovo', component: NuovoOperaioComponent },
+  { path: 'imprese', component: ImpreseAppaltantiComponent },
+  { path: 'imprese_nuovo', component: NuovaImpresaComponent },
+  { path: 'imprese_elenco', component: ElencoImpreseComponent },
+  { path: 'impostazioni', component: ImpostazioniComponent },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
