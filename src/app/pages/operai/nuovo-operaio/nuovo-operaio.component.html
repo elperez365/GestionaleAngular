@@ -1,1 +1,91 @@
-<p>nuovo-operaio works!</p>
+<h1>Modifica Operatio: NOME_OPERAIO</h1>
+
+<!-- Card -->
+<mat-card class="d-flex flex-sx-wrap">
+  <!-- Prima parte del Form -->
+  <div class="container row m-1">
+    <h5 class="col-md-6 col-sm-12">Operaio</h5>
+    <h5 class="col-md-6 col-sm-12">Tipo di contratto</h5>
+
+    <div class="container row m-1"></div>
+    <div class="input-group col-md-6 col-sm-12 my-1">
+      <input
+        class="w-100"
+        name="nome"
+        type="text"
+        class="form-control"
+        placeholder="Nome, Cognome"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+
+    <div class="input-group col-md-6 col-sm-12 my-2">
+      <select class="custom-select" id="inputGroupSelect01">
+        <option *ngFor="let c of contratto" selected>{{ c }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="container row m-1">
+    <h5 class="input-group col-md-6 col-sm-12">Agevolazioni</h5>
+    <h5 class="input-group col-md-6 col-sm-12">Data Assicurazione</h5>
+    <div class="input-group col-md-6 col-sm-12 my-2">
+      <input
+        name="nome"
+        type="text"
+        class="form-control"
+        placeholder="Agevolazione contributiva"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+    <div class="input-group col-md-6 col-sm-12 my-2">
+      <input class="form-control" type="date" />
+    </div>
+  </div>
+  <hr />
+  <!-- Seconda perte del Form -->
+  <div class="d-flex justify-content-between align-items-center m-2">
+    <p class="mx-2">Date Scadenze T. Determinato</p>
+    <button mat-raised-button class="m-2 p-3" color="primary">
+      + Aggiungi scadenza
+    </button>
+  </div>
+  <div *ngFor="let s of scadenze; let i = index" class="container row m-1">
+    <p class="col-md-3 p-1 mx-2">{{ i + 1 }}° Scadenza</p>
+    <input class="form-control col-md-6 col-sm-12" type="date" />
+    <button mat-raised-button class="m-4 ml-md-6" color="warn">Elimina</button>
+  </div>
+  <hr />
+  <!-- Terza parte del Form  -->
+  <div class="container row m-1">
+    <h5 class="col-md-6 col-sm-12">Qualifica</h5>
+    <h5 class="col-md-6 col-sm-12">Visita Medica</h5>
+
+    <div class="input-group col-md-6 col-sm-12 my-2">
+      <input
+        name="nome"
+        type="text"
+        class="form-control"
+        placeholder="Qualifica"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+    <div class="input-group col-md-6 col-sm-12 my-2">
+      <input class="form-control" type="date" />
+    </div>
+  </div>
+  <hr />
+  <!-- Quarta parte del Form - Note-->
+  <div class="container col-12 m-4"></div>
+  <h5 for="floatingTextarea2">Note</h5>
+  <div class="m-4 col-12">
+    <textarea
+      class="form-control"
+      id="floatingTextarea2"
+      style="height: 100px"
+    ></textarea>
+  </div>
+  <hr />
+  <div class="row  mb-4">
+    <button mat-raised-button class="w-75 m-auto" color="primary">Submit</button>
+  </div>
+</mat-card>

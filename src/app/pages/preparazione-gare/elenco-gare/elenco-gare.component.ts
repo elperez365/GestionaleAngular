@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Gare, GareTableHeaders } from 'src/app/DB/ElencoGare';
+import { ElencoGare } from 'src/app/interfaces/elenco_gare';
 @Component({
   selector: 'app-elenco-gare',
   templateUrl: './elenco-gare.component.html',
   styleUrls: ['./elenco-gare.component.scss']
 })
-export class ElencoGareComponent {
+export class ElencoGareComponent implements OnInit{
+  gare: ElencoGare[];
 
+  constructor() {};
+
+  ngOnInit():void {
+    this.gare = Gare
+  }
 }
