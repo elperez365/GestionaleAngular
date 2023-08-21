@@ -49,6 +49,7 @@ import {
   CalendarDialogComponent,
 } from './pages/calendar/fullcalendar/fullcalendar.component';
 import { CalendarFormDialogComponent } from './pages/calendar/fullcalendar/calendar-form-dialog/calendar-form-dialog.component';
+import { DynamicTableComponent } from './components/DynamicTable/DynamicTable.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -75,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     CalendarDialogComponent,
     AppFullcalendarComponent,
     CalendarFormDialogComponent,
+    DynamicTableComponent
   ],
   exports: [],
   bootstrap: [AppComponent],
