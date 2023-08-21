@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
+import { NuovaGaraService } from '../../../../../../services/nuova-gara.service';
 
 @Component({
   selector: 'app-todo-categorie',
@@ -23,10 +24,16 @@ export class TodoCategorieComponent {
 
   todos: ToDo[] = this.todoService.getTodos();
 
-  constructor(public fb: UntypedFormBuilder, public todoService: TodoService) {
+  constructor(
+    public fb: UntypedFormBuilder,
+    public todoService: TodoService,
+    public NuovaGara: NuovaGaraService
+  ) {
     this.copyTodos = this.todos;
   }
-
+  ngDoCheck(): void {
+    this.NuovaGara.categoriaGara = this.todos.map((el) => el.message);
+  }
   isOver(): boolean {
     return window.matchMedia(`(max-width: 960px)`).matches;
   }

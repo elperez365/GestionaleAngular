@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
+import { NuovaGaraService } from 'src/app/services/nuova-gara.service';
 
 @Component({
   selector: 'app-ribassi',
@@ -20,8 +21,15 @@ export class RibassiComponent {
 
   todos: ToDo[] = this.todoService.getTodos();
 
-  constructor(public fb: UntypedFormBuilder, public todoService: TodoService) {
+  constructor(
+    public fb: UntypedFormBuilder,
+    public todoService: TodoService,
+    public NuovaGara: NuovaGaraService
+  ) {
     this.copyTodos = this.todos;
+  }
+  ngDoCheck(): void {
+    this.NuovaGara.ribassi = this.todos.map((el) => el.message);
   }
 
   isOver(): boolean {
