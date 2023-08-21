@@ -49,6 +49,11 @@ import {
   CalendarDialogComponent,
 } from './pages/calendar/fullcalendar/fullcalendar.component';
 import { CalendarFormDialogComponent } from './pages/calendar/fullcalendar/calendar-form-dialog/calendar-form-dialog.component';
+import { FormNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/form-nuova-gara.component';
+import { CategorieComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/categorie/categorie.component';
+import { DatiNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/dati-nuova-gara/dati-nuova-gara.component';
+import { RibassiComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/ribassi/ribassi.component';
+import { TodoCategorieComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/categorie/todo-categorie/todo-categorie.component';
 import { DynamicTableComponent } from './components/DynamicTable/DynamicTable.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
@@ -76,7 +81,12 @@ export function HttpLoaderFactory(http: HttpClient): any {
     CalendarDialogComponent,
     AppFullcalendarComponent,
     CalendarFormDialogComponent,
-    DynamicTableComponent
+    FormNuovaGaraComponent,
+    CategorieComponent,
+    DatiNuovaGaraComponent,
+    RibassiComponent,
+    TodoCategorieComponent,
+    DynamicTableComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],

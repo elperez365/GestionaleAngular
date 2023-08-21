@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-12">
+    <mat-card class="mat-card-top cardWithShadow position-relative">
+      <mat-card-header>
+        <mat-card-title class="m-b-0">Ribassi</mat-card-title>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+      <div class="p-16 bg-white">
+        <form [formGroup]="inputFg">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-sm-6 col-lg-5">
+              <mat-form-field appearance="outline" class="w-100 hide-hint">
+                <input
+                  matInput
+                  #inputData
+                  [(ngModel)]="searchText"
+                  formControlName="mess"
+                  (keyup.enter)="addTodo(inputData.value)"
+                  placeholder="Add todo"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3 col-lg-2">
+              <button
+                mat-flat-button
+                color="primary"
+                [disabled]="!searchText"
+                class="w-100"
+                id="btnAddTodo"
+                (click)="addTodo(inputData.value)"
+              >
+                Aggiungi
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-card-content class="p-x-0">
+        <div
+          *ngFor="let todo of copyTodos; let i = index"
+          class="todo-item p-y-12 p-x-8 b-b-1"
+        >
+          <div class="d-flex align-items-center w-50 justify-content-center">
+            <span class="mat-subheading-1 m-b-0 m-r-10 f-s-18 f-w-50">{{
+              todo.message
+            }}</span>
+
+            <div class="w-70">
+              <div
+                class="d-flex align-items-center justify-content-around"
+                *ngIf="!todo.edit"
+                (click)="editTodo(todo.id, '')"
+              >
+                <div class="px-3 mr-2 d-flex">
+                  <a
+                    mat-icon-button
+                    class="d-flex justify-content-center"
+                    href="javascript: void(0);"
+                    (click)="editTodo(todo.id, 'edit')"
+                  >
+                    <i-tabler name="pencil" class="icon-18 d-flex"></i-tabler>
+                  </a>
+                  <a
+                    mat-icon-button
+                    class="d-flex justify-content-center"
+                    href="javascript: void(0);"
+                    (click)="deleteTodo(i)"
+                  >
+                    <i-tabler name="trash" class="icon-18 d-flex"></i-tabler>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Edit View -->
+              <div class="d-flex edit-view" *ngIf="todo.edit">
+                <mat-form-field appearance="outline" class="hide-hint">
+                  <input matInput [(ngModel)]="todo.message" />
+                </mat-form-field>
+
+                <div class="m-l-auto d-flex align-items-center">
+                  <a
+                    mat-icon-button
+                    class="d-flex"
+                    href="javascript: void(0);"
+                    (click)="editTodo(todo.id, 'save')"
+                  >
+                    <i-tabler name="checks" class="icon-18 d-flex"></i-tabler>
+                  </a>
+                  <a
+                    mat-icon-button
+                    class="d-flex"
+                    href="javascript: void(0);"
+                    (click)="deleteTodo(i)"
+                  >
+                    <i-tabler name="trash" class="icon-18 d-flex"></i-tabler>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
