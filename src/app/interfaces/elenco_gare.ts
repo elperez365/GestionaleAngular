@@ -1,5 +1,5 @@
 export interface ElencoGare {
-  id: number,
+  id: string,
   stazione_appaltante: string,
   Procedura: string,
   ogetto: string,

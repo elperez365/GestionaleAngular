@@ -1,8 +1,8 @@
 import { ElencoGare } from "../interfaces/elenco_gare";
 
-export const Gare: ElencoGare[] =  [
+export let Gare: ElencoGare[] =  [
   {
-    id: 1,
+    id: "1",
     stazione_appaltante: 'ROMA CAPITALE MUNICIPIO XIII',
     Procedura: 'APERTURA',
     ogetto: 'Manutenzione delle strade di stazione Tiburtina',
@@ -14,7 +14,7 @@ export const Gare: ElencoGare[] =  [
     inviata:1
   },
     {
-    id: 2,
+    id: "2",
     stazione_appaltante: 'ROMA CAPITALE MUNICIPIO VI',
     Procedura: 'APERTURA',
     ogetto: 'Manutenzione delle strade di stazione Termini',
@@ -26,7 +26,7 @@ export const Gare: ElencoGare[] =  [
     inviata:1
   },
     {
-    id: 2,
+    id: "3",
     stazione_appaltante: 'ROMA CAPITALE MUNICIPIO XIII',
     Procedura: 'APERTURA',
     ogetto: 'Manutenzione delle strade di stazione San Pietro',
