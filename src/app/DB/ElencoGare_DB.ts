@@ -16,7 +16,7 @@ export let Gare: ElencoGare[] =  [
     {
     id: "2",
     stazione_appaltante: 'ROMA CAPITALE MUNICIPIO VI',
-    Procedura: 'APERTURA',
+    Procedura: 'MANUTENZIONE',
     ogetto: 'Manutenzione delle strade di stazione Termini',
     importo: '250.000€',
     scadenza: new Date(Date.now()),

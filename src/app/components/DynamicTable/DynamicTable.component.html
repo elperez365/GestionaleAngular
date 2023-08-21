@@ -1,1 +1,58 @@
-<p>impostazioni works!</p>
+<h4>Elenco Operai</h4>
+<mat-card>
+  <mat-card-header class="d-flex pb-4 h-25">
+    <div class="row col-md-6">
+      <p>Visualizza</p>
+      <div class="form-group mx-2">
+        <select class="form-control p-0" style="height: 25px">
+          <option>5</option>
+          <option>10</option>
+          <option>25</option>
+          <option>50</option>
+          <option>100</option>
+        </select>
+      </div>
+      <p>record per pagina</p>
+    </div>
+    <div class="row col-md-7">
+      <div class="input-group align-items-center">
+        <h5>Cerca</h5>
+        <input
+          type="text"
+          style="width: 100px"
+          class="form-control p-0 mx-2"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+        />
+      </div>
+      <div class="justify-content-end py-0 w-100">
+        <button mat-raised-button class="col m-1 w-auto btn" color="primary">
+          Copy
+        </button>
+        <button mat-raised-button class="col m-1 w-auto btn" color="primary">
+          Excel
+        </button>
+        <button mat-raised-button class="col m-1 w-auto btn" color="primary">
+          CSV
+        </button>
+        <button mat-raised-button class="col m-1 w-auto btn" color="primary">
+          PDF
+        </button>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="table">
+      <tr>
+        <th *ngFor="let header of DynTableHeaders">
+          {{header}}
+        </th>
+      </tr>
+      <tr *ngFor="let item of DynTableBody">
+        <td *ngFor="let key of Looper(item) ">
+          {{key? key : '-'}}
+        </td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

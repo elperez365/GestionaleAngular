@@ -26,21 +26,26 @@ export let lista_operai: Operaio[] = [
     qualifica: 'Fisico',
     visita_medica: new Date(Date.now())
   },
+  {
+    id:'4',
+    nome: 'Isaac Newton',
+    contratto: 'Indeterminato',
+    assicurazione: new Date(Date.now()),
+    scadenze_contratto: [new Date('31-12-2023')],
+    qualifica: 'Fisico',
+    visita_medica: new Date(Date.now())
+  },
 ]
 
 export const OperaioTableHeaders: string[] = [
-  '↑',                   //BTN per ordine asc / desc
-  '',                   //BTN per info su singola gara
-  'Stazione Appaltante',
-  'Procedura aperta/ristretta',
-  'Oggetto',
-  'Importo',
-  'Scadenza',
-  'Apertura',
-  'Criterio Aggiudicazione',
-  'Categorie',
-  'Inviata',
-  ''                      //BTN per aggiungere / modificare info su singola gara
+  'id',
+  'Nome',
+  'Contratto',
+  'Agevolazione',
+  'Assicurazione',
+  'Qualifica',
+  'Visita Medica',
+  'Note'
 ]
 
 
