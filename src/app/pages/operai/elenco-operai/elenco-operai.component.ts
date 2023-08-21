@@ -11,4 +11,8 @@ export class ElencoOperaiComponent {
   //Variabili Locali 
   operaio_header: string[] = OperaioTableHeaders
   operaio_db: Operaio[] = lista_operai
+
+  constructor() {
+    
+  }
 }
