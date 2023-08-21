@@ -4,7 +4,7 @@ export interface Operaio {
   contratto: string;
   agevolazione?: string;
   assicurazione: Date;
-  scadenze_contratto: Date[];
+  scadenze_contratto?: Date[];
   qualifica: string;
   visita_medica: Date
   note?: string;

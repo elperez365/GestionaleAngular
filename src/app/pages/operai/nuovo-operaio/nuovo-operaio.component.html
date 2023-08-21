@@ -1,91 +1,168 @@
 <h1>Modifica Operatio: NOME_OPERAIO</h1>
+{{ form | json }}
 
 <!-- Card -->
-<mat-card class="d-flex flex-sx-wrap">
-  <!-- Prima parte del Form -->
-  <div class="container row m-1">
-    <h5 class="col-md-6 col-sm-12">Operaio</h5>
-    <h5 class="col-md-6 col-sm-12">Tipo di contratto</h5>
-
-    <div class="container row m-1"></div>
-    <div class="input-group col-md-6 col-sm-12 my-1">
-      <input
-        class="w-100"
-        name="nome"
-        type="text"
-        class="form-control"
-        placeholder="Nome, Cognome"
-        aria-describedby="basic-addon1"
-      />
+<mat-card class="d-flex flex-sx-wrap p-4 m-2">
+  <form #operai_form="ngForm" class="needs-validation" (change)="handleChange($event)" (ngSubmit)="handleSubmit(operai_form)">
+    <!-- Prima parte del Form -->
+    <div class="first_form">
+      <div class="container row m-1">
+        <h5 class="col-md-6 col-sm-12">Operaio</h5>
+        <h5 class="col-md-6 col-sm-12">Tipo di contratto</h5>
+        <div class="input-group col-md-6 col-sm-12 my-2">
+          <input
+            id="nome"
+            [(ngModel)]="form.nome"
+            class="form-control requiredForm"
+            name="nome"
+            type="text"
+            placeholder="Nome, Cognome"
+            value="form.nome"
+          />
+        </div>
+        <div class="input-group col-md-6 col-sm-12 my-2">
+          <select
+            class="custom-select requiredForm"
+            [(ngModel)]="form.contratto"
+            name="'contratto"
+          >
+            <option *ngFor="let c of contratto" [ngValue]="c" selected>
+              {{ c }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="container row m-1">
+        <h5 class="input-group col-md-6 col-sm-12">Agevolazioni</h5>
+        <h5 class="input-group col-md-6 col-sm-12">Data Assicurazione</h5>
+        <div class="input-group col-md-6 col-sm-12 my-2">
+          <input
+            [(ngModel)]="form.agevolazione"
+            name="nome"
+            type="text"
+            class="form-control "
+            placeholder="Agevolazione contributiva"
+            value="form.agevolazione"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group col-md-6 col-sm-12 my-2">
+          <input
+            [(ngModel)]="form.assicurazione"
+            class="form-control requiredForm"
+            type="date"
+            name="Assicurazione"
+          />
+        </div>
+      </div>
+      <hr class="mx-4" />
     </div>
 
-    <div class="input-group col-md-6 col-sm-12 my-2">
-      <select class="custom-select" id="inputGroupSelect01">
-        <option *ngFor="let c of contratto" selected>{{ c }}</option>
-      </select>
+    <!-- Seconda perte del Form -->
+    <div class="second_form">
+      <div class="d-flex justify-content-between align-items-center m-2">
+        <p class="mx-2">Date Scadenze T. Determinato</p>
+        <div>
+          <button
+            mat-raised-button
+            class="m-1 p-3"
+            type="button"
+            color="primary"
+            (click)="editScadenza('add')"
+          >
+            + Aggiungi scadenza
+          </button>
+          <button
+            mat-raised-button
+            type="button"
+            class="m-1 p-3"
+            color="warn"
+            (click)="editScadenza('delete')"
+          >
+            - Elimina Scadenza
+          </button>
+        </div>
+      </div>
+      <div *ngIf="form.contratto !== 'Indeterminato'">
+        <div
+          *ngFor="let s of scadenze; let i = index"
+          class="container row m-1"
+        >
+          <p class="col-md-3 p-1 mx-2">{{ i + 1 }}° Scadenza</p>
+          <input
+            *ngIf="form.scadenze_contratto"
+            class="form-control col-md-6 col-sm-12"
+            [(ngModel)]="form.scadenze_contratto[i]"
+            name="form.scadenze"
+            type="date"
+          />
+        </div>
+      </div>
+      <h3
+        *ngIf="form.contratto === 'Indeterminato'"
+        class="mx-auto text-center"
+      >
+        Scadenza non prevista
+      </h3>
+      <hr class="mx-4" />
     </div>
-  </div>
-  <div class="container row m-1">
-    <h5 class="input-group col-md-6 col-sm-12">Agevolazioni</h5>
-    <h5 class="input-group col-md-6 col-sm-12">Data Assicurazione</h5>
-    <div class="input-group col-md-6 col-sm-12 my-2">
-      <input
-        name="nome"
-        type="text"
-        class="form-control"
-        placeholder="Agevolazione contributiva"
-        aria-describedby="basic-addon1"
-      />
-    </div>
-    <div class="input-group col-md-6 col-sm-12 my-2">
-      <input class="form-control" type="date" />
-    </div>
-  </div>
-  <hr />
-  <!-- Seconda perte del Form -->
-  <div class="d-flex justify-content-between align-items-center m-2">
-    <p class="mx-2">Date Scadenze T. Determinato</p>
-    <button mat-raised-button class="m-2 p-3" color="primary">
-      + Aggiungi scadenza
-    </button>
-  </div>
-  <div *ngFor="let s of scadenze; let i = index" class="container row m-1">
-    <p class="col-md-3 p-1 mx-2">{{ i + 1 }}° Scadenza</p>
-    <input class="form-control col-md-6 col-sm-12" type="date" />
-    <button mat-raised-button class="m-4 ml-md-6" color="warn">Elimina</button>
-  </div>
-  <hr />
-  <!-- Terza parte del Form  -->
-  <div class="container row m-1">
-    <h5 class="col-md-6 col-sm-12">Qualifica</h5>
-    <h5 class="col-md-6 col-sm-12">Visita Medica</h5>
 
-    <div class="input-group col-md-6 col-sm-12 my-2">
-      <input
-        name="nome"
-        type="text"
-        class="form-control"
-        placeholder="Qualifica"
-        aria-describedby="basic-addon1"
-      />
+    <!-- Terza parte del Form  -->
+    <div class="third_form">
+      <div class="container row m-1">
+        <h5 class="col-md-6 col-sm-12">Qualifica</h5>
+        <h5 class="col-md-6 col-sm-12">Visita Medica</h5>
+
+        <div class="input-group col-md-6 col-sm-12 my-2">
+          <input
+            [(ngModel)]="form.qualifica"
+            name="qualifica"
+            type="text"
+            class="form-control"
+            placeholder="Qualifica"
+            value="form.qualifica"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group col-md-6 col-sm-12 my-2">
+          <input
+            class="form-control"
+            [(ngModel)]="form.visita_medica"
+            name="form.visita_medica"
+            value="form.visita_medica"
+            type="date"
+          />
+        </div>
+      </div>
+      <hr class="mx-4" />
     </div>
-    <div class="input-group col-md-6 col-sm-12 my-2">
-      <input class="form-control" type="date" />
+
+    <!-- Quarta parte del Form - Note-->
+    <div class="fourth_form">
+      <div class="container col-12 m-4"></div>
+      <h5 for="floatingTextarea2">Note</h5>
+      <div class="m-4 col-12">
+        <textarea
+          class="form-control"
+          name="note"
+          [(ngModel)]="form.note"
+          value="form.note"
+          style="height: 100px"
+        ></textarea>
+      </div>
+      <hr class="mx-4" />
     </div>
-  </div>
-  <hr />
-  <!-- Quarta parte del Form - Note-->
-  <div class="container col-12 m-4"></div>
-  <h5 for="floatingTextarea2">Note</h5>
-  <div class="m-4 col-12">
-    <textarea
-      class="form-control"
-      id="floatingTextarea2"
-      style="height: 100px"
-    ></textarea>
-  </div>
-  <hr />
-  <div class="row  mb-4">
-    <button mat-raised-button class="w-75 m-auto" color="primary">Submit</button>
-  </div>
+
+    <!-- Submit Button -->
+    <div class="row mb-4">
+      <button
+        mat-raised-button
+        class="w-75 m-auto"
+        type="submit"
+        color="primary"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
 </mat-card>

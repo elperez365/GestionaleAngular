@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Operaio } from 'src/app/interfaces/operai';
 
 @Component({
   selector: 'app-DynamicTable',
