@@ -53,6 +53,7 @@ import { FormNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/for
 import { CategorieComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/categorie/categorie.component';
 import { DatiNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/dati-nuova-gara/dati-nuova-gara.component';
 import { RibassiComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/ribassi/ribassi.component';
+import { TodoCategorieComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/categorie/todo-categorie/todo-categorie.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -83,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     CategorieComponent,
     DatiNuovaGaraComponent,
     RibassiComponent,
+    TodoCategorieComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],

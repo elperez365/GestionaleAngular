@@ -60,7 +60,7 @@ export class CategorieComponent {
     { value: 'OS35', viewValue: 'OS35' },
   ];
 
-  selectedCategory = this.categories[2].value;
+  selectedCategory = this.categories[1].value;
 
   soaQual = [
     { value: 'I', viewValue: 'I (fino a euro 258.000)' },
@@ -75,5 +75,5 @@ export class CategorieComponent {
     { value: 'VIII', viewValue: 'VIII (fino a euro 15.494.000)' },
   ];
 
-  selectedSoaQual = this.soaQual[2].value;
+  selectedSoaQual = this.soaQual[1].value;
 }

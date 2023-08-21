@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
 
 @Component({
-  selector: 'app-ribassi',
-  templateUrl: './ribassi.component.html',
-  styleUrls: ['./ribassi.component.scss'],
+  selector: 'app-todo-categorie',
+  templateUrl: './todo-categorie.component.html',
+  styleUrls: ['./todo-categorie.component.scss'],
 })
-export class RibassiComponent {
+export class TodoCategorieComponent {
+  @Input() selectedCat1: string;
+  @Input() selectedCat2: string;
+
   sidePanelOpened = true;
   public showSidebar = false;
   inputFg: UntypedFormGroup = Object.create(null);
   todoId = 6;
   copyTodos: ToDo[];
   selectedCategory = 'all';
-  searchText: string | null = null;
+  searchText: string | null;
   editSave = 'Edit';
 
   todos: ToDo[] = this.todoService.getTodos();
@@ -39,12 +42,12 @@ export class RibassiComponent {
   }
 
   addTodo(value: string): void {
-    if (this.inputFg?.get('mess')?.value.trim().length === 0) {
-      return;
-    }
+    // if (this.inputFg?.get('mess')?.value.trim().length === 0) {
+    //   return;
+    // }
     this.todos.splice(0, 0, {
       id: this.todoId,
-      message: this.inputFg?.get('mess')?.value,
+      message: `${this.selectedCat1} ${this.selectedCat2}`,
       completionStatus: false,
       edit: false,
       date: new Date(),

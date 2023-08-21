@@ -23,6 +23,10 @@
         }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="accent">Aggiungi categoria</button>
+    <app-todo-categorie
+      [selectedCat1]="selectedCategory"
+      [selectedCat2]="selectedSoaQual"
+    >
+    </app-todo-categorie>
   </mat-card-content>
 </mat-card>
