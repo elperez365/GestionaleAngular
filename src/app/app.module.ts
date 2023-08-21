@@ -49,6 +49,10 @@ import {
   CalendarDialogComponent,
 } from './pages/calendar/fullcalendar/fullcalendar.component';
 import { CalendarFormDialogComponent } from './pages/calendar/fullcalendar/calendar-form-dialog/calendar-form-dialog.component';
+import { FormNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/form-nuova-gara.component';
+import { CategorieComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/categorie/categorie.component';
+import { DatiNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/dati-nuova-gara/dati-nuova-gara.component';
+import { RibassiComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/ribassi/ribassi.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -75,6 +79,10 @@ export function HttpLoaderFactory(http: HttpClient): any {
     CalendarDialogComponent,
     AppFullcalendarComponent,
     CalendarFormDialogComponent,
+    FormNuovaGaraComponent,
+    CategorieComponent,
+    DatiNuovaGaraComponent,
+    RibassiComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],

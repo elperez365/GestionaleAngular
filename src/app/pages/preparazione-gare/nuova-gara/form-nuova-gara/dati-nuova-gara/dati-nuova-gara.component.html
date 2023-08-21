@@ -1,0 +1,103 @@
+<mat-card>
+  <mat-card-content>
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Numero</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <input matInput />
+    </mat-form-field>
+
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+      >Stazione appaltante</mat-label
+    >
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-select [(value)]="selectedFood">
+        <mat-option [value]="option.value" *ngFor="let option of foods">{{
+          option.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+      >Procedura aperta/ristretta</mat-label
+    >
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-select [(value)]="selectedFood">
+        <mat-option [value]="option.value" *ngFor="let option of foods">{{
+          option.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- input -->
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-select [(value)]="selectedFood">
+        <mat-option [value]="option.value" *ngFor="let option of foods">{{
+          option.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- input -->
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-select [(value)]="selectedFood">
+        <mat-option [value]="option.value" *ngFor="let option of foods">{{
+          option.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Note</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <textarea matInput rows="5"></textarea>
+    </mat-form-field>
+
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Importo</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <input matInput />
+    </mat-form-field>
+
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Scadenza</mat-label>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Apertura</mat-label>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+      >Criterio Aggiudicazione</mat-label
+    >
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-select [(value)]="selectedFood">
+        <mat-option [value]="option.value" *ngFor="let option of foods">{{
+          option.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
