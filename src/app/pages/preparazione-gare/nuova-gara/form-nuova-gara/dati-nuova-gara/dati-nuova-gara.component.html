@@ -1,13 +1,14 @@
-<mat-card>
-  <mat-card-content>
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Numero</mat-label>
-    <mat-form-field appearance="outline" class="w-100" color="primary">
-      <input matInput [(ngModel)]="numero" />
-    </mat-form-field>
+<mat-card >
+  <mat-card-content class="formDatiGara">
+    <!-- input numero -->
+    <div class="INnumero" ><mat-label class=" mat-subtitle-2 f-w-600 m-b-8 ">Numero</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput [(ngModel)]="numero" />
+      </mat-form-field></div>
+    
 
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+    <!-- input Stazione appaltante -->
+    <div class="INstazione"><mat-label class=" mat-subtitle-2 f-w-600 m-b-8 "
       >Stazione appaltante</mat-label
     >
     <mat-form-field appearance="outline" class="w-100">
@@ -18,10 +19,11 @@
           >{{ option.viewValue }}</mat-option
         >
       </mat-select>
-    </mat-form-field>
+    </mat-form-field></div>
+    
 
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+    <!-- input Stato della  procedura -->
+    <div class="INprocedura" ><mat-label class="mat-subtitle-2 f-w-600 m-b-8 "
       >Stato della  procedura</mat-label
     >
     <mat-form-field appearance="outline" class="w-100">
@@ -30,64 +32,69 @@
           option.viewValue
         }}</mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field></div>
+    
 
     <!-- input -->
-
-    <mat-form-field appearance="outline" class="w-100">
+    <!-- <div class="INgaregroup"><mat-form-field appearance="outline" class="w-100">
       <mat-select [(value)]="selectedGareGroup">
         <mat-option [value]="option.value" *ngFor="let option of gareGroup">{{
           option.viewValue
         }}</mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field></div>
+    
 
-    <!-- input -->
-
-    <mat-form-field appearance="outline" class="w-100">
+    
+    <div class="INgaregroup2"><mat-form-field appearance="outline" class="w-100">
       <input matInput [(ngModel)]="gareGroup2" />
-    </mat-form-field>
+    </mat-form-field></div>
+     -->
 
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Note</mat-label>
-    <mat-form-field appearance="outline" class="w-100" color="primary">
-      <textarea matInput rows="5" [(ngModel)]="note"></textarea>
-    </mat-form-field>
+    <!-- input Note -->
+    <div class="INnote"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 ">Oggetto</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <textarea matInput rows="5" [(ngModel)]="note"></textarea>
+      </mat-form-field></div>
+    
 
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Importo</mat-label>
-    <mat-form-field appearance="outline" class="w-100" color="primary">
-      <input matInput [(ngModel)]="importo" />
-    </mat-form-field>
+    <!-- input Importo -->
+    <div class="INimporto"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 ">Importo</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput [(ngModel)]="importo" />
+      </mat-form-field></div>
+    
 
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Scadenza</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker2" [(ngModel)]="scadenza" />
+    <!-- input Scadenza -->
+    <div class="INscadenza"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 ">Scadenza</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="scadenza" />
+  
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field></div>
+    
 
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker2"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
+    <!-- input Apertura -->
+    <div class="INapertura"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 ">Apertura</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="apertura" />
+  
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field></div>
+    
 
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Apertura</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="apertura" />
-
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <!-- input -->
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+    <!-- input Criterio Aggiudicazione -->
+    <div class="INcriterio"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 "
       >Criterio Aggiudicazione</mat-label
     >
     <mat-form-field appearance="outline" class="w-100">
@@ -98,6 +105,8 @@
           >{{ option.viewValue }}</mat-option
         >
       </mat-select>
-    </mat-form-field>
+    </mat-form-field></div>
+    
   </mat-card-content>
 </mat-card>
+

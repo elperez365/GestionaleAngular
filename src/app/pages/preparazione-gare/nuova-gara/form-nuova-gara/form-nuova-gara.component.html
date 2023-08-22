@@ -3,17 +3,17 @@
     <mat-card-title class="m-b-0">Inserimento nuova gara</mat-card-title>
   </mat-card-header>
   <mat-card-content class="b-t-1">
-    <form (submit)="onSubmit($event)">
+    <form class="formINserimentoGara" (submit)="onSubmit($event)">
       <!-- input -->
-      <mat-checkbox color="primary" (change)="inviata=!inviata">Inviata</mat-checkbox>
+      <mat-checkbox class="checkInviata" color="primary" (change)="inviata=!inviata">Inviata</mat-checkbox>
 
-      <app-dati-nuova-gara></app-dati-nuova-gara>
+      <app-dati-nuova-gara class="datiNuovaGara"></app-dati-nuova-gara>
 
-      <app-categorie></app-categorie>
+      <app-categorie class="categorie" ></app-categorie>
 
-      <app-ribassi></app-ribassi>
+      <app-ribassi class="ribassi" ></app-ribassi>
 
-      <button mat-flat-button color="primary">AGGIUNGI GARA</button>
+      <button class="BTaddGara" mat-flat-button color="primary">AGGIUNGI GARA</button>
     </form>
   </mat-card-content>
 </mat-card>

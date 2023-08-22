@@ -2,8 +2,8 @@
   <mat-card-header>
     <mat-card-title>Categorie</mat-card-title>
   </mat-card-header>
-  <mat-card-content class="b-t-1">
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+  <mat-card-content class="b-t-1 CategoriesNewGara">
+    <div class="CategoryNewGara"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
       >Categoria</mat-label
     >
     <mat-form-field appearance="outline" class="w-100">
@@ -12,8 +12,9 @@
           option.viewValue
         }}</mat-option>
       </mat-select>
-    </mat-form-field>
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+    </mat-form-field></div>
+    
+    <div class="ClassificazioneNewGara"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
       >Classificazione SOA</mat-label
     >
     <mat-form-field appearance="outline" class="w-100">
@@ -22,8 +23,9 @@
           option.viewValue
         }}</mat-option>
       </mat-select>
-    </mat-form-field>
-    <app-todo-categorie
+    </mat-form-field></div>
+    
+    <app-todo-categorie class="todoCategoryNew"
       [selectedCat1]="selectedCategory"
       [selectedCat2]="selectedSoaQual"
     >

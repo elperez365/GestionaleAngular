@@ -1,0 +1,22 @@
+@media screen and (min-width:700px){
+    .CategoriesNewGara{
+        display:grid;
+        gap:1rem;
+        grid-template-areas:
+        "     CategoryNewGara     ClassificazioneNewGara    "
+        "     todoCategoryNew         todoCategoryNew       ";
+    
+    
+        .CategoryNewGara{
+            grid-area:CategoryNewGara;
+        }
+    
+        .ClassificazioneNewGara{
+            grid-area:ClassificazioneNewGara;
+        }
+    
+        .todoCategoryNew{
+            grid-area:todoCategoryNew;
+        }
+    }
+}

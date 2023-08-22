@@ -1,0 +1,37 @@
+@media screen and  (min-width:1200px){
+    .formINserimentoGara{
+        display:grid;
+        gap: 1rem;
+        grid-template-areas:
+        "inviata              .             .               .     "
+        "datiNuovaGara  datiNuovaGara datiNuovaGara  datiNuovaGara"       
+        "datiNuovaGara  datiNuovaGara datiNuovaGara  datiNuovaGara"       
+        "datiNuovaGara  datiNuovaGara datiNuovaGara  datiNuovaGara"       
+        "datiNuovaGara  datiNuovaGara datiNuovaGara  datiNuovaGara"
+        "categorie        categorie   categorie     categorie     "
+        "ribassi      ribassi          ribassi      ribassi       "
+        ".               .               .         BTaddGara      ";
+        
+        .checkInviata{
+            grid-area:inviata;
+        }
+    
+        .datiNuovaGara{
+            grid-area:datiNuovaGara;
+        }
+    
+        .categorie{
+            grid-area:categorie;
+        }
+    
+        .ribassi{
+            grid-area:ribassi;
+        }
+    
+        .BTaddGara{
+            grid-area:BTaddGara;
+        }
+    
+        
+    }
+}

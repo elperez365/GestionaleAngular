@@ -1,0 +1,57 @@
+@media screen and  (min-width:1200px){
+.formDatiGara{
+    
+    display:grid;
+    gap:1rem;
+    align-content:space-around;
+    
+    grid-template-areas:
+    "numero        stazione      importo "
+    "procedura     scadenza    apertura  "
+    "note           note        criterio "
+    "note           note              .  ";
+    
+    .INnumero{
+        grid-area:numero;
+    }
+
+    .INstazione{
+        grid-area:stazione;
+    }
+
+    .INprocedura{
+        grid-area:procedura;
+    }
+
+    .INgaregroup{
+        grid-area:garegroup;
+    }
+
+    .INgaregroup2{
+        grid-area:garegroup2;
+    }
+
+    .INnote{
+        grid-area:note;
+    }
+
+    .INimporto{
+        grid-area:importo;
+    }
+
+    .INscadenza{
+        grid-area:scadenza;
+    }
+    .INapertura{
+        grid-area:apertura;
+    }
+
+    .INcriterio{
+        grid-area:criterio;
+    }
+
+    
+
+}
+}
+
