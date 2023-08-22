@@ -3,26 +3,32 @@
       <mat-card-title class="m-b-0">Nuovo Mezzo</mat-card-title>
     </mat-card-header>
     <mat-card-content class="b-t-1">
-      <form [formGroup]="mezzoForm" (submit)="onSubmit($event)" >
-        <!-- input -->
+      <form class="formNuovoMezzo" [formGroup]="mezzoForm" (submit)="onSubmit($event)" >
+        <!-- input tipo veicolo-->
+        <div class="INtipoVeicolo">
         <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Tipo veicolo</mat-label>
         <mat-form-field appearance="outline" class="w-100">
           <input formControlName="tipoVeicolo" matInput />
         </mat-form-field>
-        <!-- input -->
+      </div>
+        <!-- input targa-->
+        <div class="INtargaVeicolo">
         <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Targa</mat-label>
         <mat-form-field appearance="outline" class="w-100">
           <input formControlName="targa" matInput   />
         </mat-form-field>
-        <!-- input -->
+      </div>
+        <!-- input anno revisione-->
+        <div class="INannoRevisione">
         <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
           >Anno revisione</mat-label
         >
         <mat-form-field appearance="outline" class="w-100">
           <input matInput formControlName="annoRevisione" />
-        </mat-form-field>
+        </mat-form-field></div>
 
-         <!-- input -->
+         <!-- input mese revisione-->
+         <div class="INmeseRevisione">
     <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
     >Mese revisione</mat-label
   >
@@ -34,15 +40,17 @@
         >{{ option.viewValue }}</mat-option
       >
     </mat-select>
-  </mat-form-field>
+  </mat-form-field></div>
 
-  <!-- input -->
+  <!-- input Note-->
+  <div class="INnoteVeicolo">
   <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Note</mat-label>
   <mat-form-field appearance="outline" class="w-100" color="primary">
     <textarea formControlName="note" matInput rows="5" ></textarea>
-  </mat-form-field>
+  </mat-form-field></div>
 
-  <!-- input -->
+  <!-- input tipo patente-->
+  <div class="INtipoPatente">
   <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
   >Tipo patente</mat-label
 >
@@ -54,17 +62,19 @@
       >{{ option.viewValue }}</mat-option
     >
   </mat-select>
-</mat-form-field>
+</mat-form-field></div>
 
-<!-- input -->
+<!-- input assicurazione-->
+<div class="INassicurazione">
 <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
 >Assicurzione</mat-label
 >
 <mat-form-field appearance="outline" class="w-100">
 <input formControlName="assicurazione" matInput  />
-</mat-form-field>
+</mat-form-field></div>
 
-<!-- input -->
+<!-- input scadenza assicurazione-->
+<div class="INscadenzaAssicurazione">
 <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Scadenza assicurzione</mat-label>
 <mat-form-field appearance="outline" class="w-100">
   <mat-label>Choose a date</mat-label>
@@ -75,9 +85,10 @@
     [for]="picker3"
   ></mat-datepicker-toggle>
   <mat-datepicker #picker3></mat-datepicker>
-</mat-form-field>
-<!-- input -->
+</mat-form-field></div>
 
+<!-- input scadenza bollo-->
+<div class="INscadenzaBollo">
 <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Scadenza bollo</mat-label>
 <mat-form-field appearance="outline" class="w-100">
   <mat-label>Choose a date</mat-label>
@@ -88,9 +99,9 @@
     [for]="picker4"
   ></mat-datepicker-toggle>
   <mat-datepicker #picker4></mat-datepicker>
-</mat-form-field>
+</mat-form-field></div>
 
-        <button mat-flat-button color="primary" type="submit">Submit</button>
+        <button class="BTsubNewMezzo" mat-flat-button color="primary" type="submit">Invia</button>
       </form>
     </mat-card-content>
   </mat-card>

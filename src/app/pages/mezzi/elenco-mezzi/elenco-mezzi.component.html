@@ -1,4 +1,5 @@
 <div class='d-flex align-items-center justify-content-between'>
-    <h1>Elenco Mezzi</h1>
+    <h1>Elenco Mezzi</h1> 
+    <button mat-raised-button routerLink="/mezzi_nuovo" color="primary">Nuovo Mezzo</button>
   </div>
   <app-DynamicTable [DynTableHeaders]="mezzi_header" [DynTableBody]="mezzi_db" [DynTableArgument]="mezzi"></app-DynamicTable>
