@@ -47,8 +47,7 @@ export let Gare: ElencoGare[] = [
 
 export const GareTableHeaders: string[] = [
   'Info', //BTN per ordine asc / desc
-  'Stazione Appaltante',
-  'Oggetto',
+  'Ogetto',
   'Importo',
   // 'Polizza',
   // 'Sopralluoghi',
