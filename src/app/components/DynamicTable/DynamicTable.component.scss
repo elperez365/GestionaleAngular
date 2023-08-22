@@ -1,12 +1,15 @@
 .btn {
-  max-width: 50px;
+  max-width: 75px;
+}
+td{
+max-width: 1250px;
 }
 
-.dyn_table_card {
-  width: min-content;
-  margin: 0 
-}
 .search_input {
   max-width: 250px;
   margin-bottom: 16px;
+}
+
+.table-responsive{
+  padding: 0
 }

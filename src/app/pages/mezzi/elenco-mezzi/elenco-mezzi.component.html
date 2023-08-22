@@ -1,2 +1,4 @@
-<p>elenco-mezzi works!</p>
-<button routerLink='/mezzi_nuovo' >nuovo mezzo</button>
+<div class='d-flex align-items-center justify-content-between'>
+    <h1>Elenco Mezzi</h1>
+  </div>
+  <app-DynamicTable [DynTableHeaders]="mezzi_header" [DynTableBody]="mezzi_db" [DynTableArgument]="mezzi"></app-DynamicTable>

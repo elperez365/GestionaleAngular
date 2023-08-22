@@ -47,18 +47,10 @@ export let Gare: ElencoGare[] = [
 
 export const GareTableHeaders: string[] = [
   '↑', //BTN per ordine asc / desc
-
   'Stazione Appaltante',
-  'Procedura aperta/ristretta',
   'Oggetto',
   'Importo',
-  'Scadenza',
-  'Ora',
-  'Apertura',
-  'Criterio Aggiudicazione',
   'Categorie',
-  'Inviata',
-  'Ribasso',
   // 'Polizza',
   // 'Sopralluoghi',
   '', //BTN per aggiungere / modificare info su singola gara

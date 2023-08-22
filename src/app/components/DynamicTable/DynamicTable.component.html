@@ -1,64 +1,56 @@
-<mat-card class="w-auto dyn_table_card m-0">
-  <mat-card-header class="container w-auto m-1 pb-4 h-25">
-    <div class="col-6 justify-content-start mx-2">
-      <div class="row">
-        <p>Visualizza</p>
-        <div class="form-group mx-2">
-          <select class="form-control p-0" style="height: 25px">
-            <option>5</option>
-            <option>10</option>
-            <option>25</option>
-            <option>50</option>
-            <option>100</option>
-          </select>
-        </div>
-        <p>record per pagina</p>
-      </div>
-      <button mat-raised-button (click)="createPage()" class="col m-1 w-100" color="primary">
-        Crea nuovo
-      </button>
-    </div>
-    <div class="col-6 justify-content-start mx-2">
-      <div class="row w-100">
-        <h5>Cerca</h5>
-        <input
-        type="text"
-        style="height: 25px;"
-        class="form-control search_input p-0 mx-2"
-        aria-label="Small"
-        aria-describedby="inputGroup-sizing-sm"
-        />
-      </div>
-      <div class="row">
+<div class="dynamic_div" fxLayout="row wrap">
+  <div fxFlex="100">
+    <mat-card class="h-auto w-auto">
+      <div class="table-responsive">
+        <table class="table mx-4">
+          <tr>
+            <th *ngFor="let header of DynTableHeaders">
+              {{ header }}
+            </th>
+          </tr>
+            <tr *ngFor="let item of DynTableBody">
+              <td>
+                <mat-icon>home</mat-icon>
+              </td>
+              <td class='flex-wrap'*ngFor="let key of Looper(item)">
+                <p *ngIf="key" class="text-wrap">{{ key }}</p>
+              </td>
+            </tr>
 
-        <button mat-raised-button class="col m-auto btn" color="primary">
-          PDF
-        </button>
-        <button mat-raised-button class="col m-auto btn" color="primary">
-          Excell
-        </button>
-        <button mat-raised-button class="col m-auto btn" color="primary">
-          PDF
-        </button>
-        <button mat-raised-button class="col m-auto btn" color="primary">
-          Copy
-        </button>
+          </table>
+
+        <!-- Qui c'era *ngIf="isLoading$ | async" -->
+
+        <div class="row">
+          <div class="col-5 mx-4">
+            <button mat-raised-button class="col m-4 btn" color="primary">
+              PDF
+            </button>
+            <button mat-raised-button class="col m-4 btn" color="primary">
+              Excell
+            </button>
+            <button mat-raised-button class="col m-4 btn" color="primary">
+              PDF
+            </button>
+            <button mat-raised-button class="col m-4 btn" color="primary">
+              Copy
+            </button>
+          </div>
+          <div class="col-6">
+            <mat-paginator
+              #paginator
+              [length]="totalLength"
+              [pageIndex]="pageSubject.value.pageIndex - 1"
+              [pageSize]="pageSubject.value.pageSize"
+              [pageSizeOptions]="[5, 10, 20]"
+              (page)="changePage($event)"
+              showFirstLastButtons
+              aria-label="Select page"
+            >
+            </mat-paginator>
+          </div>
+        </div>
       </div>
-    </div>
-  </mat-card-header>
-  <mat-card-content>
-    <table class="table mx-4">
-      <tr>
-        <th *ngFor="let header of DynTableHeaders">
-          {{ header }}
-        </th>
-      </tr>
-      <tr *ngFor="let item of DynTableBody">
-        <td *ngFor="let key of Looper(item)">
-          <p *ngIf="key">{{ key }}</p>
-          <p *ngIf="!key">-</p>
-        </td>
-      </tr>
-    </table>
-  </mat-card-content>
-</mat-card>
+    </mat-card>
+  </div>
+</div>
