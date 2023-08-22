@@ -160,16 +160,19 @@ export class DynamicTableComponent implements OnInit {
     this.pageSubject.next({pageIndex: ($event.pageIndex + 1), pageSize: $event.pageSize});
     sessionStorage.setItem('pageItem',JSON.stringify(this.pageSubject.value));
   }
+
   Looper(item :any[]) {
     let arr: any[] = []
     for(let key in item) {
-      let Key: any = key[0].toUpperCase() + key.slice(1)
-      console.log(Key)
-      if(this.DynTableHeaders.includes(Key.replace('_', ' '))) {
+      let Key: any = (key[0].toUpperCase() + key.slice(1)).replace('_', ' ')
+      if(this.DynTableHeaders.includes(Key)) {
         arr.push(item[key])
       }
     }
     return arr
+  }
+  Order(str: string) {
+    this.DynTableHeaders.sort((a,b) => a[str] - b[str])
   }
   get totalLength(): number {
     //console.log('totalCount: '+ this.workerService.totalCount);
