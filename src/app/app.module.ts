@@ -55,6 +55,10 @@ import { DatiNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/for
 import { RibassiComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/ribassi/ribassi.component';
 import { TodoCategorieComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/categorie/todo-categorie/todo-categorie.component';
 import { DynamicTableComponent } from './components/DynamicTable/DynamicTable.component';
+import { MezziComponent } from './pages/mezzi/mezzi.component';
+import { ElencoMezziComponent } from './pages/mezzi/elenco-mezzi/elenco-mezzi.component';
+import { NuovoMezzoComponent } from './pages/mezzi/nuovo-mezzo/nuovo-mezzo.component';
+import { ToDoComponent } from './pages/imprese-appaltanti/nuova-impresa/to-do/to-do.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -87,6 +91,10 @@ export function HttpLoaderFactory(http: HttpClient): any {
     RibassiComponent,
     TodoCategorieComponent,
     DynamicTableComponent,
+    MezziComponent,
+    ElencoMezziComponent,
+    NuovoMezzoComponent,
+    ToDoComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],

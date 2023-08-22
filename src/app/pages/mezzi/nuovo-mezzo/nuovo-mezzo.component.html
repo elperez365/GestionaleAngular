@@ -1,0 +1,96 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Nuovo Mezzo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <form [formGroup]="mezzoForm" (submit)="onSubmit($event)" >
+        <!-- input -->
+        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Tipo veicolo</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input formControlName="tipoVeicolo" matInput />
+        </mat-form-field>
+        <!-- input -->
+        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Targa</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input formControlName="targa" matInput   />
+        </mat-form-field>
+        <!-- input -->
+        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+          >Anno revisione</mat-label
+        >
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput formControlName="annoRevisione" />
+        </mat-form-field>
+
+         <!-- input -->
+    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+    >Mese revisione</mat-label
+  >
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-select formControlName="meseRevisione" [(value)]="selectedMese">
+      <mat-option
+        [value]="option.value"
+        *ngFor="let option of mesi"
+        >{{ option.viewValue }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+
+  <!-- input -->
+  <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Note</mat-label>
+  <mat-form-field appearance="outline" class="w-100" color="primary">
+    <textarea formControlName="note" matInput rows="5" ></textarea>
+  </mat-form-field>
+
+  <!-- input -->
+  <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+  >Tipo patente</mat-label
+>
+<mat-form-field appearance="outline" class="w-100">
+  <mat-select formControlName="tipoPatente" [(value)]="selectedPatente">
+    <mat-option
+      [value]="option.value"
+      *ngFor="let option of patenti"
+      >{{ option.viewValue }}</mat-option
+    >
+  </mat-select>
+</mat-form-field>
+
+<!-- input -->
+<mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+>Assicurzione</mat-label
+>
+<mat-form-field appearance="outline" class="w-100">
+<input formControlName="assicurazione" matInput  />
+</mat-form-field>
+
+<!-- input -->
+<mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Scadenza assicurzione</mat-label>
+<mat-form-field appearance="outline" class="w-100">
+  <mat-label>Choose a date</mat-label>
+  <input formControlName="scadenzaAssicurazione" matInput [matDatepicker]="picker3"  />
+
+  <mat-datepicker-toggle
+    matIconSuffix
+    [for]="picker3"
+  ></mat-datepicker-toggle>
+  <mat-datepicker #picker3></mat-datepicker>
+</mat-form-field>
+<!-- input -->
+
+<mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Scadenza bollo</mat-label>
+<mat-form-field appearance="outline" class="w-100">
+  <mat-label>Choose a date</mat-label>
+  <input formControlName="scadenzaBollo" matInput [matDatepicker]="picker4"  />
+
+  <mat-datepicker-toggle
+    matIconSuffix
+    [for]="picker4"
+  ></mat-datepicker-toggle>
+  <mat-datepicker #picker4></mat-datepicker>
+</mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit">Submit</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

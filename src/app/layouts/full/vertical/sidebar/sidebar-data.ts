@@ -14,19 +14,8 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Preparazione Gare',
     iconName: 'chart-donut-3',
-    route: 'gare',
-    children: [
-      {
-        displayName: 'Elenco',
-        iconName: 'point',
-        route: 'gare_elenco',
-      },
-      {
-        displayName: 'Nuovo',
-        iconName: 'point',
-        route: 'gare_nuovo',
-      },
-    ],
+    route: 'gare_elenco',
+    
   },
   {
     displayName: 'Appalti Aggiudicati',
@@ -36,36 +25,20 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Operai',
     iconName: 'chart-donut-3',
-    route: 'operai',
-    children: [
-      {
-        displayName: 'Elenco',
-        iconName: 'point',
-        route: 'operai_elenco',
-      },
-      {
-        displayName: 'Nuovo',
-        iconName: 'point',
-        route: 'operai_nuovo',
-      },
-    ],
+    route: 'operai_elenco',
+    
+  },
+  {
+    displayName: 'Mezzi',
+    iconName: 'chart-donut-3',
+    route: 'mezzi_elenco',
+    
   },
   {
     displayName: 'Imprese Appaltanti',
     iconName: 'chart-donut-3',
-    route: 'imprese',
-    children: [
-      {
-        displayName: 'Elenco',
-        iconName: 'point',
-        route: 'imprese_elenco',
-      },
-      {
-        displayName: 'Nuovo',
-        iconName: 'point',
-        route: 'imprese_nuovo',
-      },
-    ],
+    route: 'imprese_elenco',
+    
   },
   {
     displayName: 'Impostazioni',

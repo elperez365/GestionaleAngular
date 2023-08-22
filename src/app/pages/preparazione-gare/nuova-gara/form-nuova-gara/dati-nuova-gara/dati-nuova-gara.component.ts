@@ -1,6 +1,9 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { NuovaGaraService } from '../../../../../services/nuova-gara.service';
-
+import { impreseAppaltanti } from 'src/app/DB/imprese appaltanti';
+import { CriteriAggiudicazione } from 'src/app/DB/CriteriAggiudicazione';
+import { StatiProcedura } from 'src/app/DB/StatiProcedura';
+import { GareGroup } from 'src/app/DB/Garegroup';
 @Component({
   selector: 'app-dati-nuova-gara',
   templateUrl: './dati-nuova-gara.component.html',
@@ -17,50 +20,17 @@ export class DatiNuovaGaraComponent {
   scadenza: Date;
   apertura: Date;
   selectedCriterio: string;
+  StazioniAppaltanti=impreseAppaltanti
+  criteriAggiudicazione=CriteriAggiudicazione
+  apRis=StatiProcedura
+  gareGroup=GareGroup
+  constructor(public nuovaGaraService: NuovaGaraService,  ) {}
+  
+  
+  
 
-  constructor(public nuovaGaraService: NuovaGaraService) {}
-  StazioniAppaltanti = [
-    {
-      value: 'ROMA CAPITALE MUNICIPIO XIII',
-      viewValue: 'ROMA CAPITALE MUNICIPIO XIII',
-    },
-    {
-      value: 'ROMA CAPITALE MUNICIPIO VI',
-      viewValue: 'ROMA CAPITALE MUNICIPIO VI',
-    },
-  ];
-
-  apRis = [
-    {
-      value: 'aperta',
-      viewValue: 'Aperta',
-    },
-    {
-      value: 'ristretta',
-      viewValue: 'Ristretta',
-    },
-  ];
-
-  gareGroup = [
-    {
-      value: 'tuttogare',
-      viewValue: 'Tutto gare',
-    },
-  ];
-  criteriAggiudicazione = [
-    {
-      value: 'offerta tecnica',
-      viewValue: 'Offerta tecnica',
-    },
-    {
-      value: 'ribasso',
-      viewValue: 'Ribasso',
-    },
-    {
-      value: 'percentuale',
-      viewValue: 'Percentuale',
-    },
-  ];
+  
+  
 
   // ngOnInit(): void {
   //   console.log(this.nuovaGaraService.Gara);
