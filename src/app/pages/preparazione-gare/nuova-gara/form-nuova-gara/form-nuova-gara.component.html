@@ -5,7 +5,7 @@
   <mat-card-content class="b-t-1">
     <form (submit)="onSubmit($event)">
       <!-- input -->
-      <mat-checkbox color="primary" [(ngModel)]="inviata">Inviata</mat-checkbox>
+      <mat-checkbox color="primary" (change)="inviata=!inviata">Inviata</mat-checkbox>
 
       <app-dati-nuova-gara></app-dati-nuova-gara>
 

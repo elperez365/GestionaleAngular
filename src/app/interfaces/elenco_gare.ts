@@ -5,8 +5,10 @@ export interface ElencoGare {
   ogetto: string;
   importo: string;
   scadenza: string;
+  ora:string;
   apertura: string;
   criterio_aggiudicazione: string;
   categoria: string;
   inviata: string;
+  ribasso:string;
 }
