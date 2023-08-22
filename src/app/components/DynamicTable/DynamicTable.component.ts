@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-DynamicTable',
@@ -8,10 +9,16 @@ import { Component, Input } from '@angular/core';
 export class DynamicTableComponent {
   @Input() DynTableHeaders: any[];
   @Input() DynTableBody: any[];
+  @Input() DynTableArgument: string;
 
-  constructor() {}
+  //Local Variables
+  link: string
+
+
+  constructor( private router: Router) {}
 
   ngOnInit() :void {
+    this.link = `/${this.DynTableArgument}_nuovo`
   }
 
   Looper(item :any[]) {
@@ -20,6 +27,9 @@ export class DynamicTableComponent {
       arr.push(item[key])
     }
     return arr
+  }
+  createPage() {
+    this.router.navigateByUrl(this.link)
   }
 
 }
