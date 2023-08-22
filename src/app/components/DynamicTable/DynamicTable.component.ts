@@ -160,10 +160,17 @@ export class DynamicTableComponent implements OnInit {
     this.pageSubject.next({pageIndex: ($event.pageIndex + 1), pageSize: $event.pageSize});
     sessionStorage.setItem('pageItem',JSON.stringify(this.pageSubject.value));
   }
+  Capitalize(s: string) {           // Per Render dinamici della tabella
+    let res: string = ''
+    for(let i of s.split(' ')) {
+      res.concat(i[0].toUpperCase())
+    }
+    return res
+  }
   Looper(item :any[]) {
     let arr: any[] = []
     for(let key in item) {
-      let Key: any = key[0].toUpperCase() + key.slice(1)
+      let Key: any = this.Capitalize(key)
       console.log(Key)
       if(this.DynTableHeaders.includes(Key.replace('_', ' '))) {
         arr.push(item[key])
