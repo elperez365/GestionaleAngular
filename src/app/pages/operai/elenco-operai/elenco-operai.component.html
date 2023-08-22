@@ -1,5 +1,4 @@
 <div class='d-flex align-items-center justify-content-between'>
   <h1>Elenco Operai</h1>
-  <button mat-raised-button color="primary" routerLink="/operai_nuovo">Crea nuovo operaio</button>
 </div>
-<app-DynamicTable [DynTableHeaders]="operaio_header" [DynTableBody]="operaio_db"></app-DynamicTable>
+<app-DynamicTable [DynTableHeaders]="operaio_header" [DynTableBody]="operaio_db" [DynTableArgument]="operaio"></app-DynamicTable>
