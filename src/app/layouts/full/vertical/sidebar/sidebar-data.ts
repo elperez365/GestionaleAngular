@@ -37,19 +37,8 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Imprese Appaltanti',
     iconName: 'chart-donut-3',
-    route: 'imprese',
-    children: [
-      {
-        displayName: 'Elenco',
-        iconName: 'point',
-        route: 'imprese_elenco',
-      },
-      {
-        displayName: 'Nuovo',
-        iconName: 'point',
-        route: 'imprese_nuovo',
-      },
-    ],
+    route: 'imprese_elenco',
+    
   },
   {
     displayName: 'Impostazioni',

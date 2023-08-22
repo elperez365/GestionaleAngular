@@ -36,14 +36,14 @@
     *ngFor="let todo of copyTodos; let i = index"
     class="todo-item p-y-12 p-x-8 b-b-1"
   >
-    <div class="d-flex align-items-center w-50 justify-content-center">
+    <div class="d-flex align-items-center w-50 ">
       <span class="mat-subheading-1 m-b-0 m-r-10 f-s-18 f-w-50">{{
         todo.message
       }}</span>
 
       <div class="w-70">
         <div
-          class="d-flex align-items-center justify-content-around"
+          class="d-flex align-items-center "
           *ngIf="!todo.edit"
           (click)="editTodo(todo.id, '')"
         >
