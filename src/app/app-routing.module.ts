@@ -13,6 +13,8 @@ import { ImpreseAppaltantiComponent } from './pages/imprese-appaltanti/imprese-a
 import { NuovaImpresaComponent } from './pages/imprese-appaltanti/nuova-impresa/nuova-impresa.component';
 import { ElencoImpreseComponent } from './pages/imprese-appaltanti/elenco-imprese/elenco-imprese.component';
 import { ImpostazioniComponent } from './pages/impostazioni/impostazioni.component';
+import { NuovoMezzoComponent } from './pages/mezzi/nuovo-mezzo/nuovo-mezzo.component';
+import { ElencoMezziComponent } from './pages/mezzi/elenco-mezzi/elenco-mezzi.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'operai', component: OperaiComponent },
   { path: 'operai_elenco', component: ElencoOperaiComponent },
   { path: 'operai_nuovo', component: NuovoOperaioComponent },
+  { path: 'mezzi_elenco', component: ElencoMezziComponent },
+  { path: 'mezzi_nuovo', component: NuovoMezzoComponent },
   { path: 'imprese', component: ImpreseAppaltantiComponent },
   { path: 'imprese_nuovo', component: NuovaImpresaComponent },
   { path: 'imprese_elenco', component: ElencoImpreseComponent },
