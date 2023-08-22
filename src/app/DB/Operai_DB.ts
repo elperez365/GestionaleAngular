@@ -62,7 +62,7 @@ export let lista_operai: Operaio[] = [
 ]
 
 export const OperaioTableHeaders: string[] = [
-  'id',
+  'Info',
   'Nome',
   'Contratto',
   'Mansione',

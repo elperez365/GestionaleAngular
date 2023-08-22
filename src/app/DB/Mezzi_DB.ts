@@ -35,7 +35,7 @@ export let lista_mezzi: Mezzi[] = [{
 }]
 
 export let mezziTableHeaders: string[] =  
-[   'id',
+[   'Info',
     'Tipo veicolo',
     'Targa',
     'Tipo patente',
