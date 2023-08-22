@@ -1,54 +1,65 @@
 <div class="dynamic_div" fxLayout="row wrap">
   <div fxFlex="100">
-    <mat-card class="h-auto w-auto">
-      <div class="table-responsive">
-        <table class="table mx-4">
-          <tr>
-            <th *ngFor="let header of DynTableHeaders">
-              {{ header }}
-            </th>
-          </tr>
-            <tr *ngFor="let item of DynTableBody">
-              <td>
-                <mat-icon>home</mat-icon>
-              </td>
-              <td class='flex-wrap'*ngFor="let key of Looper(item)">
-                <p *ngIf="key" class="text-wrap">{{ key }}</p>
-              </td>
-            </tr>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Cerca nell'elenco"
+        [formControl]="searchField"
+        data-lpignore="true"
+      />
+    </mat-form-field>
 
-          </table>
-
-        <!-- Qui c'era *ngIf="isLoading$ | async" -->
-
-        <div class="row">
-          <div class="col-5 mx-4">
-            <button mat-raised-button class="col m-4 btn" color="primary">
-              PDF
-            </button>
-            <button mat-raised-button class="col m-4 btn" color="primary">
-              Excell
-            </button>
-            <button mat-raised-button class="col m-4 btn" color="primary">
-              PDF
-            </button>
-            <button mat-raised-button class="col m-4 btn" color="primary">
-              Copy
-            </button>
-          </div>
-          <div class="col-6">
-            <mat-paginator
-              #paginator
-              [length]="totalLength"
-              [pageIndex]="pageSubject.value.pageIndex - 1"
-              [pageSize]="pageSubject.value.pageSize"
-              [pageSizeOptions]="[5, 10, 20]"
-              (page)="changePage($event)"
-              showFirstLastButtons
-              aria-label="Select page"
+    <mat-card class="h-auto card_table">
+      <table class="table w-auto  mx-4">
+        <tr>
+          <th *ngFor="let header of DynTableHeaders" (click)="Order(header)">
+            {{ header }}
+          </th>
+        </tr>
+        <tr *ngFor="let item of DynTableBody">
+          <td>
+            <button
+              mat-mini-fab
+              class="rounded-circle text-accent"
+              [ngClass]="'text-accent bg-light-accent'"
             >
-            </mat-paginator>
-          </div>
+              <mat-icon>person_outline</mat-icon>
+            </button>
+          </td>
+          <td class="flex-wrap h-100" *ngFor="let key of Looper(item)">
+            <p *ngIf="key" class="text-wrap">{{ key }}</p>
+            <p *ngIf="key === ''" class="text-wrap">Nessun dato fornito</p>
+          </td>
+        </tr>
+      </table>
+  
+      <div class="row">
+        <div class="col-5 mx-4">
+          <button mat-raised-button class="col m-4 btn" color="primary">
+            PDF
+          </button>
+          <button mat-raised-button class="col m-4 btn" color="primary">
+            Excell
+          </button>
+          <button mat-raised-button class="col m-4 btn" color="primary">
+            PDF
+          </button>
+          <button mat-raised-button class="col m-4 btn" color="primary">
+            Copy
+          </button>
+        </div>
+        <div class="col-6">
+          <mat-paginator
+            #paginator
+            [length]="totalLength"
+            [pageIndex]="pageSubject.value.pageIndex - 1"
+            [pageSize]="pageSubject.value.pageSize"
+            [pageSizeOptions]="[5, 10, 20]"
+            (page)="changePage($event)"
+            showFirstLastButtons
+            aria-label="Select page"
+          >
+          </mat-paginator>
         </div>
       </div>
     </mat-card>
