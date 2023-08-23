@@ -1,0 +1,54 @@
+@media screen and (min-width:860px) {
+  .formNuovoMezzo {
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "    tipo              tipo          targa                  targa           "
+      "    annoRevisione  annoRevisione    meseRevisone         meseRevisone      "
+      "    assicurazione  assicurazione     tipopatente         tipopatente       "
+      "    note              note          scadenzaBollo        scadenzaBollo     "
+      "    note              note          scadenzaAssicuraz   scadenzaAssicuraz  "
+      "       .               .                .                 submit           ";
+
+
+    .INtipoVeicolo {
+      grid-area: tipo;
+    }
+
+    .INtargaVeicolo {
+      grid-area: targa;
+    }
+
+    .INannoRevisone {
+      grid-area: annoRevisione;
+    }
+
+    .INmeseRevisione {
+      grid-area: meseRevisone;
+    }
+
+    .INnoteVeicolo {
+      grid-area: note;
+    }
+
+    .INtipoPatente {
+      grid-area: tipopatente;
+    }
+
+    .INassicurazione {
+      grid-area: assicurazione;
+    }
+
+    .INscadenzaAssicurazione {
+      grid-area: scadenzaAssicuraz;
+    }
+
+    .INscadenzaBollo {
+      grid-area: scadenzaBollo;
+    }
+
+    .BTsubNewMezzo {
+      grid-area: submit;
+    }
+  }
+}
