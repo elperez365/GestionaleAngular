@@ -17,6 +17,10 @@ import { NuovoMezzoComponent } from './pages/mezzi/nuovo-mezzo/nuovo-mezzo.compo
 import { ElencoMezziComponent } from './pages/mezzi/elenco-mezzi/elenco-mezzi.component';
 import { PaginaDettaglioComponent } from './components/pagina-dettaglio/pagina-dettaglio.component';
 import { AppErrorComponent } from './components/error/error.component';
+import { ModificaImpresaComponent } from './pages/imprese-appaltanti/modifica-impresa/modifica-impresa.component';
+import { ModificaMezzoComponent } from './pages/mezzi/modifica-mezzo/modifica-mezzo.component';
+import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifica-operaio.component';
+import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -35,6 +39,13 @@ const routes: Routes = [
   { path: 'imprese_elenco', component: ElencoImpreseComponent },
   { path: 'impostazioni', component: ImpostazioniComponent },
   { path: 'dettaglio/:cat/:id', component: PaginaDettaglioComponent },
+  {
+    path: 'modifica_impreseAppaltanti/:cat/:id',
+    component: ModificaImpresaComponent,
+  },
+  { path: 'modifica_mezzi/:cat/:id', component: ModificaMezzoComponent },
+  { path: 'modifica_operai/:cat/:id', component: ModificaOperaioComponent },
+  { path: 'modifica_gara/:cat/:id', component: ModificaGaraComponent },
   { path: '404', component: AppErrorComponent },
   { path: '**', redirectTo: '404' },
 ];
