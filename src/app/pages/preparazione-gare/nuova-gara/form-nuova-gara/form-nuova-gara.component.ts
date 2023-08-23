@@ -18,7 +18,7 @@ export class FormNuovaGaraComponent {
       id: this.NuovaGara.Gara.numero,
       stazione_appaltante: this.NuovaGara.Gara.selectedStazione,
       Procedura: this.NuovaGara.Gara.apertaRistretta,
-      ogetto: this.NuovaGara.Gara.note,
+      oggetto: this.NuovaGara.Gara.note,
       importo: this.NuovaGara.Gara.importo,
       scadenza: this.NuovaGara.Gara.scadenza,
       ora:"14:00",
