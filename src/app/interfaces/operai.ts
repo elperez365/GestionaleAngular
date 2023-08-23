@@ -1,12 +1,12 @@
 export interface Operaio {
   id: string;
   nome: string;       //si intenda Nome E Cognome
-  contratto: string;
-  mansione?: string;
+  contratto: string;      //Scelta tra 'Indeterminato', 'Determinato', 'Stage', 'Apprendistato'
+  mansione: string;        //Si intenda la tipologia di contratto
   agevolazione?: string;
-  assicurazione: Date;
-  scadenze_contratto?: Date[];
+  assicurazione: Date | undefined;
+  scadenze_contratto?: Date[];        
   qualifica: string;
-  visita_medica: Date
+  visita_medica: Date | undefined;
   note?: string;
 }

@@ -1,7 +1,8 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, OnInit, Inject} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, OnChanges} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Operaio } from 'src/app/interfaces/operai';
+import { lista_operai } from 'src/app/DB/Operai_DB';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,60 +14,69 @@ import { Operaio } from 'src/app/interfaces/operai';
 
 export class NuovoOperaioComponent implements OnInit{
   //Variabili esclusive per rappresentazione HTML
-  contratto: string[] = ['Indeterminato', 'Determinato', 'Stage', 'Apprendistato']                    //Usata per select input 'Tipi di contratto'
-  scadenze: Date[] = [new Date(Date.now())]                                   //Usata solo per renderizzare 2 componenti
+  contratti: string[] = ['Indeterminato', 'Determinato', 'Stage', 'Apprendistato'];             //Usata per select input 'Tipi di contratto'
+  mansione: string[] = ['Edile', 'Medico', 'Industriale', 'Elettronico'];
+  scadenze: Date[] = [new Date(Date.now())];                       //Usata solo per renderizzare 2 componenti
+  formValid:boolean = true;
 
 
+  //Local variables
+  form: Operaio;
 
+  operaiForm: FormGroup;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
+  //Angular Hooks
+  ngOnInit() :void {
+    
   //Form listener
-  form: Operaio = {
+  this.form = {
     id: String(Math.trunc(Math.random() * 999999)),
     nome: '',
     contratto: '',
+    mansione: '',
     agevolazione:'',
-    assicurazione: new Date(),
+    assicurazione: undefined,
     scadenze_contratto: [ 
       ...this.scadenze
     ],
     qualifica: '',
-    visita_medica: new Date(),
+    visita_medica: undefined,
     note: ''
   }
-
-  operaiForm: FormGroup;
-  constructor(
-    @Inject(DOCUMENT) private document: Document
-  ) {}
-  //Angular Hooks
-  ngOnInit() :void {
-    this.operaiForm = new FormGroup({
-      nome: new FormControl(this.form.nome, [
-        Validators.required
-      ]),
-      contratto: new FormControl(this.form.contratto, [
-        Validators.required
-      ]),
-      assicurazione: new FormControl(this.form.assicurazione, [
-        Validators.required
-      ]),
-      scadenze_contratto: new FormControl(this.form.scadenze_contratto, [
-        Validators.required,
-        Validators.minLength(1)
-      ]),
-      qualifica: new FormControl(this.form.qualifica, [
-        Validators.required
-      ]),
-      visita_medica: new FormControl(this.form.visita_medica, [
-        Validators.required
-      ])
-    })
+    // this.operaiForm = this.formBuilder.group({
+    //   nome: new FormControl(this.form.nome, [
+    //     Validators.required
+    //   ]),
+    //   contratto: new FormControl(this.form.contratto, [
+    //     Validators.required
+    //   ]),
+    //   assicurazione: new FormControl(this.form.assicurazione, [
+    //     Validators.required
+    //   ]),
+    //   scadenze_contratto: new FormControl(this.form.scadenze_contratto, [
+    //     Validators.required,
+    //   ]),
+    //   qualifica: new FormControl(this.form.qualifica, [
+    //     Validators.required
+    //   ]),
+    //   visita_medica: new FormControl(this.form.visita_medica, [
+    //     Validators.required
+    //   ])
+    // })
+    
   }
 
-
-  handleChange(input:any) {
-    this.document.getElementById(input)?.classList.add('is-invalid')
-    console.log(input)
-    
+  handleChange() {
+    let { nome, contratto, mansione, assicurazione, qualifica, visita_medica} = this.form
+    if(  !nome|| !contratto|| !mansione|| !assicurazione|| !qualifica|| !visita_medica) {
+      return
+    }
+    else {
+      this.formValid = false
+    }
   }
   editScadenza(option: string):void {
     switch(option) {
@@ -82,8 +92,9 @@ export class NuovoOperaioComponent implements OnInit{
   }
 
   handleSubmit(s: any) {
-
-}
+    lista_operai.push(this.form)
+    this.router.navigateByUrl('operai_elenco')
+  } 
 }
 
 

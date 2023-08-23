@@ -10,18 +10,17 @@
     </mat-form-field>
 
     <mat-card class="h-auto card_table">
-      <table class="table w-auto  mx-4">
+      <table class="table">
         <tr>
           <th *ngFor="let header of DynTableHeaders" (click)="Order(header)">
             {{ header }}
           </th>
         </tr>
         <tr *ngFor="let item of DynTableBody">
-          <td>
+          <td class="icon_btn">
             <button
               mat-mini-fab
-              class="rounded-circle text-accent"
-              [ngClass]="'text-accent bg-light-accent'"
+              class="rounded-circle  text-accent bg-light-accent"
             >
               <mat-icon>person_outline</mat-icon>
             </button>
