@@ -192,7 +192,7 @@ export class DynamicTableComponent implements OnInit {
     }
     //if the header has been clicked for the first time (delets old sessionStorage, puts the arrow on top)
     else {
-      Object.keys(sessionStorage).map(item => sessionStorage.removeItem(item))
+      Object.keys(sessionStorage).map(item => sessionStorage.removeItem)
       this.chosen = str;
       this.order = 'up'
       sessionStorage.setItem(str,this.order)
