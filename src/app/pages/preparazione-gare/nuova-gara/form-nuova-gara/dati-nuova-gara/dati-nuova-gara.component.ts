@@ -20,17 +20,11 @@ export class DatiNuovaGaraComponent {
   scadenza: Date;
   apertura: Date;
   selectedCriterio: string;
-  StazioniAppaltanti=impreseAppaltanti
-  criteriAggiudicazione=CriteriAggiudicazione
-  apRis=StatiProcedura
-  gareGroup=GareGroup
-  constructor(public nuovaGaraService: NuovaGaraService,  ) {}
-  
-  
-  
-
-  
-  
+  StazioniAppaltanti = impreseAppaltanti;
+  criteriAggiudicazione = CriteriAggiudicazione;
+  apRis = StatiProcedura;
+  gareGroup = GareGroup;
+  constructor(public nuovaGaraService: NuovaGaraService) {}
 
   // ngOnInit(): void {
   //   console.log(this.nuovaGaraService.Gara);
@@ -45,9 +39,11 @@ export class DatiNuovaGaraComponent {
     this.nuovaGaraService.Gara.note = this.note;
     this.nuovaGaraService.Gara.importo = this.importo;
     this.scadenza &&
-      (this.nuovaGaraService.Gara.scadenza = this.scadenza.toDateString());
+      (this.nuovaGaraService.Gara.scadenza =
+        this.scadenza.toLocaleDateString());
     this.apertura &&
-      (this.nuovaGaraService.Gara.apertura = this.apertura.toDateString());
+      (this.nuovaGaraService.Gara.apertura =
+        this.apertura.toLocaleDateString());
     this.nuovaGaraService.Gara.selectedCriterio = this.selectedCriterio;
   }
 }

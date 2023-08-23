@@ -103,15 +103,16 @@ export class NuovoMezzoComponent {
       lista_mezzi.push({
         id: '',
         tipo_veicolo: this.mezzoForm.value.tipoVeicolo,
-        anno_revisione: this.mezzoForm.value.annoRrevisione,
+        anno_revisione: this.mezzoForm.value.annoRevisione,
         targa: this.mezzoForm.value.targa,
         mese_revisione: this.mezzoForm.value.meseRevisione,
         tipo_patente: this.mezzoForm.value.tipoPatente,
         assicurazione: this.mezzoForm.value.assicurazione,
         scadenza_assicurazione:
-          this.mezzoForm.value.scadenzaAssicurazione.toLocaleDateString,
-        scadenza_bollo: this.mezzoForm.value.scadenzaBollo.toLocaleDateString,
+          this.mezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
+        scadenza_bollo: this.mezzoForm.value.scadenzaBollo.toLocaleDateString(),
       });
+      console.log(lista_mezzi);
       alert('Mezzo inserito con successo');
     } else alert('Operazione non eseguita,controlla i dati inseriti');
   }
