@@ -1,7 +1,8 @@
 export const impreseAppaltanti = [
   {
+    id: '1',
     nome: 'ROMA CAPITALE MUNICIPIO XIII',
-    contattoPrincipale: '3333333555',
+    contatto_Principale: '3333333555',
     nomeContatto: 'Giacomo',
     email: 'giacomo.g@g.it',
     value: 'ROMA CAPITALE MUNICIPIO XIII',
@@ -9,8 +10,9 @@ export const impreseAppaltanti = [
     altriContatti: [],
   },
   {
+    id: '2',
     nome: 'ROMA CAPITALE MUNICIPIO XIII',
-    contattoPrincipale: '3334499666',
+    contatto_Principale: '3334499666',
     nomeContatto: 'Giuseppe',
     email: 'giuseppe.g@g.it',
     value: 'ROMA CAPITALE MUNICIPIO XIII',

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Gare } from 'src/app/DB/ElencoGare_DB';
 import { lista_mezzi } from 'src/app/DB/Mezzi_DB';
 import { lista_operai } from 'src/app/DB/Operai_DB';
+import { impreseAppaltanti } from 'src/app/DB/imprese appaltanti';
 import { Operaio } from 'src/app/interfaces/operai';
 
 @Component({
@@ -21,6 +22,10 @@ export class PaginaDettaglioComponent {
       this.product = lista_operai!.find((el) => this.idProduct === el.id)!;
     } else if (this.categoryProduct === 'mezzi') {
       this.product = lista_mezzi!.find((el) => this.idProduct === el.id)!;
+    } else if (this.categoryProduct === 'gara') {
+      this.product = Gare!.find((el) => this.idProduct === el.id)!;
+    } else if (this.categoryProduct === 'Imprese%20Appaltanti') {
+      this.product = impreseAppaltanti!.find((el) => this.idProduct === el.id)!;
     }
     this.entriesProduct = Object.entries(this.product);
   }
