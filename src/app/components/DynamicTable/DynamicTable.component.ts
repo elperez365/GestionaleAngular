@@ -1,36 +1,3 @@
-// import { Component, Input } from '@angular/core';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-DynamicTable',
-//   templateUrl: './DynamicTable.component.html',
-//   styleUrls: ['./DynamicTable.component.scss'],
-// })
-// export class DynamicTableComponent {
-//   @Input() DynTableHeaders: any[];
-//   @Input() DynTableBody: any[];
-//   @Input() DynTableArgument: string;
-
-//   //Local Variables
-//   link: string
-
-
-//   constructor( private router: Router) {}
-
-//   ngOnInit() :void {
-//     this.link = `/${this.DynTableArgument}_nuovo`
-//   }
-
-
-//     return arr
-//   }
-//   createPage() {
-//     this.router.navigateByUrl(this.link)
-//   }
-
-// }
-
-
 import { Component, OnInit,  ViewChild, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -59,7 +26,7 @@ export class DynamicTableComponent implements OnInit {
   searchSubscription!: Subscription;
   staticCounter:number = 0;    //serve a limitare gli output della tabella in base al numero di item richiesti
   dataSourceLoaderSubscription!: Subscription;
-
+  searchBody: string;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator; 
 
   private newSubject = new BehaviorSubject<string>('');
@@ -80,10 +47,13 @@ export class DynamicTableComponent implements OnInit {
     public dialog: MatDialog) {}
 
   ngOnInit() {
-    //Session Storage Manager => 'searchItem' : 'value'
-    if (sessionStorage['searchItem']) {
-      this.searchField.patchValue(sessionStorage['searchItem']);
-      this.searchSubject.next(sessionStorage['searchItem'])
+
+    this.searchBody = `searchItem_${this.DynTableArgument}`     //Variabile Session Storage
+
+    //Session Storage Manager => this.searchBody : 'value'
+    if (sessionStorage[this.searchBody]) {
+      this.searchField.patchValue(sessionStorage[this.searchBody]);
+      this.searchSubject.next(sessionStorage[this.searchBody])
     }
     if (sessionStorage['sortItem']) {
       this.sortSubject.next({active: JSON.parse(sessionStorage['sortItem']).active, direction: JSON.parse(sessionStorage['sortItem']).direction});
@@ -112,8 +82,12 @@ export class DynamicTableComponent implements OnInit {
       distinctUntilChanged()
     ).subscribe((term)=> {
       this.changeSearch(term),
-      sessionStorage.setItem('searchItem',this.searchSubject.value)
+      sessionStorage.setItem(this.searchBody,this.searchSubject.value)
     });
+  }
+
+  searchBarChange() {
+    
   }
 
   loadData() {

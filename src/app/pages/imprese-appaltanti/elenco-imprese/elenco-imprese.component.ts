@@ -6,8 +6,7 @@ import { ImpreseAppaltanti } from 'src/app/interfaces/imprese_appaltanti';
   styleUrls: ['./elenco-imprese.component.scss'],
 })
 export class ElencoImpreseComponent {
-  imprese: string = 'Imprese Appaltanti'; //Usato per l'header della tabella
-
+  imprese: string = 'Imprese Appaltanti'
   data_body: ImpreseAppaltanti[] = [
     {
       id: String(Math.trunc(Math.random() * 9999)),
@@ -21,15 +20,15 @@ export class ElencoImpreseComponent {
       id: String(Math.trunc(Math.random() * 9999)),
       nome: 'Impresa 2',
       nome_contatto: 'Contatto 2',
-      telefono: 1234567890,
+      telefono: 12313453120,
       email: 'Email@dom.gov',
       contatti: ['Twitter', 'Telegram', 'Facebook'],
     },
     {
       id: String(Math.trunc(Math.random() * 9999)),
-      nome: 'Impresa 2',
-      nome_contatto: 'Contatto 2',
-      telefono: 1234567890,
+      nome: 'Impresa 3',
+      nome_contatto: 'Contatto 3',
+      telefono: 312312312312,
       email: 'Email@dom.gov',
       contatti: ['Twitter', 'Telegram', 'Facebook'],
     },
