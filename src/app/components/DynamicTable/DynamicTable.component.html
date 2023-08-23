@@ -10,7 +10,7 @@
     </mat-form-field>
 
     <mat-card class="h-auto card_table">
-      <table class="table w-auto  mx-4">
+      <table class="table w-100">
         <tr>
           <th *ngFor="let header of DynTableHeaders" (click)="Order(header)">
             {{ header }}
@@ -32,7 +32,7 @@
           </td>
         </tr>
       </table>
-  
+
       <div class="row">
         <div class="col-5 mx-4">
           <button mat-raised-button class="col m-4 btn" color="primary">
