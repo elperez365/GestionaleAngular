@@ -4,6 +4,7 @@
       <input
         matInput
         placeholder="Cerca nell'elenco"
+        (change)="searchBarChange()"
         [formControl]="searchField"
         data-lpignore="true"
       />
