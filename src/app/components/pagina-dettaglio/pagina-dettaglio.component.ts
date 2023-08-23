@@ -26,7 +26,7 @@ export class PaginaDettaglioComponent {
       this.product = Gare!.find((el) => this.idProduct === el.id)!;
     } else if (this.categoryProduct === 'Imprese%20Appaltanti') {
       this.product = impreseAppaltanti!.find((el) => this.idProduct === el.id)!;
-    }
+    } else alert('id non trovato');
     this.entriesProduct = Object.entries(this.product);
   }
 
