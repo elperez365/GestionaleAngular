@@ -15,6 +15,8 @@ import { ElencoImpreseComponent } from './pages/imprese-appaltanti/elenco-impres
 import { ImpostazioniComponent } from './pages/impostazioni/impostazioni.component';
 import { NuovoMezzoComponent } from './pages/mezzi/nuovo-mezzo/nuovo-mezzo.component';
 import { ElencoMezziComponent } from './pages/mezzi/elenco-mezzi/elenco-mezzi.component';
+import { PaginaDettaglioComponent } from './components/pagina-dettaglio/pagina-dettaglio.component';
+import { AppErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -32,6 +34,9 @@ const routes: Routes = [
   { path: 'imprese_nuovo', component: NuovaImpresaComponent },
   { path: 'imprese_elenco', component: ElencoImpreseComponent },
   { path: 'impostazioni', component: ImpostazioniComponent },
+  { path: 'dettaglio/:cat/:id', component: PaginaDettaglioComponent },
+  { path: '404', component: AppErrorComponent },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({
