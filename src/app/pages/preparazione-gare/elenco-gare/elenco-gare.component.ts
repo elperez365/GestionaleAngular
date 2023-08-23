@@ -8,6 +8,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./elenco-gare.component.scss'],
 })
 export class ElencoGareComponent implements OnInit {
+  gara: string = 'gara';
   gare: ElencoGare[];
   gareTableHeaders: string[];
 
