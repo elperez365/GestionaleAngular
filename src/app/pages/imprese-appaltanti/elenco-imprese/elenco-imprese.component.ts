@@ -7,8 +7,8 @@ import { impreseAppaltanti } from 'src/app/DB/imprese appaltanti';
   styleUrls: ['./elenco-imprese.component.scss'],
 })
 export class ElencoImpreseComponent {
-  imprese: string = 'Imprese Appaltanti'
-  data_body= impreseAppaltanti
+  imprese: string = 'impreseAppaltanti';
+  data_body = impreseAppaltanti;
   // data_body: ImpreseAppaltanti[] = [
   //   {
   //     id: String(Math.trunc(Math.random() * 9999)),
@@ -36,5 +36,5 @@ export class ElencoImpreseComponent {
   //   },
   // ];
 
-  data_header: string[] = ['Info', 'Nome',  'Email', 'Contatto Principale'];
+  data_header: string[] = ['Info', 'Nome', 'Email', 'Contatto Principale'];
 }
