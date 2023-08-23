@@ -19,7 +19,6 @@
         <tr *ngFor="let item of DynTableBody">
           <td class="icon_btn">
             <button
-              [id]="item.id"
               mat-mini-fab
               class="rounded-circle text-accent"
               [routerLink]="detailsElement(item.id)"
