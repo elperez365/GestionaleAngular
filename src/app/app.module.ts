@@ -59,6 +59,8 @@ import { MezziComponent } from './pages/mezzi/mezzi.component';
 import { ElencoMezziComponent } from './pages/mezzi/elenco-mezzi/elenco-mezzi.component';
 import { NuovoMezzoComponent } from './pages/mezzi/nuovo-mezzo/nuovo-mezzo.component';
 import { ToDoComponent } from './pages/imprese-appaltanti/nuova-impresa/to-do/to-do.component';
+import { PaginaDettaglioComponent } from './components/pagina-dettaglio/pagina-dettaglio.component';
+import { AppErrorComponent } from './components/error/error.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -95,6 +97,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     ElencoMezziComponent,
     NuovoMezzoComponent,
     ToDoComponent,
+    PaginaDettaglioComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],
@@ -119,6 +122,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     FullComponent,
     AppDailyActivitiesComponent,
     AppWelcomeCardComponent,
+    AppErrorComponent,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
