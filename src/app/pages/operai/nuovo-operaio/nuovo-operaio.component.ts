@@ -46,27 +46,7 @@ export class NuovoOperaioComponent implements OnInit{
     visita_medica: undefined,
     note: ''
   }
-    // this.operaiForm = this.formBuilder.group({
-    //   nome: new FormControl(this.form.nome, [
-    //     Validators.required
-    //   ]),
-    //   contratto: new FormControl(this.form.contratto, [
-    //     Validators.required
-    //   ]),
-    //   assicurazione: new FormControl(this.form.assicurazione, [
-    //     Validators.required
-    //   ]),
-    //   scadenze_contratto: new FormControl(this.form.scadenze_contratto, [
-    //     Validators.required,
-    //   ]),
-    //   qualifica: new FormControl(this.form.qualifica, [
-    //     Validators.required
-    //   ]),
-    //   visita_medica: new FormControl(this.form.visita_medica, [
-    //     Validators.required
-    //   ])
-    // })
-    
+
   }
 
   handleChange() {

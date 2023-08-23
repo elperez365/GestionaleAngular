@@ -1,1 +1,1 @@
-# Static DB fo imitate backend calls 
+# Static DB to imitate backend calls 
