@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'imprese_nuovo', component: NuovaImpresaComponent },
   { path: 'imprese_elenco', component: ElencoImpreseComponent },
   { path: 'impostazioni', component: ImpostazioniComponent },
-  { path: 'dettaglio', component: PaginaDettaglioComponent },
+  { path: 'dettaglio/:cat/:id', component: PaginaDettaglioComponent },
   { path: '404', component: AppErrorComponent },
   { path: '**', redirectTo: '404' },
 ];
