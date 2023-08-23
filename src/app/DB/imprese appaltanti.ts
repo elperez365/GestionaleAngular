@@ -1,10 +1,20 @@
 export const impreseAppaltanti = [
-    {
-      value: 'ROMA CAPITALE MUNICIPIO XIII',
-      viewValue: 'ROMA CAPITALE MUNICIPIO XIII',
-    },
-    {
-      value: 'ROMA CAPITALE MUNICIPIO VI',
-      viewValue: 'ROMA CAPITALE MUNICIPIO VI',
-    },
-  ];
+  {
+    nome: 'ROMA CAPITALE MUNICIPIO XIII',
+    contattoPrincipale: '3333333555',
+    nomeContatto: 'Giacomo',
+    email: 'giacomo.g@g.it',
+    value: 'ROMA CAPITALE MUNICIPIO XIII',
+    viewValue: 'ROMA CAPITALE MUNICIPIO XIII',
+    altriContatti: [],
+  },
+  {
+    nome: 'ROMA CAPITALE MUNICIPIO XIII',
+    contattoPrincipale: '3334499666',
+    nomeContatto: 'Giuseppe',
+    email: 'giuseppe.g@g.it',
+    value: 'ROMA CAPITALE MUNICIPIO XIII',
+    viewValue: 'ROMA CAPITALE MUNICIPIO XIII',
+    altriContatti: [],
+  },
+];
