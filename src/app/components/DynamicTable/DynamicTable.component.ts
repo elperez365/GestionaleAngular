@@ -53,6 +53,8 @@ export class DynamicTableComponent implements OnInit {
   @Input() DynTableHeaders!: any[];
   @Input() DynTableBody: any[];
   @Input() DynTableArgument: string;
+  @Input() idOperaio:string;
+  
 
   //Local Variables
   searchField = new FormControl();
@@ -187,5 +189,11 @@ export class DynamicTableComponent implements OnInit {
       return true
     }
     return false
+  }
+
+  detailsElement(id:string){
+    const routeDetails ="/dettaglio/" + this.DynTableArgument + "/" + id
+    return routeDetails
+    
   }
 }
