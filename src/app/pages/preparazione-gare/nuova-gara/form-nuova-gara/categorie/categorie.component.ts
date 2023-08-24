@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ElencoGare } from 'src/app/interfaces/elenco_gare';
 
 @Component({
   selector: 'app-categorie',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./categorie.component.scss'],
 })
 export class CategorieComponent {
+  @Input() product:ElencoGare
   categories = [
     { value: 'OG1', viewValue: 'OG1' },
     { value: 'OG2', viewValue: 'OG2' },

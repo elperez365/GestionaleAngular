@@ -1,1 +1,203 @@
-<p>modifica-operaio works!</p>
+<!-- NUOVO FORM  -->
+
+<mat-card class="w-100">
+    <form
+      #operai_form="ngForm"
+      class="needs-validation"
+      (change)="handleChange()"
+      (ngSubmit)="handleSubmit(operai_form)"
+    >
+      <div class="container">
+        <!-- Prima parte del Form -->
+        <div class="row row_1 my-4">
+          <div class="col-sm-12 col-md-6">
+            <h5 from="nome">Operaio</h5>
+            <input
+              type="text" 
+              id="nome"
+              name="nome"
+              [(ngModel)]="form.nome"
+              class="form-control mb-3 requiredForm"
+              placeholder="Nome, Cognome"
+              [ngClass]="[form.nome !== '' ? 'is-valid' : 'is-invalid']"
+            />
+            <div *ngIf="form.nome == ''" class="invalid-feedback">
+              Campo obbligatorio!
+            </div>
+            <h5 for="agevolazione">Agevolazioni</h5>
+            <input
+              [(ngModel)]="form.agevolazione"
+              type="text"
+              id="agevolazione"
+              name="agevolazione"
+              class="form-control"
+              placeholder="Agevolazione contributiva"
+              value="form.agevolazione"
+            />
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="row mb-4">
+              <div class="col-6">
+                <h5 for="contratto">Tipo di contratto</h5>
+                <select
+                  id="contratto"
+                  name="contratto"
+                  class="custom-select requiredForm"
+                  [ngClass]="[form.contratto !== '' ? 'is-valid' : 'is-invalid']"
+                  [(ngModel)]="form.contratto"
+                >
+                  <option *ngFor="let c of contratti" [ngValue]="c" selected>
+                    {{ c }}
+                  </option>
+                </select>
+                <div *ngIf="form.contratto == ''" class="invalid-feedback">
+                  Campo obbligatorio!
+                </div>
+              </div>
+              <div class="col-6">
+                <h5 for="mansione">Mansione</h5>
+                <select
+                  id="mansione"
+                  name="mansione"
+                  class="custom-select requiredForm"
+                  [ngClass]="[form.mansione !== '' ? 'is-valid' : 'is-invalid']"
+                  [(ngModel)]="form.mansione"
+                  name="mansione"
+                >
+                  <option *ngFor="let c of mansione" [ngValue]="c" selected>
+                    {{ c }}
+                  </option>
+                </select>
+                <div *ngIf="form.mansione === ''" class="invalid-feedback">
+                  Campo obbligatorio!
+                </div>
+              </div>
+            </div>
+            <h5 for="data_assicurazione">Data Assicurazione</h5>
+            <input
+              id="data_assicurazione"
+              [(ngModel)]="form.assicurazione"
+              class="form-control requiredForm"
+              [ngClass]="[form.assicurazione? 'is-valid' : 'is-invalid']"
+              type="date"
+              name="Assicurazione"
+            />
+            <div *ngIf="!form.assicurazione" class="invalid-feedback">
+              Campo obbligatorio!
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!-- Seconda parte del Form -->
+        <div class="row row_2 my-4">
+          <div class="col-sm-12 col-md-6">
+            <h6>Date Scadenze T. Determinato</h6>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <button
+              mat-raised-button
+              class="m-1 p-3"
+              type="button"
+              color="primary"
+              (click)="editScadenza('add')"
+            >
+              + Aggiungi scadenza
+            </button>
+            <button
+              mat-raised-button
+              type="button"
+              class="m-1 p-3"
+              color="warn"
+              (click)="editScadenza('delete')"
+            >
+              - Elimina Scadenza
+            </button>
+          </div>
+        </div>
+        <div *ngIf="form.contratto !== 'Indeterminato'">
+          <div
+            *ngFor="let s of scadenze; let i = index"
+            class="container row m-1"
+          >
+            <p class="col-md-3 p-1 mx-2">{{ i + 1 }}° Scadenza</p>
+            <input
+              *ngIf="form.scadenze_contratto"
+              class="form-control col-md-6 col-sm-12"
+              [(ngModel)]="form.scadenze_contratto[i]"
+              name="form.scadenze"
+              type="date"
+            />
+          </div>
+        </div>
+        <h3
+          *ngIf="form.contratto === 'Indeterminato'"
+          class="mx-auto text-center"
+        >
+          Scadenza non prevista
+        </h3>
+        <hr />
+        <!-- Terza parte del form -->
+        <div class="row row_3 mb-4">
+          <div class="col-sm-12 col-md-6">
+            <h5 from="nome">Qualifica</h5>
+            <input
+              type="text" 
+              id="qualifica"
+              name="qualifica"
+              [(ngModel)]="form.qualifica"
+              class="form-control mb-3 requiredForm"
+              placeholder="Qualifica"
+              [ngClass]="[form.qualifica !== '' ? 'is-valid' : 'is-invalid']"
+            />
+            <div *ngIf="form.qualifica == ''" class="invalid-feedback">
+              Campo obbligatorio!
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <h5 for="data_assicurazione">Visita Medica</h5>
+            <input
+              id="visita_medica"
+              [(ngModel)]="form.visita_medica"
+              class="form-control requiredForm"
+              [ngClass]="[form.visita_medica? 'is-valid' : 'is-invalid']"
+              type="date"
+              name="Assicurazione"
+            />
+            <div *ngIf="!form.visita_medica" class="invalid-feedback">
+              Campo obbligatorio!
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!-- Quarta parte del form -->
+        <div class="row row_4">
+          <div class="container col-12 m-4"></div>
+          <h5 for="floatingTextarea2">Note</h5>
+          <div class="m-4 col-12">
+            <textarea
+              class="form-control"
+              name="note"
+              [(ngModel)]="form.note"
+              value="form.note"
+              style="height: 100px"
+            ></textarea>
+          </div>
+          <hr class="mx-4" />
+        </div>
+        <hr />
+        <!-- Submit Button -->
+        <div class="row mb-4">
+          <button
+            mat-raised-button
+            class="w-75 m-auto"
+            type="submit"
+            color="primary"
+            [disabled]="formValid"
+          >
+            Crea nuovo operaio
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+  

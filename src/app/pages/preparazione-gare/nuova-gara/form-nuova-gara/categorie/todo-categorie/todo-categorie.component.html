@@ -34,9 +34,10 @@
 <mat-card-content class="p-x-0">
   <div
     *ngFor="let todo of copyTodos; let i = index"
-    class="todo-item p-y-12 p-x-8 b-b-1"
+    class="todo-item p-y-12 p-x-8 b-b-1 d-flex justify-content-center"
   >
-    <div class="d-flex align-items-center w-50 ">
+  <mat-card class="rounded d-flex " style="max-width: 30rem;">
+    <div class="d-flex align-items-center justify-content-center">
       <span class="mat-subheading-1 m-b-0 m-r-10 f-s-18 f-w-50">{{
         todo.message
       }}</span>
@@ -94,5 +95,6 @@
         </div>
       </div>
     </div>
+  </mat-card>
   </div>
 </mat-card-content>
