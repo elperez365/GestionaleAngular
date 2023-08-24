@@ -30,7 +30,14 @@ export class PaginaDettaglioComponent {
     this.entriesProduct = Object.entries(this.product);
   }
 
-  sbam() {
-    console.log(this.route);
+  modifyProductRoute() {
+    const modifyProductRoute =
+      '/modifica_' +
+      this.categoryProduct +
+      '/' +
+      this.categoryProduct +
+      '/' +
+      this.idProduct;
+    return modifyProductRoute;
   }
 }
