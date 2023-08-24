@@ -5,6 +5,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login.component',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   };
 
   //======= Constructor ========
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   //====== Hooks =========
   ngOnInit(): void {}
@@ -35,20 +36,19 @@ export class LoginComponent implements OnInit {
     password: new FormControl([
       this.login.password,
       {
-        validators: [Validators.required,],
+        validators: [Validators.required],
       },
     ]),
   });
   //====== Locla functions ======
   onSubmit() {
-    console.log(this.loginForm.valid)
+    this.router.navigateByUrl('dashboard')
   }
 
   get email() {
-
-    return this.loginForm.controls['email']
+    return this.loginForm.controls['email'];
   }
   get password() {
-    return this.loginForm.controls['password']
+    return this.loginForm.controls['password'];
   }
 }
