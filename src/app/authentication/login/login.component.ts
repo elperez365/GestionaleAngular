@@ -1,10 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login.component',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  //===== Local Variables =======
+  login = {
+    email: '',
+    password: '',
+  };
 
+  //======= Constructor ========
+  constructor(private formBuilder: FormBuilder) {}
+
+  //====== Hooks =========
+  ngOnInit(): void {}
+
+  //======= Form controls ========
+  loginForm = this.formBuilder.group({
+    email: new FormControl([
+      this.login.email,
+      {
+        validators: [Validators.required, Validators.email],
+      },
+    ]),
+    password: new FormControl([
+      this.login.password,
+      {
+        validators: [Validators.required,],
+      },
+    ]),
+  });
+  //====== Locla functions ======
+  onSubmit() {
+    console.log(this.loginForm.valid)
+  }
+
+  get email() {
+
+    return this.loginForm.controls['email']
+  }
+  get password() {
+    return this.loginForm.controls['password']
+  }
 }

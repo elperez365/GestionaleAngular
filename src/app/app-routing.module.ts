@@ -26,7 +26,6 @@ import { LoginComponent } from './authentication/login/login.component';
 
 
 const routes: Routes = [
-  { path : '', redirectTo: 'login'},
   { path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'calendario', component: CalendarComponent },
