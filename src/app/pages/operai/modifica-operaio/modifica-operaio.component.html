@@ -1,4 +1,3 @@
-<!-- NUOVO FORM  -->
 
 <mat-card class="w-100">
     <form
@@ -188,14 +187,15 @@
         <!-- Submit Button -->
         <div class="row mb-4">
           <button
-            mat-raised-button
-            class="w-75 m-auto"
-            type="submit"
-            color="primary"
-            [disabled]="formValid"
-          >
-            Crea nuovo operaio
-          </button>
+          *ngIf="user"
+          mat-raised-button
+          class="w-75 m-auto"
+          type="submit"
+          color="primary"
+          [disabled]="formValid"
+        >
+          Salva Modifiche
+        </button>
         </div>
       </div>
     </form>

@@ -28,16 +28,13 @@ export class PaginaDettaglioComponent {
       this.product = impreseAppaltanti!.find((el) => this.idProduct === el.id)!;
     } else alert('id non trovato');
     this.entriesProduct = Object.entries(this.product);
+    console.log(this.idProduct)
   }
 
   modifyProductRoute() {
-    const modifyProductRoute =
-      '/modifica_' +
-      this.categoryProduct +
-      '/' +
-      this.categoryProduct +
-      '/' +
-      this.idProduct;
+    const modifyProductRoute = `/modifica_${this.categoryProduct}/${this.categoryProduct}/${this.idProduct}`
+
     return modifyProductRoute;
   }
+
 }
