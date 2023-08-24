@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./modifica-operaio.component.scss']
 })
 export class ModificaOperaioComponent {
-
-}
+  
+} 
