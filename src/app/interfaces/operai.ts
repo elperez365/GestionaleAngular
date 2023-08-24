@@ -4,9 +4,9 @@ export interface Operaio {
   contratto: string;      //Scelta tra 'Indeterminato', 'Determinato', 'Stage', 'Apprendistato'
   mansione: string;        //Si intenda la tipologia di contratto
   agevolazione?: string;
-  assicurazione: Date | undefined;
-  scadenze_contratto?: Date[];        
+  assicurazione: string |undefined;
+  scadenze_contratto?: string[] | undefined[] |any;        
   qualifica: string;
-  visita_medica: Date | undefined;
+  visita_medica: string |undefined;
   note?: string;
 }
