@@ -58,7 +58,7 @@ export class RegisterComponent{
   onSubmit() {
     this.router.navigateByUrl('login')
   }
-
+  //======== Form Getters ========
   get nome() {
     return this.registerForm.controls['nome'];
   }

@@ -37,8 +37,7 @@ const routes: Routes = [
   { path: 'appalti', component: AppaltiAggiudicatiComponent },
   { path: 'operai', component: OperaiComponent },
   { path: 'operai_elenco', component: ElencoOperaiComponent },
-  { path: 'operai_form', component: NuovoOperaioComponent },
-  { path: 'operai_form/:id', component: NuovoOperaioComponent },
+  { path: 'operai_nuovo', component: NuovoOperaioComponent }, 
   { path: 'mezzi_elenco', component: ElencoMezziComponent },
   { path: 'mezzi_nuovo', component: NuovoMezzoComponent },
   { path: 'imprese', component: ImpreseAppaltantiComponent },
@@ -54,7 +53,7 @@ const routes: Routes = [
   { path: 'modifica_operai/:cat/:id', component: ModificaOperaioComponent },
   { path: 'modifica_gara/:cat/:id', component: ModificaGaraComponent },
   { path: '404', component: AppErrorComponent },
-  { path: '**', redirectTo: '404' },
+  // { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

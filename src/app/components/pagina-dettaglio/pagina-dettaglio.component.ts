@@ -31,17 +31,10 @@ export class PaginaDettaglioComponent {
     console.log(this.idProduct)
   }
 
-  // modifyProductRoute() {
-  //   const modifyProductRoute =
-  //     '/modifica_' +
-  //     this.categoryProduct +
-  //     '/' +
-  //     this.categoryProduct +
-  //     '/' +
-  //     this.idProduct;
-  //   return modifyProductRoute;
-  // }
   modifyProductRoute() {
-    return `operai_form/$${this.idProduct}`
+    const modifyProductRoute = `/modifica_${this.categoryProduct}/${this.categoryProduct}/${this.idProduct}`
+
+    return modifyProductRoute;
   }
+
 }

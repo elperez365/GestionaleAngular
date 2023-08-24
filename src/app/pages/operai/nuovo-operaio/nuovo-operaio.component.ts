@@ -38,22 +38,10 @@ export class NuovoOperaioComponent implements OnInit{
   //Form listener
   if(this.user) {
     this.form = {...this.user}
+    console.log(this.user)
   }
   else{
-    this.form = {
-      id: String(Math.trunc(Math.random() * 999999)),
-      nome: '',
-      contratto: '',
-      mansione: '',
-      agevolazione:'',
-      assicurazione: undefined,
-      scadenze_contratto: [ 
-        ...this.scadenze
-      ],
-      qualifica: '',
-      visita_medica: undefined,
-      note: ''
-    }
+    this.router.navigateByUrl('404')
   }
 
   }
