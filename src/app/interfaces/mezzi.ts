@@ -1,7 +1,7 @@
 export interface Mezzi {
     id: string,
     tipo_veicolo: string,
-    anno_revisione: Date,
+    anno_revisione: string,
     targa: string,
     mese_revisione: string,
     note?: string,
