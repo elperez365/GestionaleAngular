@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
@@ -9,6 +9,7 @@ import { TodoService } from './todo.service';
   styleUrls: ['./to-do.component.scss']
 })
 export class ToDoComponent {
+  @Input() todoMod:any 
   idePanelOpened = true;
   public showSidebar = false;
   inputFg: UntypedFormGroup = Object.create(null);
@@ -18,7 +19,8 @@ export class ToDoComponent {
   searchText: string | null = null;
   editSave = 'Edit';
 
-  todos: ToDo[] = this.todoService.getTodos();
+  todos: ToDo[] 
+  // = this.todoService.getTodos();
 
   constructor(
     public fb: UntypedFormBuilder,
@@ -38,6 +40,8 @@ export class ToDoComponent {
   }
 
   ngOnInit(): void {
+    this.todoMod? this.todos=this.todoMod : this.todos=this.todoService.getTodos()
+    this.todoMod? this.copyTodos=this.todoMod : this.copyTodos=this.todoService.getTodos()
     this.inputFg = this.fb.group({
       mess: [],
     });
@@ -101,6 +105,10 @@ export class ToDoComponent {
 
   remainingList(): number {
     return this.todos.filter((todo) => !todo.completionStatus).length;
+  }
+  ngOnDestroy(): void {
+    this.todos=[];
+    this.copyTodos=[]
   }
 }
 
