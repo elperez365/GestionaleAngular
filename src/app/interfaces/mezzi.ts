@@ -7,6 +7,6 @@ export interface Mezzi {
     note?: string,
     tipo_patente: string,
     assicurazione:string,
-    scadenza_assicurazione: Date,
-    scadenza_bollo: Date
+    scadenza_assicurazione: string,
+    scadenza_bollo: string,
 }

@@ -8,8 +8,8 @@ export let lista_mezzi: Mezzi[] = [{
     mese_revisione: 'GENNAIO',
     tipo_patente: 'C',
     assicurazione:'FERMO',
-    scadenza_assicurazione: new Date('2023-12-31'),
-    scadenza_bollo: new Date('2023-12-31')
+    scadenza_assicurazione: '31-12-2023',
+    scadenza_bollo: '31-12-2023',
 },
 {
     id: '2',
@@ -19,8 +19,8 @@ export let lista_mezzi: Mezzi[] = [{
     mese_revisione: 'DICEMBRE',
     tipo_patente: 'B2',
     assicurazione:'FERMO',
-    scadenza_assicurazione: new Date('2023-12-31'),
-    scadenza_bollo: new Date('2023-12-31')
+    scadenza_assicurazione: '31-12-2023',
+    scadenza_bollo: '31-12-2023',
 },
 {
     id: '3',
@@ -30,8 +30,8 @@ export let lista_mezzi: Mezzi[] = [{
     mese_revisione: 'AGOSTO',
     tipo_patente: 'C',
     assicurazione:'FERMO',
-    scadenza_assicurazione: new Date('2023-12-31'),
-    scadenza_bollo: new Date('2023-12-31')
+    scadenza_assicurazione: '31-12-2023',
+    scadenza_bollo: '31-12-2023',
 }]
 
 export let mezziTableHeaders: string[] =  
