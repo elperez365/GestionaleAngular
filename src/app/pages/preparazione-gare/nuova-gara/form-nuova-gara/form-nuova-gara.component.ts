@@ -9,8 +9,7 @@ import { Gare } from 'src/app/DB/ElencoGare_DB';
   styleUrls: ['./form-nuova-gara.component.scss'],
 })
 export class FormNuovaGaraComponent {
-  inviata : boolean;
-  
+  inviata: boolean;
 
   constructor(public NuovaGara: NuovaGaraService) {}
   onSubmit(event: any) {
@@ -21,7 +20,7 @@ export class FormNuovaGaraComponent {
       oggetto: this.NuovaGara.Gara.note,
       importo: this.NuovaGara.Gara.importo,
       scadenza: this.NuovaGara.Gara.scadenza,
-      ora:"14:00",
+      ora: '14:00',
       apertura: this.NuovaGara.Gara.apertura,
       criterio_aggiudicazione: this.NuovaGara.Gara.selectedCriterio,
       categoria:
@@ -31,12 +30,26 @@ export class FormNuovaGaraComponent {
           ''
         ),
       inviata: this.inviata ? 'yes' : 'no',
-      ribasso:this.NuovaGara.ribassi.reduce(
+      ribasso: this.NuovaGara.ribassi.reduce(
         (acc, curr) => acc + '  ' + curr,
         ''
       ),
     };
-    Gare.push(allFormDatas);
-    alert('La nuova Gara è stata inserita');
+    if (
+      allFormDatas.id &&
+      allFormDatas.stazione_appaltante &&
+      allFormDatas.Procedura &&
+      allFormDatas.oggetto &&
+      allFormDatas.importo &&
+      allFormDatas.scadenza &&
+      allFormDatas.ora &&
+      allFormDatas.apertura &&
+      allFormDatas.criterio_aggiudicazione &&
+      allFormDatas.categoria &&
+      allFormDatas.ribasso
+    ) {
+      Gare.push(allFormDatas);
+      alert('La nuova Gara è stata inserita');
+    } else alert('qualcosa non va, controlla i dati inseriti');
   }
 }
