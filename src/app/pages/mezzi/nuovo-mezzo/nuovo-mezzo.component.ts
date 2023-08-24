@@ -20,15 +20,15 @@ export class NuovoMezzoComponent {
       viewValue: 'B',
     },
     {
-      value: 'a',
+      value: 'c',
       viewValue: 'C',
     },
     {
-      value: 'a',
+      value: 'd',
       viewValue: 'D',
     },
     {
-      value: 'a',
+      value: 'e',
       viewValue: 'E',
     },
   ];

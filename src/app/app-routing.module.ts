@@ -21,8 +21,12 @@ import { ModificaImpresaComponent } from './pages/imprese-appaltanti/modifica-im
 import { ModificaMezzoComponent } from './pages/mezzi/modifica-mezzo/modifica-mezzo.component';
 import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifica-operaio.component';
 import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
+import { LoginComponent } from './authentication/login/login.component';
+
+
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'calendario', component: CalendarComponent },
   { path: 'gare', component: PreparazioneGareComponent },
