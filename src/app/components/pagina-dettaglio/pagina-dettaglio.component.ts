@@ -24,13 +24,20 @@ export class PaginaDettaglioComponent {
       this.product = lista_mezzi!.find((el) => this.idProduct === el.id)!;
     } else if (this.categoryProduct === 'gara') {
       this.product = Gare!.find((el) => this.idProduct === el.id)!;
-    } else if (this.categoryProduct === 'Imprese%20Appaltanti') {
+    } else if (this.categoryProduct === 'impreseAppaltanti') {
       this.product = impreseAppaltanti!.find((el) => this.idProduct === el.id)!;
     } else alert('id non trovato');
     this.entriesProduct = Object.entries(this.product);
   }
 
-  sbam() {
-    console.log(this.route);
+  modifyProductRoute() {
+    const modifyProductRoute =
+      '/modifica_' +
+      this.categoryProduct +
+      '/' +
+      this.categoryProduct +
+      '/' +
+      this.idProduct;
+    return modifyProductRoute;
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { lista_mezzi } from 'src/app/DB/Mezzi_DB';
+import * as uuid from 'uuid';
 @Component({
   selector: 'app-nuovo-mezzo',
   templateUrl: './nuovo-mezzo.component.html',
@@ -101,7 +102,7 @@ export class NuovoMezzoComponent {
   onSubmit(event: any) {
     if (this.mezzoForm.status === 'VALID') {
       lista_mezzi.push({
-        id: '',
+        id: uuid.v4(),
         tipo_veicolo: this.mezzoForm.value.tipoVeicolo,
         anno_revisione: this.mezzoForm.value.annoRevisione,
         targa: this.mezzoForm.value.targa,

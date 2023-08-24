@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from './to-do/todo.service';
 import { ToDo } from './to-do/todo';
 import { impreseAppaltanti } from 'src/app/DB/imprese appaltanti';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-nuova-impresa',
@@ -27,6 +28,7 @@ export class NuovaImpresaComponent {
     if (this.stazioneForm.status === 'VALID') {
       impreseAppaltanti.push({
         ...this.stazioneForm.value,
+        id: uuid.v4(),
         value: this.stazioneForm.value.nome,
         viewValue: this.stazioneForm.value.nome.toUpperCase(),
         altriContatti: [...this.todos],

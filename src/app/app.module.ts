@@ -61,6 +61,10 @@ import { NuovoMezzoComponent } from './pages/mezzi/nuovo-mezzo/nuovo-mezzo.compo
 import { ToDoComponent } from './pages/imprese-appaltanti/nuova-impresa/to-do/to-do.component';
 import { PaginaDettaglioComponent } from './components/pagina-dettaglio/pagina-dettaglio.component';
 import { AppErrorComponent } from './components/error/error.component';
+import { ModificaMezzoComponent } from './pages/mezzi/modifica-mezzo/modifica-mezzo.component';
+import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifica-operaio.component';
+import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
+import { ModificaImpresaComponent } from './pages/imprese-appaltanti/modifica-impresa/modifica-impresa.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -98,6 +102,10 @@ export function HttpLoaderFactory(http: HttpClient): any {
     NuovoMezzoComponent,
     ToDoComponent,
     PaginaDettaglioComponent,
+    ModificaMezzoComponent,
+    ModificaOperaioComponent,
+    ModificaGaraComponent,
+    ModificaImpresaComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],
