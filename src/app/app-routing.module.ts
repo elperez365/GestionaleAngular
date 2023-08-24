@@ -22,12 +22,13 @@ import { ModificaMezzoComponent } from './pages/mezzi/modifica-mezzo/modifica-me
 import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifica-operaio.component';
 import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
 import { LoginComponent } from './authentication/login/login.component';
-
+import { RegisterComponent } from './authentication/register/register.component';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'calendario', component: CalendarComponent },
   { path: 'gare', component: PreparazioneGareComponent },

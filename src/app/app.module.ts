@@ -66,6 +66,7 @@ import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifi
 import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
 import { ModificaImpresaComponent } from './pages/imprese-appaltanti/modifica-impresa/modifica-impresa.component';
 import { LoginComponent } from './authentication/login/login.component';
+import { RegisterComponent } from './authentication/register/register.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -107,7 +108,8 @@ export function HttpLoaderFactory(http: HttpClient): any {
     ModificaOperaioComponent,
     ModificaGaraComponent,
     ModificaImpresaComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   exports: [],
   bootstrap: [AppComponent],

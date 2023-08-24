@@ -13,42 +13,62 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent{
-//   //===== Local Variables =======
-//   login = {
-//     email: '',
-//     password: '',
-//   };
+  //===== Local Variables =======
+  register = {
+    nome: '',
+    cognome: '',
+    email: '',
+    password: '',
+  };
 
-//   //======= Constructor ========
-//   constructor(private formBuilder: FormBuilder, private router: Router) {}
+  //======= Constructor ========
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
-//   //====== Hooks =========
-//   ngOnInit(): void {}
+  //====== Hooks =========
+  ngOnInit(): void {}
 
-//   //======= Form controls ========
-//   loginForm = this.formBuilder.group({
-//     email: new FormControl([
-//       this.login.email,
-//       {
-//         validators: [Validators.required, Validators.email],
-//       },
-//     ]),
-//     password: new FormControl([
-//       this.login.password,
-//       {
-//         validators: [Validators.required],
-//       },
-//     ]),
-//   });
-//   //====== Locla functions ======
-//   onSubmit() {
-//     this.router.navigateByUrl('dashboard')
-//   }
+  //======= Form controls ========
+  registerForm = this.formBuilder.group({
+    nome: new FormControl([
+      this.register.nome,
+      {
+        validators: [Validators.required],
+      }
+    ]),
+    cognome: new FormControl([
+      this.register.cognome,
+      {
+        validators: [Validators.required],
+      },
+    ]),
+    email: new FormControl([
+      this.register.email,
+      {
+        validators: [Validators.required, Validators.email],
+      },
+    ]),
+    password: new FormControl([
+      this.register.password,
+      {
+        validators: [Validators.required, Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')],
+      },
+    ]),
+  });
+  //====== Locla functions ======
+  onSubmit() {
+    this.router.navigateByUrl('login')
+  }
 
-//   get email() {
-//     return this.loginForm.controls['email'];
-//   }
-//   get password() {
-//     return this.loginForm.controls['password'];
-//   }
+  get nome() {
+    return this.registerForm.controls['nome'];
+  }
+  get cognome() {
+    return this.registerForm.controls['cognome'];
+  }
+  get email() {
+    return this.registerForm.controls['email'];
+  }
+  get password() {
+    return this.registerForm.controls['password'];
+  }
 }
