@@ -14,6 +14,9 @@ export class ModificaMezzoComponent {
   product = lista_mezzi!.find((el) => this.idProduct === el.id)!;
   selectedMese: String = this.product.mese_revisione.toLowerCase();
   selectedPatente: String = this.product.tipo_patente.toLowerCase();
+  scadenzaBoloDate= new Date(this.product.scadenza_bollo);
+  scadenzaAssDate= new Date(this.product.scadenza_assicurazione);
+  
 
   patenti = [
     {
@@ -110,8 +113,8 @@ export class ModificaMezzoComponent {
   // }
 
   onSubmit(event: any) {
-    console.log(this.selectedMese);
-    console.log(this.selectedPatente);
+    console.log(this.scadenzaBoloDate);
+    console.log(this.product.scadenza_bollo);
     // if (this.mezzoForm.status === 'VALID') {
     //   lista_mezzi.push({
     //     id: uuid.v4(),
