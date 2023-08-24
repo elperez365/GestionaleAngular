@@ -188,6 +188,17 @@
       <!-- Submit Button -->
       <div class="row mb-4">
         <button
+        *ngIf="user"
+        mat-raised-button
+        class="w-75 m-auto"
+        type="submit"
+        color="primary"
+        [disabled]="formValid"
+      >
+        Salva Modifiche
+      </button>
+        <button
+        *ngIf="!user"
           mat-raised-button
           class="w-75 m-auto"
           type="submit"

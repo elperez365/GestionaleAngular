@@ -20,24 +20,24 @@
           formControlName="email"
           required
         />
-        <div *ngIf="email.errors" class="invalid-feedback">
+        <div *ngIf="email.errors && email.touched" class="invalid-feedback">
             Campo obbligatorio!
           </div>
       </div>
       <div class="flex-row mb-2">
-        <label for="password" class="form-label">E-mail</label>
+        <label for="password" class="form-label">Password</label>
         <input
           name="password"
           [(ngModel)]="login.password"
           placeholder="password"
           [ngClass]="[!password.errors? 'is-valid' : 'is-invalid']"
-          type="text"
+          type="password"
           class="form-control requiredForm"
           id="password"
           formControlName="password"
           required
         />
-        <div *ngIf="password.errors" class="invalid-feedback">
+        <div *ngIf="password.errors && password.touched" class="invalid-feedback">
             Campo obbligatorio!
           </div>
       </div>
@@ -45,7 +45,7 @@
     <mat-card-footer class="mt-4 container">
       <div class="row w-75 m-auto justify-content-between">
         <div class="col-6">
-            <p>Non hai un account? <a href="#" >clicca qui</a> </p>
+            <p>Non hai un account? <a href="register" >clicca qui</a> </p>
 
         </div>
         <div class="col-3 pl-auto">

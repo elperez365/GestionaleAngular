@@ -1,0 +1,100 @@
+ <mat-card class="d-flex">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-card-header class="justify-content-center p-0 m-1">
+      <div>
+        <h3>Benvenuto a Batman</h3>
+        <hr />
+      </div>
+    </mat-card-header>
+    <mat-card-content class="container w-75 mx-auto my-2">
+      <div class="row  mb-2">
+        <div class="col-md-6">
+
+        <label for="nome" class="form-label">Nome</label>
+        <input
+          name="nome"
+          [(ngModel)]="register.nome"
+          placeholder="nome"
+          [ngClass]="[!nome.errors? 'is-valid' : 'is-invalid']"
+          type="text"
+          class="form-control requiredForm"
+          id="nome"
+          formControlName="nome"
+          required
+        />
+        <div *ngIf="nome.errors && nome.touched" class="invalid-feedback">
+            Campo obbligatorio!
+          </div>
+
+        </div>
+
+      <div class="col-md-6 mb-2">
+        <label for="password" class="form-label">Cognome</label>
+        <input
+          name="cognome"
+          [(ngModel)]="register.cognome"
+          placeholder="cognome"
+          [ngClass]="[!cognome.errors? 'is-valid' : 'is-invalid']"
+          type="cognome"
+          class="form-control requiredForm"
+          id="cognome"
+          formControlName="cognome"
+          required
+        />
+        <div *ngIf="cognome.errors && cognome.touched" class="invalid-feedback">
+            Campo obbligatorio!
+          </div>
+      </div>
+    </div>
+    <div class="row  mb-2">
+      <div class="col-md-6">
+
+      <label for="email" class="form-label">E-mail</label>
+      <input
+        name="email"
+        [(ngModel)]="register.email"
+        placeholder="email"
+        [ngClass]="[!email.errors? 'is-valid' : 'is-invalid']"
+        type="text"
+        class="form-control requiredForm"
+        id="email"
+        formControlName="email"
+        required
+      />
+      <div *ngIf="email.errors && email.touched" class="invalid-feedback">
+          Campo obbligatorio!
+        </div>
+
+      </div>
+
+    <div class="col-md-6 mb-2">
+      <label for="password" class="form-label">Password</label>
+      <input
+        name="password"
+        [(ngModel)]="register.password"
+        placeholder="password"
+        [ngClass]="[!password.errors? 'is-valid' : 'is-invalid']"
+        type="password"
+        class="form-control requiredForm"
+        id="password"
+        formControlName="password"
+        required
+      />
+      <div *ngIf="password.errors && password.touched" class="invalid-feedback">
+          Campo obbligatorio!
+        </div>
+    </div>
+  </div>
+  <hr>
+    </mat-card-content>
+    <mat-card-footer class="m-4">
+      <div class="row justify-content-center m-auto">
+        <div class="col-8">
+          <button mat-raised-button class="w-100" type="submit" [disabled]="!registerForm.valid" color="primary">
+            Sign in
+          </button>
+        </div>
+      </div>
+    </mat-card-footer>
+  </form>
+</mat-card> 

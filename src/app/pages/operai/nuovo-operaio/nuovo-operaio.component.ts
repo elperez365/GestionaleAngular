@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Operaio } from 'src/app/interfaces/operai';
 import { lista_operai } from 'src/app/DB/Operai_DB';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -21,30 +21,39 @@ export class NuovoOperaioComponent implements OnInit{
 
 
   //Local variables
+  user: Operaio | undefined; 
   form: Operaio;
+  id = this.route.snapshot.paramMap.get('id')
 
   operaiForm: FormGroup;
   constructor(
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
   //Angular Hooks
   ngOnInit() :void {
+    this.user =  lista_operai.find(u => u.id === this.id)
     
   //Form listener
-  this.form = {
-    id: String(Math.trunc(Math.random() * 999999)),
-    nome: '',
-    contratto: '',
-    mansione: '',
-    agevolazione:'',
-    assicurazione: undefined,
-    scadenze_contratto: [ 
-      ...this.scadenze
-    ],
-    qualifica: '',
-    visita_medica: undefined,
-    note: ''
+  if(this.user) {
+    this.form = {...this.user}
+  }
+  else{
+    this.form = {
+      id: String(Math.trunc(Math.random() * 999999)),
+      nome: '',
+      contratto: '',
+      mansione: '',
+      agevolazione:'',
+      assicurazione: undefined,
+      scadenze_contratto: [ 
+        ...this.scadenze
+      ],
+      qualifica: '',
+      visita_medica: undefined,
+      note: ''
+    }
   }
 
   }
