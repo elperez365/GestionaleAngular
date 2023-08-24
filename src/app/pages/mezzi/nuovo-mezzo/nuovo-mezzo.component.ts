@@ -91,7 +91,7 @@ export class NuovoMezzoComponent {
       targa: new FormControl('', Validators.required),
       annoRevisione: new FormControl('', Validators.required),
       meseRevisione: new FormControl('', Validators.required),
-      note: new FormControl('', Validators.required),
+      note: new FormControl(''),
       tipoPatente: new FormControl('', Validators.required),
       assicurazione: new FormControl('', Validators.required),
       scadenzaAssicurazione: new FormControl('', Validators.required),
@@ -113,7 +113,7 @@ export class NuovoMezzoComponent {
           this.mezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
         scadenza_bollo: this.mezzoForm.value.scadenzaBollo.toLocaleDateString(),
       });
-      console.log(lista_mezzi);
+      
       alert('Mezzo inserito con successo');
     } else alert('Operazione non eseguita,controlla i dati inseriti');
   }
