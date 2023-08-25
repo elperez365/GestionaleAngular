@@ -6,10 +6,10 @@ import { TodoService } from './todo.service';
 @Component({
   selector: 'app-to-do',
   templateUrl: './to-do.component.html',
-  styleUrls: ['./to-do.component.scss']
+  styleUrls: ['./to-do.component.scss'],
 })
 export class ToDoComponent {
-  @Input() todoMod:any 
+  @Input() todoMod: any;
   idePanelOpened = true;
   public showSidebar = false;
   inputFg: UntypedFormGroup = Object.create(null);
@@ -19,17 +19,12 @@ export class ToDoComponent {
   searchText: string | null = null;
   editSave = 'Edit';
 
-  todos: ToDo[] 
+  todos: ToDo[];
   // = this.todoService.getTodos();
 
-  constructor(
-    public fb: UntypedFormBuilder,
-    public todoService: TodoService,
-    
-  ) {
+  constructor(public fb: UntypedFormBuilder, public todoService: TodoService) {
     this.copyTodos = this.todos;
   }
-  
 
   isOver(): boolean {
     return window.matchMedia(`(max-width: 960px)`).matches;
@@ -40,8 +35,12 @@ export class ToDoComponent {
   }
 
   ngOnInit(): void {
-    this.todoMod? this.todos=this.todoMod : this.todos=this.todoService.getTodos()
-    this.todoMod? this.copyTodos=this.todoMod : this.copyTodos=this.todoService.getTodos()
+    this.todoMod
+      ? (this.todos = this.todoMod)
+      : (this.todos = this.todoService.getTodos());
+    this.todoMod
+      ? (this.copyTodos = this.todoMod)
+      : (this.copyTodos = this.todoService.getTodos());
     this.inputFg = this.fb.group({
       mess: [],
     });
@@ -99,7 +98,6 @@ export class ToDoComponent {
   }
 
   deleteTodo(id: number): void {
-    console.log(id);
     this.todos.splice(id, 1);
   }
 
@@ -107,8 +105,7 @@ export class ToDoComponent {
     return this.todos.filter((todo) => !todo.completionStatus).length;
   }
   ngOnDestroy(): void {
-    this.todos=[];
-    this.copyTodos=[]
+    this.todos = [];
+    this.copyTodos = [];
   }
 }
-
