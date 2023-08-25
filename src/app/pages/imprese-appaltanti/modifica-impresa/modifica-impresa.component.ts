@@ -3,19 +3,22 @@ import { ToDo } from '../nuova-impresa/to-do/todo';
 import { TodoService } from '../nuova-impresa/to-do/todo.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { impreseAppaltanti } from 'src/app/DB/imprese appaltanti';
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-modifica-impresa',
   templateUrl: './modifica-impresa.component.html',
-  styleUrls: ['./modifica-impresa.component.scss']
+  styleUrls: ['./modifica-impresa.component.scss'],
 })
 export class ModificaImpresaComponent {
   idProduct = this.route.snapshot.paramMap.get('id');
   product = impreseAppaltanti!.find((el) => this.idProduct === el.id)!;
   todos = this.product.altriContatti;
-  constructor(public todoService: TodoService, private route: ActivatedRoute) {}
+  constructor(
+    public todoService: TodoService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   stazioneForm: FormGroup;
 
   ngOnInit(): void {
@@ -28,15 +31,21 @@ export class ModificaImpresaComponent {
   }
 
   onSubmit(event: any) {
-   console.log({
-        ...this.stazioneForm.value,
-      id: this.product.id,
-      value: this.stazioneForm.value.nome,
-     viewValue: this.stazioneForm.value.nome.toUpperCase(),
-       altriContatti: [...this.todos],
-   });
-   
+    let indexProduct = impreseAppaltanti!.findIndex(
+      (el) => this.idProduct === el.id
+    )!;
+    (impreseAppaltanti[indexProduct].altriContatti = [...this.todos]),
+      (impreseAppaltanti[indexProduct].id = this.product.id),
+      (impreseAppaltanti[indexProduct].value = this.stazioneForm.value.nome),
+      (impreseAppaltanti[indexProduct].viewValue =
+        this.stazioneForm.value.nome.toUpperCase()),
+      (impreseAppaltanti[indexProduct].contatto_Principale =
+        this.stazioneForm.value.contattoPrincipale);
+    impreseAppaltanti[indexProduct].nome = this.stazioneForm.value.nome;
+    impreseAppaltanti[indexProduct].nomeContatto =
+      this.stazioneForm.value.nomeContatto;
+    impreseAppaltanti[indexProduct].email = this.stazioneForm.value.email;
+    alert('Modifica effettuata con successo');
+    this.router.navigateByUrl('imprese_elenco');
   }
 }
-
-
