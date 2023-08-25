@@ -30,71 +30,75 @@
   </div>
 </form>
 
-
 <mat-card-content class="p-x-0">
+  <mat-label
+    *ngIf="copyTodos.length"
+    class="mat-subtitle-2 f-w-600 m-b-8 d-block text-center"
+    >Lista</mat-label
+  >
   <div
     *ngFor="let todo of copyTodos; let i = index"
     class="todo-item p-y-12 p-x-8 b-b-1 d-flex justify-content-center"
   >
-  <mat-card class="rounded d-flex " style="max-width: 30rem;">
-    <div class="d-flex align-items-center justify-content-center">
-      <span class="mat-subheading-1 m-b-0 m-r-10 f-s-18 f-w-50">{{
-        todo.message
-      }}</span>
+    <mat-card class="rounded d-flex" style="max-width: 30rem">
+      <div class="d-flex align-items-center justify-content-center">
+        <span class="mat-subheading-1 m-b-0 m-x-30 f-s-18 f-w-50">{{
+          todo.message
+        }}</span>
 
-      <div class="w-70">
-        <div
-          class="d-flex align-items-center "
-          *ngIf="!todo.edit"
-          (click)="editTodo(todo.id, '')"
-        >
-          <div class="px-3 mr-2 d-flex">
-            <a
-              mat-icon-button
-              class="d-flex justify-content-center"
-              href="javascript: void(0);"
-              (click)="editTodo(todo.id, 'edit')"
-            >
-              <i-tabler name="pencil" class="icon-18 d-flex"></i-tabler>
-            </a>
-            <a
-              mat-icon-button
-              class="d-flex justify-content-center"
-              href="javascript: void(0);"
-              (click)="deleteTodo(i)"
-            >
-              <i-tabler name="trash" class="icon-18 d-flex"></i-tabler>
-            </a>
+        <div class="w-70">
+          <div
+            class="d-flex align-items-center"
+            *ngIf="!todo.edit"
+            (click)="editTodo(todo.id, '')"
+          >
+            <div class="px-3 mr-2 d-flex">
+              <a
+                mat-icon-button
+                class="d-flex justify-content-center"
+                href="javascript: void(0);"
+                (click)="editTodo(todo.id, 'edit')"
+              >
+                <i-tabler name="pencil" class="icon-18 d-flex"></i-tabler>
+              </a>
+              <a
+                mat-icon-button
+                class="d-flex justify-content-center"
+                href="javascript: void(0);"
+                (click)="deleteTodo(i)"
+              >
+                <i-tabler name="trash" class="icon-18 d-flex"></i-tabler>
+              </a>
+            </div>
           </div>
-        </div>
 
-        <!-- Edit View -->
-        <div class="d-flex edit-view" *ngIf="todo.edit">
-          <mat-form-field appearance="outline" class="hide-hint">
-            <input matInput [(ngModel)]="todo.message" />
-          </mat-form-field>
+          <!-- Edit View -->
+          <div class="d-flex edit-view" *ngIf="todo.edit">
+            <mat-form-field appearance="outline" class="hide-hint">
+              <input matInput [(ngModel)]="todo.message" />
+            </mat-form-field>
 
-          <div class="m-l-auto d-flex align-items-center">
-            <a
-              mat-icon-button
-              class="d-flex"
-              href="javascript: void(0);"
-              (click)="editTodo(todo.id, 'save')"
-            >
-              <i-tabler name="checks" class="icon-18 d-flex"></i-tabler>
-            </a>
-            <a
-              mat-icon-button
-              class="d-flex"
-              href="javascript: void(0);"
-              (click)="deleteTodo(i)"
-            >
-              <i-tabler name="trash" class="icon-18 d-flex"></i-tabler>
-            </a>
+            <div class="m-l-auto d-flex align-items-center">
+              <a
+                mat-icon-button
+                class="d-flex"
+                href="javascript: void(0);"
+                (click)="editTodo(todo.id, 'save')"
+              >
+                <i-tabler name="checks" class="icon-18 d-flex"></i-tabler>
+              </a>
+              <a
+                mat-icon-button
+                class="d-flex"
+                href="javascript: void(0);"
+                (click)="deleteTodo(i)"
+              >
+                <i-tabler name="trash" class="icon-18 d-flex"></i-tabler>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </mat-card>
+    </mat-card>
   </div>
 </mat-card-content>
