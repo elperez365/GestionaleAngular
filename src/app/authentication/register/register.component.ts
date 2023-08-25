@@ -70,13 +70,16 @@ export class RegisterComponent {
   });
   //====== Local functions ======
   onSubmit() {
-
+    const salt = bcrypt.genSaltSync(10);
+    const pass = bcrypt.hashSync(this.register.password, 10);
     let newUser: User = {
+      id: uuidv4(),
       ... this.register,
-      id: uuidv4()
+      password: pass
     }
     lista_utenti.push(newUser)
-    this.router.navigate(['dashboard'])
+    localStorage.setItem('access_token', pass)
+    this.router.navigate(['login'])
   }
 
   //============== Form Getters =============
