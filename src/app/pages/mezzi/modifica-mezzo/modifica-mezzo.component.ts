@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lista_mezzi } from 'src/app/DB/Mezzi_DB';
-import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-modifica-mezzo',
@@ -14,9 +13,8 @@ export class ModificaMezzoComponent {
   product = lista_mezzi!.find((el) => this.idProduct === el.id)!;
   selectedMese: String = this.product.mese_revisione.toLowerCase();
   selectedPatente: String = this.product.tipo_patente.toLowerCase();
-  scadenzaBoloDate= new Date(this.product.scadenza_bollo);
-  scadenzaAssDate= new Date(this.product.scadenza_assicurazione);
-  
+  scadenzaBoloDate = new Date(this.product.scadenza_bollo);
+  scadenzaAssDate = new Date(this.product.scadenza_assicurazione);
 
   patenti = [
     {
@@ -92,9 +90,8 @@ export class ModificaMezzoComponent {
   ];
 
   modificaMezzoForm: FormGroup;
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {
-    console.log(this.selectedMese);
     this.modificaMezzoForm = new FormGroup({
       tipoVeicolo: new FormControl('', Validators.required),
       targa: new FormControl('', Validators.required),
@@ -113,19 +110,25 @@ export class ModificaMezzoComponent {
   // }
 
   onSubmit(event: any) {
-    console.log({
-          id: uuid.v4(),
-          tipo_veicolo: this.modificaMezzoForm.value.tipoVeicolo,
-           anno_revisione: this.modificaMezzoForm.value.annoRevisione,
-          targa: this.modificaMezzoForm.value.targa,
-          mese_revisione: this.modificaMezzoForm.value.meseRevisione,
-           tipo_patente: this.modificaMezzoForm.value.tipoPatente,
-         assicurazione: this.modificaMezzoForm.value.assicurazione,
-           scadenza_assicurazione:
-           this.modificaMezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
-           scadenza_bollo: this.modificaMezzoForm.value.scadenzaBollo.toLocaleDateString(),
-       });
-    
-    
+    let indexProduct = lista_mezzi!.findIndex(
+      (el) => this.idProduct === el.id
+    )!;
+    lista_mezzi[indexProduct].anno_revisione =
+      this.modificaMezzoForm.value.annoRevisione;
+    lista_mezzi[indexProduct].mese_revisione =
+      this.modificaMezzoForm.value.meseRevisione;
+    lista_mezzi[indexProduct].tipo_veicolo =
+      this.modificaMezzoForm.value.tipoVeicolo;
+    lista_mezzi[indexProduct].targa = this.modificaMezzoForm.value.targa;
+    lista_mezzi[indexProduct].tipo_patente =
+      this.modificaMezzoForm.value.tipoPatente;
+    lista_mezzi[indexProduct].assicurazione =
+      this.modificaMezzoForm.value.assicurazione;
+    lista_mezzi[indexProduct].scadenza_assicurazione =
+      this.modificaMezzoForm.value.scadenzaAssicurazione.toLocaleDateString();
+    lista_mezzi[indexProduct].scadenza_bollo =
+      this.modificaMezzoForm.value.scadenzaBollo.toLocaleDateString();
+    alert('modifica avvenuta con successo');
+    this.router.navigateByUrl('mezzi_elenco');
   }
 }
