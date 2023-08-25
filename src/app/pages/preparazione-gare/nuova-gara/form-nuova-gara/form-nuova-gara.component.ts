@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NuovaGaraService } from '../../../../services/nuova-gara.service';
 import { Gare } from 'src/app/DB/ElencoGare_DB';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-nuova-gara',
@@ -11,7 +12,7 @@ import { Gare } from 'src/app/DB/ElencoGare_DB';
 export class FormNuovaGaraComponent {
   inviata: boolean;
 
-  constructor(public NuovaGara: NuovaGaraService) {}
+  constructor(public NuovaGara: NuovaGaraService, private router: Router) {}
   onSubmit(event: any) {
     const allFormDatas = {
       id: this.NuovaGara.Gara.numero,
@@ -50,6 +51,7 @@ export class FormNuovaGaraComponent {
     ) {
       Gare.push(allFormDatas);
       alert('La nuova Gara è stata inserita');
+      this.router.navigateByUrl('gare_elenco');
     } else alert('qualcosa non va, controlla i dati inseriti');
   }
 }

@@ -13,7 +13,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
 export class TodoCategorieComponent {
   @Input() selectedCat1: string;
   @Input() selectedCat2: string;
-  @Input() product: ElencoGare ;
+  @Input() product: ElencoGare;
 
   sidePanelOpened = true;
   public showSidebar = false;
@@ -45,17 +45,19 @@ export class TodoCategorieComponent {
   }
 
   ngOnInit(): void {
-    if(this.product){
-      this.todos=[{message:this.product.categoria,
-      id:0,
-    edit:false}]
-    this,this.copyTodos=[{message:this.product.categoria,
-      id:0,
-    edit:false}]
+    if (this.product) {
+      this.todos = [{ message: this.product.categoria, id: 0, edit: false }];
+      this,
+        (this.copyTodos = [
+          { message: this.product.categoria, id: 0, edit: false },
+        ]);
     }
     this.inputFg = this.fb.group({
       mess: [],
     });
+  }
+  ngOnDestroy(): void {
+    this.todoService.resetTodos();
   }
 
   addTodo(value: string): void {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { lista_mezzi } from 'src/app/DB/Mezzi_DB';
 import * as uuid from 'uuid';
 @Component({
@@ -10,6 +11,7 @@ import * as uuid from 'uuid';
 export class NuovoMezzoComponent {
   selectedMese: String;
   selectedPatente: string;
+  constructor(private router: Router) {}
   patenti = [
     {
       value: 'a',
@@ -113,8 +115,10 @@ export class NuovoMezzoComponent {
           this.mezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
         scadenza_bollo: this.mezzoForm.value.scadenzaBollo.toLocaleDateString(),
       });
-      
+
       alert('Mezzo inserito con successo');
+      this.mezzoForm.reset();
+      this.router.navigateByUrl('mezzi_elenco');
     } else alert('Operazione non eseguita,controlla i dati inseriti');
   }
 }

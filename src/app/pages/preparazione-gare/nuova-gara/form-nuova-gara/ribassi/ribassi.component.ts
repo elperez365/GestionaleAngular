@@ -11,7 +11,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./ribassi.component.scss'],
 })
 export class RibassiComponent {
-  @Input() product:ElencoGare
+  @Input() product: ElencoGare;
   sidePanelOpened = true;
   public showSidebar = false;
   inputFg: UntypedFormGroup = Object.create(null);
@@ -33,6 +33,9 @@ export class RibassiComponent {
   ngDoCheck(): void {
     this.NuovaGara.ribassi = this.todos.map((el) => el.message);
   }
+  ngOnDestroy(): void {
+    this.todoService.resetTodos();
+  }
 
   isOver(): boolean {
     return window.matchMedia(`(max-width: 960px)`).matches;
@@ -43,13 +46,12 @@ export class RibassiComponent {
   }
 
   ngOnInit(): void {
-    if(this.product){
-      this.todos=[{message:this.product.ribasso,
-      id:0,
-    edit:false}]
-    this,this.copyTodos=[{message:this.product.ribasso,
-      id:0,
-    edit:false}]
+    if (this.product) {
+      this.todos = [{ message: this.product.ribasso, id: 0, edit: false }];
+      this,
+        (this.copyTodos = [
+          { message: this.product.ribasso, id: 0, edit: false },
+        ]);
     }
     this.inputFg = this.fb.group({
       mess: [],

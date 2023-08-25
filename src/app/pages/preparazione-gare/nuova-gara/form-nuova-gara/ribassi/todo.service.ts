@@ -11,4 +11,7 @@ export class TodoService {
   public getTodos(): ToDo[] {
     return this.todos;
   }
+  resetTodos() {
+    this.todos = [];
+  }
 }
