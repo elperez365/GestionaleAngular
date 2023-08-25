@@ -2,11 +2,11 @@
     .formNewImpresa{
         display:grid;
         gap:1rem;
-        grid-template-areas: 
+        grid-template-areas:
         "   nome        nome         nome       contatto  contatto  contatto "
         "telContatto telContatto telContatto      email     email     email  "
         " otherCont   otherCont    otherCont  otherCont  otherCont  otherCont"
-        "   submit         .            .          .          .          .    ";
+        "     .            .          .          .          .        submit  ";
      }
 
      .Nimpresa{

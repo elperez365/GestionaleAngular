@@ -2,13 +2,16 @@
   <mat-card>
     <mat-card-header class="p-20 d-flex justify-content-between">
       <mat-card-title>Dettaglio</mat-card-title>
-      <button
-        [routerLink]="modifyProductRoute()"
-        mat-flat-button
-        color="primary"
-      >
-        Modifica
-      </button>
+      <div class="d-flex gap-10">
+        <app-tasto-back></app-tasto-back>
+        <button
+          [routerLink]="modifyProductRoute()"
+          mat-flat-button
+          color="primary"
+        >
+          Modifica
+        </button>
+      </div>
     </mat-card-header>
     <mat-divider> </mat-divider>
     <mat-card-content class="p-20 bg-light">
