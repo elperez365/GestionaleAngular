@@ -153,7 +153,6 @@ export class DynamicTableComponent implements OnInit {
   }
 
   changePage($event: any) {
-    console.log($event);
     this.pageSubject.next({
       pageIndex: $event.pageIndex + 1,
       pageSize: $event.pageSize,
@@ -192,12 +191,12 @@ export class DynamicTableComponent implements OnInit {
     }
     //if the header has been clicked for the first time (delets old sessionStorage, puts the arrow on top)
     else {
-      Object.keys(sessionStorage).map(item => sessionStorage.removeItem)
+      Object.keys(sessionStorage).map((item) => sessionStorage.removeItem);
       this.chosen = str;
-      this.order = 'up'
-      sessionStorage.setItem(str,this.order)
+      this.order = 'up';
+      sessionStorage.setItem(str, this.order);
     }
-  } 
+  }
   get totalLength(): number {
     //console.log('totalCount: '+ this.workerService.totalCount);
     return this.DynTableBody.length;

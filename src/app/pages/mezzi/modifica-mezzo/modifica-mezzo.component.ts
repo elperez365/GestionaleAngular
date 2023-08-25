@@ -134,7 +134,7 @@ export class ModificaMezzoComponent {
       this.modificaMezzoForm.value.scadenzaAssicurazione.toDateString();
     lista_mezzi[indexProduct].scadenza_bollo =
       this.modificaMezzoForm.value.scadenzaBollo.toDateString();
-    console.log(lista_mezzi);
+
     alert('modifica avvenuta con successo');
     this.router.navigateByUrl('mezzi_elenco');
   }

@@ -110,7 +110,6 @@ export class RibassiComponent {
   }
 
   deleteTodo(id: number): void {
-    console.log(id);
     this.todos.splice(id, 1);
   }
 

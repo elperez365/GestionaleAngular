@@ -71,8 +71,6 @@ export class ModificaGaraComponent {
       this.router.navigateByUrl('gare_elenco');
     } else {
       alert('qualcosa non va, controlla i dati inseriti');
-      console.log(allFormDatas);
     }
-    console.log(Gare);
   }
 }
