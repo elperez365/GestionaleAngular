@@ -48,13 +48,12 @@ export class LoginComponent implements OnInit {
   });
   //====== Locla functions ======
   onSubmit() {
-    let user = lista_utenti.find(u => u.email === this.login.email)
-    this.loginForm.reset()
-    if(user?.password === this.login.password) {
-      this.router.navigate(['dashboard'])
-    }
-    else {
-      console.log('Credenziali non valide')
+    let user = lista_utenti.find((u) => u.email === this.login.email);
+    this.loginForm.reset();
+    if (user?.password === this.login.password) {
+      this.router.navigate(['dashboard']);
+    } else {
+      console.log('Credenziali non valide');
     }
   }
 
