@@ -11,9 +11,9 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./dati-nuova-gara.component.scss'],
 })
 export class DatiNuovaGaraComponent {
-  @Input() product:ElencoGare
+  @Input() product: ElencoGare;
   numero: string;
-  selectedStazione: string ;
+  selectedStazione: string;
   apertaRistretta: string;
   selectedGareGroup: string;
   gareGroup2: string;
@@ -28,18 +28,17 @@ export class DatiNuovaGaraComponent {
   gareGroup = GareGroup;
   constructor(public nuovaGaraService: NuovaGaraService) {}
 
-   ngOnInit(): void {
-     if (this.product){
+  ngOnInit(): void {
+    if (this.product) {
       this.numero = this.product.id;
       this.selectedStazione = this.product.stazione_appaltante;
       this.apertaRistretta = this.product.Procedura;
       this.importo = this.product.importo;
       this.scadenza = new Date(this.product.scadenza);
-      this.apertura = new Date (this.product.apertura);
+      this.apertura = new Date(this.product.apertura);
       this.note = this.product.oggetto;
       this.selectedCriterio = this.product.criterio_aggiudicazione;
-      
-     }
+    }
   }
 
   ngDoCheck(): void {
@@ -50,12 +49,10 @@ export class DatiNuovaGaraComponent {
     this.nuovaGaraService.Gara.gareGroup2 = this.gareGroup2;
     this.nuovaGaraService.Gara.note = this.note;
     this.nuovaGaraService.Gara.importo = this.importo;
-    this.scadenza && !this.product &&
-      (this.nuovaGaraService.Gara.scadenza =
-        this.scadenza.toLocaleDateString());
+    this.scadenza &&
+      (this.nuovaGaraService.Gara.scadenza = this.scadenza.toDateString());
     this.apertura &&
-      (this.nuovaGaraService.Gara.apertura =
-        this.apertura.toLocaleDateString());
+      (this.nuovaGaraService.Gara.apertura = this.apertura.toDateString());
     this.nuovaGaraService.Gara.selectedCriterio = this.selectedCriterio;
   }
 }

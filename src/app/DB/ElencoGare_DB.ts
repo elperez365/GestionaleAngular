@@ -7,7 +7,7 @@ export let Gare: ElencoGare[] = [
     Procedura: 'aperta',
     oggetto: 'Manutenzione delle strade di stazione Tiburtina',
     importo: '120.000€',
-    scadenza: '12/31/2023',
+    scadenza: '31/12/2023',
     ora: '15:00',
     apertura: '12/31/2023',
     criterio_aggiudicazione: 'ribasso',
