@@ -112,8 +112,8 @@ export class NuovoMezzoComponent {
         tipo_patente: this.mezzoForm.value.tipoPatente.toUpperCase(),
         assicurazione: this.mezzoForm.value.assicurazione,
         scadenza_assicurazione:
-          this.mezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
-        scadenza_bollo: this.mezzoForm.value.scadenzaBollo.toLocaleDateString(),
+          this.mezzoForm.value.scadenzaAssicurazione.toDateString(),
+        scadenza_bollo: this.mezzoForm.value.scadenzaBollo.toDateString(),
       });
 
       alert('Mezzo inserito con successo');

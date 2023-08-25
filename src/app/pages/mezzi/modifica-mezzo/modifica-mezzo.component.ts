@@ -101,11 +101,11 @@ export class ModificaMezzoComponent {
       tipoPatente: new FormControl(this.selectedPatente, Validators.required),
       assicurazione: new FormControl('', Validators.required),
       scadenzaAssicurazione: new FormControl(
-        this.scadenzaAssDate.toLocaleDateString(),
+        this.scadenzaAssDate.toDateString(),
         Validators.required
       ),
       scadenzaBollo: new FormControl(
-        this.scadenzaBoloDate.toLocaleDateString(),
+        this.scadenzaBoloDate.toDateString(),
         Validators.required
       ),
     });
@@ -131,9 +131,9 @@ export class ModificaMezzoComponent {
     lista_mezzi[indexProduct].assicurazione =
       this.modificaMezzoForm.value.assicurazione;
     lista_mezzi[indexProduct].scadenza_assicurazione =
-      this.modificaMezzoForm.value.scadenzaAssicurazione.toLocaleDateString();
+      this.modificaMezzoForm.value.scadenzaAssicurazione.toDateString();
     lista_mezzi[indexProduct].scadenza_bollo =
-      this.modificaMezzoForm.value.scadenzaBollo.toLocaleDateString();
+      this.modificaMezzoForm.value.scadenzaBollo.toDateString();
     console.log(lista_mezzi);
     alert('modifica avvenuta con successo');
     this.router.navigateByUrl('mezzi_elenco');
