@@ -21,8 +21,14 @@ import { ModificaImpresaComponent } from './pages/imprese-appaltanti/modifica-im
 import { ModificaMezzoComponent } from './pages/mezzi/modifica-mezzo/modifica-mezzo.component';
 import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifica-operaio.component';
 import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { RegisterComponent } from './authentication/register/register.component';
+
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'calendario', component: CalendarComponent },
   { path: 'gare', component: PreparazioneGareComponent },
@@ -31,7 +37,8 @@ const routes: Routes = [
   { path: 'appalti', component: AppaltiAggiudicatiComponent },
   { path: 'operai', component: OperaiComponent },
   { path: 'operai_elenco', component: ElencoOperaiComponent },
-  { path: 'operai_nuovo', component: NuovoOperaioComponent },
+  { path: 'operai_form', component: NuovoOperaioComponent },
+  { path: 'operai_form/:id', component: NuovoOperaioComponent },
   { path: 'mezzi_elenco', component: ElencoMezziComponent },
   { path: 'mezzi_nuovo', component: NuovoMezzoComponent },
   { path: 'imprese', component: ImpreseAppaltantiComponent },

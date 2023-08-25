@@ -1,17 +1,19 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { NuovaGaraService } from '../../../../../services/nuova-gara.service';
 import { impreseAppaltanti } from 'src/app/DB/imprese appaltanti';
 import { CriteriAggiudicazione } from 'src/app/DB/CriteriAggiudicazione';
 import { StatiProcedura } from 'src/app/DB/StatiProcedura';
 import { GareGroup } from 'src/app/DB/Garegroup';
+import { ElencoGare } from 'src/app/interfaces/elenco_gare';
 @Component({
   selector: 'app-dati-nuova-gara',
   templateUrl: './dati-nuova-gara.component.html',
   styleUrls: ['./dati-nuova-gara.component.scss'],
 })
 export class DatiNuovaGaraComponent {
+  @Input() product:ElencoGare
   numero: string;
-  selectedStazione: string;
+  selectedStazione: string ;
   apertaRistretta: string;
   selectedGareGroup: string;
   gareGroup2: string;
@@ -26,9 +28,19 @@ export class DatiNuovaGaraComponent {
   gareGroup = GareGroup;
   constructor(public nuovaGaraService: NuovaGaraService) {}
 
-  // ngOnInit(): void {
-  //   console.log(this.nuovaGaraService.Gara);
-  // }
+   ngOnInit(): void {
+     if (this.product){
+      this.numero = this.product.id;
+      this.selectedStazione = this.product.stazione_appaltante;
+      this.apertaRistretta = this.product.Procedura;
+      this.importo = this.product.importo;
+      this.scadenza = new Date(this.product.scadenza);
+      this.apertura = new Date (this.product.apertura);
+      this.note = this.product.oggetto;
+      this.selectedCriterio = this.product.criterio_aggiudicazione;
+      
+     }
+  }
 
   ngDoCheck(): void {
     this.nuovaGaraService.Gara.numero = this.numero;
@@ -38,7 +50,7 @@ export class DatiNuovaGaraComponent {
     this.nuovaGaraService.Gara.gareGroup2 = this.gareGroup2;
     this.nuovaGaraService.Gara.note = this.note;
     this.nuovaGaraService.Gara.importo = this.importo;
-    this.scadenza &&
+    this.scadenza && !this.product &&
       (this.nuovaGaraService.Gara.scadenza =
         this.scadenza.toLocaleDateString());
     this.apertura &&

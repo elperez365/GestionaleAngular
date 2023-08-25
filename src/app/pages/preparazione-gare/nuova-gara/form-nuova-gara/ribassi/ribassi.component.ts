@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
 import { NuovaGaraService } from 'src/app/services/nuova-gara.service';
+import { ElencoGare } from 'src/app/interfaces/elenco_gare';
 
 @Component({
   selector: 'app-ribassi',
@@ -10,6 +11,7 @@ import { NuovaGaraService } from 'src/app/services/nuova-gara.service';
   styleUrls: ['./ribassi.component.scss'],
 })
 export class RibassiComponent {
+  @Input() product:ElencoGare
   sidePanelOpened = true;
   public showSidebar = false;
   inputFg: UntypedFormGroup = Object.create(null);
@@ -41,6 +43,14 @@ export class RibassiComponent {
   }
 
   ngOnInit(): void {
+    if(this.product){
+      this.todos=[{message:this.product.ribasso,
+      id:0,
+    edit:false}]
+    this,this.copyTodos=[{message:this.product.ribasso,
+      id:0,
+    edit:false}]
+    }
     this.inputFg = this.fb.group({
       mess: [],
     });

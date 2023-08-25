@@ -14,6 +14,9 @@ export class ModificaMezzoComponent {
   product = lista_mezzi!.find((el) => this.idProduct === el.id)!;
   selectedMese: String = this.product.mese_revisione.toLowerCase();
   selectedPatente: String = this.product.tipo_patente.toLowerCase();
+  scadenzaBoloDate= new Date(this.product.scadenza_bollo);
+  scadenzaAssDate= new Date(this.product.scadenza_assicurazione);
+  
 
   patenti = [
     {
@@ -110,23 +113,19 @@ export class ModificaMezzoComponent {
   // }
 
   onSubmit(event: any) {
-    console.log(this.selectedMese);
-    console.log(this.selectedPatente);
-    // if (this.mezzoForm.status === 'VALID') {
-    //   lista_mezzi.push({
-    //     id: uuid.v4(),
-    //     tipo_veicolo: this.mezzoForm.value.tipoVeicolo,
-    //     anno_revisione: this.mezzoForm.value.annoRevisione,
-    //     targa: this.mezzoForm.value.targa,
-    //     mese_revisione: this.mezzoForm.value.meseRevisione,
-    //     tipo_patente: this.mezzoForm.value.tipoPatente,
-    //     assicurazione: this.mezzoForm.value.assicurazione,
-    //     scadenza_assicurazione:
-    //       this.mezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
-    //     scadenza_bollo: this.mezzoForm.value.scadenzaBollo.toLocaleDateString(),
-    //   });
-    //   console.log(lista_mezzi);
-    //   alert('Mezzo inserito con successo');
-    // } else alert('Operazione non eseguita,controlla i dati inseriti');
+    console.log({
+          id: uuid.v4(),
+          tipo_veicolo: this.modificaMezzoForm.value.tipoVeicolo,
+           anno_revisione: this.modificaMezzoForm.value.annoRevisione,
+          targa: this.modificaMezzoForm.value.targa,
+          mese_revisione: this.modificaMezzoForm.value.meseRevisione,
+           tipo_patente: this.modificaMezzoForm.value.tipoPatente,
+         assicurazione: this.modificaMezzoForm.value.assicurazione,
+           scadenza_assicurazione:
+           this.modificaMezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
+           scadenza_bollo: this.modificaMezzoForm.value.scadenzaBollo.toLocaleDateString(),
+       });
+    
+    
   }
 }

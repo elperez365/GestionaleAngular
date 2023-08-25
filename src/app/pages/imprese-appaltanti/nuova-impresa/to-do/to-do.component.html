@@ -74,7 +74,7 @@
                 </div>
   
                 <!-- Edit View -->
-                <div class="d-flex edit-view" *ngIf="todo.edit" style="position: absolute; bottom: 2rem;">
+                <div class="d-flex edit-view" *ngIf="todo.edit" >
                   <mat-form-field appearance="outline" class="hide-hint">
                     <input matInput [(ngModel)]="todo.message" />
                   </mat-form-field>

@@ -1,13 +1,3 @@
-import { Component } from '@angular/core';
-import { impreseAppaltanti } from 'src/app/DB/imprese appaltanti';
-@Component({
-  selector: 'app-elenco-imprese',
-  templateUrl: './elenco-imprese.component.html',
-  styleUrls: ['./elenco-imprese.component.scss'],
-})
-export class ElencoImpreseComponent {
-  imprese: string = 'impreseAppaltanti';
-  data_body = impreseAppaltanti;
   // data_body: ImpreseAppaltanti[] = [
   //   {
   //     id: String(Math.trunc(Math.random() * 9999)),
@@ -34,6 +24,3 @@ export class ElencoImpreseComponent {
   //     contatti: ['Twitter', 'Telegram', 'Facebook'],
   //   },
   // ];
-
-  data_header: string[] = ['Info', 'Nome', 'Email', 'Contatto Principale'];
-}

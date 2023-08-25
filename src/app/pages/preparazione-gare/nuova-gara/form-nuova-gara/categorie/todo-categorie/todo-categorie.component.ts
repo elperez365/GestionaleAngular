@@ -3,6 +3,7 @@ import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
 import { NuovaGaraService } from '../../../../../../services/nuova-gara.service';
+import { ElencoGare } from 'src/app/interfaces/elenco_gare';
 
 @Component({
   selector: 'app-todo-categorie',
@@ -12,6 +13,7 @@ import { NuovaGaraService } from '../../../../../../services/nuova-gara.service'
 export class TodoCategorieComponent {
   @Input() selectedCat1: string;
   @Input() selectedCat2: string;
+  @Input() product: ElencoGare ;
 
   sidePanelOpened = true;
   public showSidebar = false;
@@ -43,6 +45,14 @@ export class TodoCategorieComponent {
   }
 
   ngOnInit(): void {
+    if(this.product){
+      this.todos=[{message:this.product.categoria,
+      id:0,
+    edit:false}]
+    this,this.copyTodos=[{message:this.product.categoria,
+      id:0,
+    edit:false}]
+    }
     this.inputFg = this.fb.group({
       mess: [],
     });
