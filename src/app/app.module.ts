@@ -33,7 +33,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { PreparazioneGareComponent } from './pages/preparazione-gare/preparazione-gare.component';
 import { AppaltiAggiudicatiComponent } from './pages/appalti-aggiudicati/appalti-aggiudicati.component';
-import { OperaiComponent } from './pages/operai/operai.component';
+
 import { ImpreseAppaltantiComponent } from './pages/imprese-appaltanti/imprese-appaltanti.component';
 import { ElencoGareComponent } from './pages/preparazione-gare/elenco-gare/elenco-gare.component';
 import { NuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/nuova-gara.component';
@@ -81,7 +81,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
     CalendarComponent,
     PreparazioneGareComponent,
     AppaltiAggiudicatiComponent,
-    OperaiComponent,
     ImpreseAppaltantiComponent,
     ElencoGareComponent,
     NuovaGaraComponent,

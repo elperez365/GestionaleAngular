@@ -1,10 +1,9 @@
 <!-- NUOVO FORM  -->
-
 <mat-card class="w-100">
   <form
     #operai_form="ngForm"
     class="needs-validation"
-    (change)="handleChange()"
+    [formGroup]="operaiForm"
     (ngSubmit)="handleSubmit(operai_form)"
   >
     <div class="container">
@@ -18,10 +17,12 @@
             name="nome"
             [(ngModel)]="form.nome"
             class="form-control mb-3 requiredForm"
+            formControlName="nome"
             placeholder="Nome, Cognome"
             [ngClass]="[form.nome !== '' ? 'is-valid' : 'is-invalid']"
+            required
           />
-          <div *ngIf="form.nome == ''" class="invalid-feedback">
+          <div *ngIf="nome.errors && nome.touched" class="invalid-feedback">
             Campo obbligatorio!
           </div>
           <h5 for="agevolazione">Agevolazioni</h5>
@@ -31,8 +32,9 @@
             id="agevolazione"
             name="agevolazione"
             class="form-control"
-            placeholder="Agevolazione contributiva"
             value="form.agevolazione"
+            placeholder="Agevolazione contributiva"
+            formControlName="agevolazione"
           />
         </div>
         <div class="col-sm-12 col-md-6">
@@ -43,14 +45,16 @@
                 id="contratto"
                 name="contratto"
                 class="custom-select requiredForm"
+                formControlName="contratto"
                 [ngClass]="[form.contratto !== '' ? 'is-valid' : 'is-invalid']"
                 [(ngModel)]="form.contratto"
+                required
               >
                 <option *ngFor="let c of contratti" [ngValue]="c" selected>
                   {{ c }}
                 </option>
               </select>
-              <div *ngIf="form.contratto == ''" class="invalid-feedback">
+              <div *ngIf="contratto.errors && contratto.touched" class="invalid-feedback">
                 Campo obbligatorio!
               </div>
             </div>
@@ -60,15 +64,17 @@
                 id="mansione"
                 name="mansione"
                 class="custom-select requiredForm"
+                formControlName="mansione"
                 [ngClass]="[form.mansione !== '' ? 'is-valid' : 'is-invalid']"
                 [(ngModel)]="form.mansione"
                 name="mansione"
+                required
               >
-                <option *ngFor="let c of mansione" [ngValue]="c" selected>
+                <option *ngFor="let c of mansioni" [ngValue]="c" selected>
                   {{ c }}
                 </option>
               </select>
-              <div *ngIf="form.mansione === ''" class="invalid-feedback">
+              <div *ngIf="mansione.errors && mansione.touched" class="invalid-feedback">
                 Campo obbligatorio!
               </div>
             </div>
@@ -79,10 +85,12 @@
             [(ngModel)]="form.assicurazione"
             class="form-control requiredForm"
             [ngClass]="[form.assicurazione? 'is-valid' : 'is-invalid']"
+            formControlName="assicurazione"
             type="date"
             name="Assicurazione"
+            required
           />
-          <div *ngIf="!form.assicurazione" class="invalid-feedback">
+          <div *ngIf="assicurazione.errors && assicurazione.touched" class="invalid-feedback">
             Campo obbligatorio!
           </div>
         </div>
@@ -147,9 +155,11 @@
             [(ngModel)]="form.qualifica"
             class="form-control mb-3 requiredForm"
             placeholder="Qualifica"
+            formControlName="qualifica"
             [ngClass]="[form.qualifica !== '' ? 'is-valid' : 'is-invalid']"
+            required
           />
-          <div *ngIf="form.qualifica == ''" class="invalid-feedback">
+          <div *ngIf="qualifica.errors && qualifica.touched" class="invalid-feedback">
             Campo obbligatorio!
           </div>
         </div>
@@ -161,9 +171,11 @@
             class="form-control requiredForm"
             [ngClass]="[form.visita_medica? 'is-valid' : 'is-invalid']"
             type="date"
+            formControlName="visita_medica"
             name="Assicurazione"
+            required
           />
-          <div *ngIf="!form.visita_medica" class="invalid-feedback">
+          <div *ngIf="visita_medica.errors && !visita_medica.pristine" class="invalid-feedback">
             Campo obbligatorio!
           </div>
         </div>
@@ -187,23 +199,12 @@
       <hr />
       <!-- Submit Button -->
       <div class="row mb-4">
-        <button
-        *ngIf="user"
-        mat-raised-button
-        class="w-75 m-auto"
-        type="submit"
-        color="primary"
-        [disabled]="formValid"
-      >
-        Salva Modifiche
-      </button>
-        <button
-        *ngIf="!user"
+        <button 
           mat-raised-button
           class="w-75 m-auto"
           type="submit"
           color="primary"
-          [disabled]="formValid"
+          [disabled]="!operaiForm.valid"
         >
           Crea nuovo operaio
         </button>
