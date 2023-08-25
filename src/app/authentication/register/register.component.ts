@@ -5,24 +5,33 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { AuthService } from 'src/app/services/shared/auth.service';
 import { Router } from '@angular/router';
-
+import { lista_utenti } from 'src/app/DB/utenti';
+import { v4 as uuidv4 } from 'uuid';
+import { User } from 'src/app/interfaces/user';
+import { Hash } from 'angular-feather/icons';
+import * as bcrypt from 'bcryptjs'
 @Component({
   selector: 'app-register.component',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent{
+export class RegisterComponent {
   //===== Local Variables =======
   register = {
     nome: '',
-    cognome: '',
+    numero: '',
     email: '',
     password: '',
   };
 
   //======= Constructor ========
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   //====== Hooks =========
   ngOnInit(): void {}
@@ -33,10 +42,10 @@ export class RegisterComponent{
       this.register.nome,
       {
         validators: [Validators.required],
-      }
+      },
     ]),
-    cognome: new FormControl([
-      this.register.cognome,
+    numero: new FormControl([
+      this.register.numero,
       {
         validators: [Validators.required],
       },
@@ -50,20 +59,32 @@ export class RegisterComponent{
     password: new FormControl([
       this.register.password,
       {
-        validators: [Validators.required, Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')],
+        validators: [
+          Validators.required,
+          Validators.pattern(
+            '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$'
+          ),
+        ],
       },
     ]),
   });
-  //====== Locla functions ======
+  //====== Local functions ======
   onSubmit() {
-    this.router.navigateByUrl('login')
+
+    let newUser: User = {
+      ... this.register,
+      id: uuidv4()
+    }
+    lista_utenti.push(newUser)
+    this.router.navigate(['dashboard'])
   }
 
+  //============== Form Getters =============
   get nome() {
     return this.registerForm.controls['nome'];
   }
-  get cognome() {
-    return this.registerForm.controls['cognome'];
+  get numero() {
+    return this.registerForm.controls['numero'];
   }
   get email() {
     return this.registerForm.controls['email'];
