@@ -73,6 +73,7 @@ export class RegisterComponent {
       }
     });
   }
+
   //============== Form Getters =============
   get nome() {
     return this.registerForm.controls['nome'];

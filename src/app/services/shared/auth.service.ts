@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/interfaces/user';
+import { User } from 'src/app/interfaces/user'; 
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -23,12 +23,14 @@ export class AuthService {
   }
   // Sign-in
   signIn(user: User) {
-    console.log(user)
     return this.http
       .post<any>(`${this.endpoint}/signin`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
-        this.router.navigate(['dashboard'])
+        this.getUserProfile(res._id).subscribe((res) => {
+          this.currentUser = res;
+          this.router.navigate(['user-profile/' + res.msg._id]);
+        });
       });
   }
   getToken() {

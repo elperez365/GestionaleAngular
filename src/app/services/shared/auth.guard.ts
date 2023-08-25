@@ -21,7 +21,6 @@ export class AuthGuard {
     | boolean
     | UrlTree {
     if (this.authService.isLoggedIn !== true) {
-      console.log('You are not logged!')
       this.router.navigate(['login']);
     }
     return true;
