@@ -77,7 +77,7 @@
                   value="form.mansione"
                   required
                 >
-                  <option *ngFor="let c of contratti" [ngValue]="c" selected>
+                  <option *ngFor="let c of mansioni" [ngValue]="c" selected>
                     {{ c }}
                   </option>
                 </select>
@@ -93,6 +93,7 @@
             <input
               id="data_assicurazione"
               [(ngModel)]="form.assicurazione"
+              [value]="form.assicurazione"
               class="form-control requiredForm"
               [ngClass]="[form.assicurazione ? 'is-valid' : 'is-invalid']"
               formControlName="assicurazione"

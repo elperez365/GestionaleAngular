@@ -1,6 +1,5 @@
 <!-- NUOVO FORM  -->
 <app-full>
-
   <mat-card class="w-100">
     <form
       #operai_form="ngForm"
@@ -14,7 +13,7 @@
           <div class="col-sm-12 col-md-6">
             <h5 from="nome">Operaio</h5>
             <input
-              type="text" 
+              type="text"
               id="nome"
               name="nome"
               [(ngModel)]="form.nome"
@@ -48,7 +47,9 @@
                   name="contratto"
                   class="custom-select requiredForm"
                   formControlName="contratto"
-                  [ngClass]="[form.contratto !== '' ? 'is-valid' : 'is-invalid']"
+                  [ngClass]="[
+                    form.contratto !== '' ? 'is-valid' : 'is-invalid'
+                  ]"
                   [(ngModel)]="form.contratto"
                   required
                 >
@@ -56,7 +57,10 @@
                     {{ c }}
                   </option>
                 </select>
-                <div *ngIf="contratto.errors && contratto.touched" class="invalid-feedback">
+                <div
+                  *ngIf="contratto.errors && contratto.touched"
+                  class="invalid-feedback"
+                >
                   Campo obbligatorio!
                 </div>
               </div>
@@ -76,7 +80,10 @@
                     {{ c }}
                   </option>
                 </select>
-                <div *ngIf="mansione.errors && mansione.touched" class="invalid-feedback">
+                <div
+                  *ngIf="mansione.errors && mansione.touched"
+                  class="invalid-feedback"
+                >
                   Campo obbligatorio!
                 </div>
               </div>
@@ -86,13 +93,16 @@
               id="data_assicurazione"
               [(ngModel)]="form.assicurazione"
               class="form-control requiredForm"
-              [ngClass]="[form.assicurazione? 'is-valid' : 'is-invalid']"
+              [ngClass]="[form.assicurazione ? 'is-valid' : 'is-invalid']"
               formControlName="assicurazione"
               type="date"
               name="Assicurazione"
               required
             />
-            <div *ngIf="assicurazione.errors && assicurazione.touched" class="invalid-feedback">
+            <div
+              *ngIf="assicurazione.errors && assicurazione.touched"
+              class="invalid-feedback"
+            >
               Campo obbligatorio!
             </div>
           </div>
@@ -151,7 +161,7 @@
           <div class="col-sm-12 col-md-6">
             <h5 from="nome">Qualifica</h5>
             <input
-              type="text" 
+              type="text"
               id="qualifica"
               name="qualifica"
               [(ngModel)]="form.qualifica"
@@ -161,7 +171,10 @@
               [ngClass]="[form.qualifica !== '' ? 'is-valid' : 'is-invalid']"
               required
             />
-            <div *ngIf="qualifica.errors && qualifica.touched" class="invalid-feedback">
+            <div
+              *ngIf="qualifica.errors && qualifica.touched"
+              class="invalid-feedback"
+            >
               Campo obbligatorio!
             </div>
           </div>
@@ -171,13 +184,16 @@
               id="visita_medica"
               [(ngModel)]="form.visita_medica"
               class="form-control requiredForm"
-              [ngClass]="[form.visita_medica? 'is-valid' : 'is-invalid']"
+              [ngClass]="[form.visita_medica ? 'is-valid' : 'is-invalid']"
               type="date"
               formControlName="visita_medica"
               name="Assicurazione"
               required
             />
-            <div *ngIf="visita_medica.errors && !visita_medica.pristine" class="invalid-feedback">
+            <div
+              *ngIf="visita_medica.errors && !visita_medica.pristine"
+              class="invalid-feedback"
+            >
               Campo obbligatorio!
             </div>
           </div>
@@ -201,7 +217,7 @@
         <hr />
         <!-- Submit Button -->
         <div class="row mb-4">
-          <button 
+          <button
             mat-raised-button
             class="w-75 m-auto"
             type="submit"
@@ -214,4 +230,4 @@
       </div>
     </form>
   </mat-card>
-  
+</app-full>
