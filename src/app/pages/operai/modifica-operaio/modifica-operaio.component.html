@@ -69,10 +69,10 @@
                 formControlName="mansione"
                 [ngClass]="[form.mansione !== '' ? 'is-valid' : 'is-invalid']"
                 [(ngModel)]="form.mansione"
-                name="mansione"
+                value="form.mansione"
                 required
               >
-                <option *ngFor="let c of mansioni" [ngValue]="c" selected>
+                <option *ngFor="let c of contratti" [ngValue]="c" selected>
                   {{ c }}
                 </option>
               </select>
@@ -208,11 +208,9 @@
           color="primary"
           [disabled]="!operaiForm.valid"
         >
-          Crea nuovo operaio
+          Modifica Operaio
         </button>
       </div>
     </div>
   </form>
 </mat-card>
-  
-</app-full>

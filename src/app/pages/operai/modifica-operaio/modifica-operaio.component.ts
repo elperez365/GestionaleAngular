@@ -23,7 +23,7 @@ export class ModificaOperaioComponent {
   //Local variables
 
   form: Operaio = {
-    ... this.user
+    ... this.user,
   } 
 
   constructor(
@@ -114,6 +114,9 @@ export class ModificaOperaioComponent {
   }
 
   handleSubmit(s: any) {
+    lista_operai.forEach( (item, index) => {
+      if(item === this.user) lista_operai.splice(index,1);
+    });
     lista_operai.push(this.form)
     this.router.navigateByUrl('operai_elenco')
   } 
