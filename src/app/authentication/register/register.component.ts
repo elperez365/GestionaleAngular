@@ -5,6 +5,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { AuthService } from 'src/app/services/shared/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,17 +13,21 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent{
+export class RegisterComponent {
   //===== Local Variables =======
   register = {
     nome: '',
-    cognome: '',
+    numero: '',
     email: '',
     password: '',
   };
 
   //======= Constructor ========
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   //====== Hooks =========
   ngOnInit(): void {}
@@ -33,10 +38,10 @@ export class RegisterComponent{
       this.register.nome,
       {
         validators: [Validators.required],
-      }
+      },
     ]),
-    cognome: new FormControl([
-      this.register.cognome,
+    numero: new FormControl([
+      this.register.numero,
       {
         validators: [Validators.required],
       },
@@ -50,20 +55,30 @@ export class RegisterComponent{
     password: new FormControl([
       this.register.password,
       {
-        validators: [Validators.required, Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')],
+        validators: [
+          Validators.required,
+          Validators.pattern(
+            '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$'
+          ),
+        ],
       },
     ]),
   });
-  //====== Locla functions ======
+  //====== Local functions ======
   onSubmit() {
-    this.router.navigateByUrl('login')
+    this.authService.signUp(this.registerForm.value).subscribe((res) => {
+      if (res.result) {
+        this.registerForm.reset();
+        this.router.navigate(['login']);
+      }
+    });
   }
-
+  //============== Form Getters =============
   get nome() {
     return this.registerForm.controls['nome'];
   }
-  get cognome() {
-    return this.registerForm.controls['cognome'];
+  get numero() {
+    return this.registerForm.controls['numero'];
   }
   get email() {
     return this.registerForm.controls['email'];

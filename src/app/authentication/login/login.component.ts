@@ -5,6 +5,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { AuthService } from 'src/app/services/shared/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,7 +21,11 @@ export class LoginComponent implements OnInit {
   };
 
   //======= Constructor ========
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   //====== Hooks =========
   ngOnInit(): void {}
@@ -42,7 +47,7 @@ export class LoginComponent implements OnInit {
   });
   //====== Locla functions ======
   onSubmit() {
-    this.router.navigateByUrl('dashboard')
+    this.router.navigateByUrl('dashboard');
   }
 
   get email() {

@@ -22,36 +22,118 @@ import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifi
 import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
-
+import { AuthGuard } from './services/shared/auth.guard';
 
 const routes: Routes = [
+  // ===== Accessible Pages with no token =============
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'calendario', component: CalendarComponent },
-  { path: 'gare', component: PreparazioneGareComponent },
-  { path: 'gare_elenco', component: ElencoGareComponent },
-  { path: 'gare_nuovo', component: NuovaGaraComponent },
-  { path: 'appalti', component: AppaltiAggiudicatiComponent },
-  { path: 'operai_elenco', component: ElencoOperaiComponent },
-  { path: 'operai_form', component: NuovoOperaioComponent },
-  { path: 'operai_form/:id', component: NuovoOperaioComponent },
-  { path: 'mezzi_elenco', component: ElencoMezziComponent },
-  { path: 'mezzi_nuovo', component: NuovoMezzoComponent },
-  { path: 'imprese', component: ImpreseAppaltantiComponent },
-  { path: 'imprese_nuovo', component: NuovaImpresaComponent },
-  { path: 'imprese_elenco', component: ElencoImpreseComponent },
-  { path: 'impostazioni', component: ImpostazioniComponent },
-  { path: 'dettaglio/:cat/:id', component: PaginaDettaglioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
+
+  // ===== Private Pages, JWT required =============
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'calendario',
+    component: CalendarComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'gare',
+    component: PreparazioneGareComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'gare_elenco',
+    component: ElencoGareComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'gare_nuovo',
+    component: NuovaGaraComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'appalti',
+    component: AppaltiAggiudicatiComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'operai_elenco',
+    component: ElencoOperaiComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'operai_form',
+    component: NuovoOperaioComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'operai_form/:id',
+    component: NuovoOperaioComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'mezzi_elenco',
+    component: ElencoMezziComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'mezzi_nuovo',
+    component: NuovoMezzoComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'imprese',
+    component: ImpreseAppaltantiComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'imprese_nuovo',
+    component: NuovaImpresaComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'imprese_elenco',
+    component: ElencoImpreseComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'impostazioni',
+    component: ImpostazioniComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'dettaglio/:cat/:id',
+    component: PaginaDettaglioComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'modifica_impreseAppaltanti/:cat/:id',
     component: ModificaImpresaComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'modifica_mezzi/:cat/:id', component: ModificaMezzoComponent },
-  { path: 'modifica_operai/:cat/:id', component: ModificaOperaioComponent },
-  { path: 'modifica_gara/:cat/:id', component: ModificaGaraComponent },
-  { path: '404', component: AppErrorComponent },
+  {
+    path: 'modifica_mezzi/:cat/:id',
+    component: ModificaMezzoComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'modifica_operai/:cat/:id',
+    component: ModificaOperaioComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'modifica_gara/:cat/:id',
+    component: ModificaGaraComponent,
+    canActivate: [AuthGuard],
+  },
+  // ================ 404 Page =================
+  { path: '404', component: AppErrorComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '404' },
 ];
 

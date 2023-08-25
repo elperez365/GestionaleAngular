@@ -29,19 +29,19 @@
         </div>
 
       <div class="col-md-6 mb-2">
-        <label for="password" class="form-label">Cognome</label>
+        <label for="password" class="form-label">Numero</label>
         <input
-          name="cognome"
-          [(ngModel)]="register.cognome"
-          placeholder="cognome"
-          [ngClass]="[!cognome.errors? 'is-valid' : 'is-invalid']"
-          type="cognome"
+          name="numero"
+          [(ngModel)]="register.numero"
+          placeholder="numero"
+          [ngClass]="[!numero.errors? 'is-valid' : 'is-invalid']"
+          type="numero"
           class="form-control requiredForm"
-          id="cognome"
-          formControlName="cognome"
+          id="numero"
+          formControlName="numero"
           required
         />
-        <div *ngIf="cognome.errors && cognome.touched" class="invalid-feedback">
+        <div *ngIf="numero.errors && numero.touched" class="invalid-feedback">
             Campo obbligatorio!
           </div>
       </div>
