@@ -7,7 +7,7 @@ export const impreseAppaltanti = [
     email: 'giacomo.g@g.it',
     value: 'ROMA CAPITALE MUNICIPIO XIII',
     viewValue: 'ROMA CAPITALE MUNICIPIO XIII',
-    altriContatti: ["09u8709787","0970970jbiijfiuw"],
+    altriContatti: [{ message: '09u8709787' }, { message: '0970970jbiijfiuw' }],
   },
   {
     id: '2',
