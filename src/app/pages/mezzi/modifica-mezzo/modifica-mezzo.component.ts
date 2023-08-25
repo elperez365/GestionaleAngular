@@ -100,8 +100,14 @@ export class ModificaMezzoComponent {
       note: new FormControl(''),
       tipoPatente: new FormControl(this.selectedPatente, Validators.required),
       assicurazione: new FormControl('', Validators.required),
-      scadenzaAssicurazione: new FormControl('', Validators.required),
-      scadenzaBollo: new FormControl('', Validators.required),
+      scadenzaAssicurazione: new FormControl(
+        this.scadenzaAssDate.toLocaleDateString(),
+        Validators.required
+      ),
+      scadenzaBollo: new FormControl(
+        this.scadenzaBoloDate.toLocaleDateString(),
+        Validators.required
+      ),
     });
   }
 
@@ -121,13 +127,14 @@ export class ModificaMezzoComponent {
       this.modificaMezzoForm.value.tipoVeicolo;
     lista_mezzi[indexProduct].targa = this.modificaMezzoForm.value.targa;
     lista_mezzi[indexProduct].tipo_patente =
-      this.modificaMezzoForm.value.tipoPatente;
+      this.modificaMezzoForm.value.tipoPatente.toUpperCase();
     lista_mezzi[indexProduct].assicurazione =
       this.modificaMezzoForm.value.assicurazione;
     lista_mezzi[indexProduct].scadenza_assicurazione =
       this.modificaMezzoForm.value.scadenzaAssicurazione.toLocaleDateString();
     lista_mezzi[indexProduct].scadenza_bollo =
       this.modificaMezzoForm.value.scadenzaBollo.toLocaleDateString();
+    console.log(lista_mezzi);
     alert('modifica avvenuta con successo');
     this.router.navigateByUrl('mezzi_elenco');
   }

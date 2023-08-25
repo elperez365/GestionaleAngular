@@ -109,7 +109,7 @@ export class NuovoMezzoComponent {
         anno_revisione: this.mezzoForm.value.annoRevisione,
         targa: this.mezzoForm.value.targa,
         mese_revisione: this.mezzoForm.value.meseRevisione,
-        tipo_patente: this.mezzoForm.value.tipoPatente,
+        tipo_patente: this.mezzoForm.value.tipoPatente.toUpperCase(),
         assicurazione: this.mezzoForm.value.assicurazione,
         scadenza_assicurazione:
           this.mezzoForm.value.scadenzaAssicurazione.toLocaleDateString(),
