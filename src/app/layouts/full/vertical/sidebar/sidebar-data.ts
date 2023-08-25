@@ -3,7 +3,7 @@ import { NavItem } from './nav-item/nav-item';
 export const navItems: NavItem[] = [
   {
     displayName: 'Dashboard',
-    iconName: 'message-2',
+    iconName: 'dashboard',
     route: 'dashboard',
   },
   {
@@ -13,36 +13,32 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Preparazione Gare',
-    iconName: 'chart-donut-3',
+    iconName: 'loader',
     route: 'gare_elenco',
-    
   },
   {
     displayName: 'Appalti Aggiudicati',
-    iconName: 'phone',
+    iconName: 'checks',
     route: 'appalti',
   },
   {
     displayName: 'Operai',
-    iconName: 'chart-donut-3',
+    iconName: 'users',
     route: 'operai_elenco',
-    
   },
   {
     displayName: 'Mezzi',
-    iconName: 'chart-donut-3',
+    iconName: 'car',
     route: 'mezzi_elenco',
-    
   },
   {
     displayName: 'Imprese Appaltanti',
-    iconName: 'chart-donut-3',
+    iconName: 'building-factory-2',
     route: 'imprese_elenco',
-    
   },
   {
     displayName: 'Impostazioni',
-    iconName: 'note',
+    iconName: 'tool',
     route: 'impostazioni',
   },
 ];
