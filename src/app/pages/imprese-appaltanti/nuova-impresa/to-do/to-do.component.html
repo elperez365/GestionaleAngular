@@ -8,7 +8,7 @@
       <mat-divider></mat-divider>
       <div class="p-16 bg-white">
         <form [formGroup]="inputFg">
-          <div class="row align-items-center">
+          <div class="row justify-content-between align-items-center">
             <div class="col-sm-6 col-lg-5">
               <mat-form-field appearance="outline" class="w-100 hide-hint">
                 <input
@@ -17,7 +17,7 @@
                   [(ngModel)]="searchText"
                   formControlName="mess"
                   (keyup.enter)="addTodo(inputData.value)"
-                  placeholder="Add todo"
+                  placeholder="Aggiungi contatto"
                 />
               </mat-form-field>
             </div>
