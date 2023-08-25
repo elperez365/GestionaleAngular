@@ -15,58 +15,102 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NuovoOperaioComponent implements OnInit{
   //Variabili esclusive per rappresentazione HTML
   contratti: string[] = ['Indeterminato', 'Determinato', 'Stage', 'Apprendistato'];             //Usata per select input 'Tipi di contratto'
-  mansione: string[] = ['Edile', 'Medico', 'Industriale', 'Elettronico'];
+  mansioni: string[] = ['Edile', 'Medico', 'Industriale', 'Elettronico'];
   scadenze: Date[] = [new Date(Date.now())];                       //Usata solo per renderizzare 2 componenti
   formValid:boolean = true;
 
 
   //Local variables
   user: Operaio | undefined; 
-  form: Operaio;
-  id = this.route.snapshot.paramMap.get('id')
 
-  operaiForm: FormGroup;
+  form: Operaio = {
+    id: String(Math.trunc(Math.random() * 999999)),
+    nome: '',
+    contratto: '',
+    mansione: '',
+    agevolazione:'',
+    assicurazione: undefined,
+    scadenze_contratto: [ 
+      ...this.scadenze
+    ],
+    qualifica: '',
+    visita_medica: undefined,
+    note: ''
+  } 
+
+  id = this.route.snapshot.paramMap.get('id')
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
-  //Angular Hooks
-  ngOnInit() :void {
-    this.user =  lista_operai.find(u => u.id === this.id)
-    
-  //Form listener
-  if(this.user) {
-    this.form = {...this.user}
-  }
-  else{
-    this.form = {
-      id: String(Math.trunc(Math.random() * 999999)),
-      nome: '',
-      contratto: '',
-      mansione: '',
-      agevolazione:'',
-      assicurazione: undefined,
-      scadenze_contratto: [ 
-        ...this.scadenze
-      ],
-      qualifica: '',
-      visita_medica: undefined,
-      note: ''
-    }
-  }
+  //=============== Angular Hooks ==================
+  ngOnInit() :void { }
+  // ============= Form controller ==================
+  operaiForm = this.formBuilder.group({
+    nome: new FormControl([
+      this.form.nome,
+      {
+        validators: [Validators.required],
+      },
+    ]),
+        agevolazione: new FormControl([
+      this.form.agevolazione,
+      {
+      },
+    ]),
+    contratto: new FormControl([
+      this.form.contratto,
+      {
+        validators: [Validators.required],
+      },
+    ]),
+    mansione: new FormControl([
+      this.form.mansione,
+      {
+        validators: [Validators.required],
+      },
+    ]),
+    assicurazione: new FormControl([
+      this.form.assicurazione,
+      {
+        validators: [Validators.required],
+      },
+    ]),
+    qualifica: new FormControl([
+      this.form.qualifica,
+      {
+        validators: [Validators.required],
+      },
+    ]),
+    visita_medica: new FormControl([
+      this.form.visita_medica,
+      {
+        validators: [Validators.required],
+      },
+    ]),
+  });
 
+  // ============= Form getters ==================
+  get nome() {
+    return this.operaiForm.controls['nome']
   }
-
-  handleChange() {
-    let { nome, contratto, mansione, assicurazione, qualifica, visita_medica} = this.form
-    if(  !nome|| !contratto|| !mansione|| !assicurazione|| !qualifica|| !visita_medica) {
-      return
-    }
-    else {
-      this.formValid = false
-    }
+  get contratto() {
+    return this.operaiForm.controls['contratto']
   }
+  get mansione() {
+    return this.operaiForm.controls['mansione']
+  }
+  get assicurazione() {
+    return this.operaiForm.controls['assicurazione']
+  }
+  get qualifica() {
+    return this.operaiForm.controls['qualifica']
+  }
+  get visita_medica() {
+    return this.operaiForm.controls['visita_medica']
+  }
+    // ============= Local functions ==================
   editScadenza(option: string):void {
     switch(option) {
       case 'add' :

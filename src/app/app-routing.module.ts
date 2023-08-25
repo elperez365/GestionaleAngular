@@ -6,7 +6,6 @@ import { PreparazioneGareComponent } from './pages/preparazione-gare/preparazion
 import { ElencoGareComponent } from './pages/preparazione-gare/elenco-gare/elenco-gare.component';
 import { NuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/nuova-gara.component';
 import { AppaltiAggiudicatiComponent } from './pages/appalti-aggiudicati/appalti-aggiudicati.component';
-import { OperaiComponent } from './pages/operai/operai.component';
 import { ElencoOperaiComponent } from './pages/operai/elenco-operai/elenco-operai.component';
 import { NuovoOperaioComponent } from './pages/operai/nuovo-operaio/nuovo-operaio.component';
 import { ImpreseAppaltantiComponent } from './pages/imprese-appaltanti/imprese-appaltanti.component';
@@ -35,7 +34,6 @@ const routes: Routes = [
   { path: 'gare_elenco', component: ElencoGareComponent },
   { path: 'gare_nuovo', component: NuovaGaraComponent },
   { path: 'appalti', component: AppaltiAggiudicatiComponent },
-  { path: 'operai', component: OperaiComponent },
   { path: 'operai_elenco', component: ElencoOperaiComponent },
   { path: 'operai_form', component: NuovoOperaioComponent },
   { path: 'operai_form/:id', component: NuovoOperaioComponent },
