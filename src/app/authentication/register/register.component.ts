@@ -7,7 +7,11 @@ import {
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/shared/auth.service';
 import { Router } from '@angular/router';
-
+import { lista_utenti } from 'src/app/DB/utenti';
+import { v4 as uuidv4 } from 'uuid';
+import { User } from 'src/app/interfaces/user';
+import { Hash } from 'angular-feather/icons';
+import * as bcrypt from 'bcryptjs'
 @Component({
   selector: 'app-register.component',
   templateUrl: './register.component.html',
@@ -66,12 +70,13 @@ export class RegisterComponent {
   });
   //====== Local functions ======
   onSubmit() {
-    this.authService.signUp(this.registerForm.value).subscribe((res) => {
-      if (res.result) {
-        this.registerForm.reset();
-        this.router.navigate(['login']);
-      }
-    });
+
+    let newUser: User = {
+      ... this.register,
+      id: uuidv4()
+    }
+    lista_utenti.push(newUser)
+    this.router.navigate(['dashboard'])
   }
 
   //============== Form Getters =============
