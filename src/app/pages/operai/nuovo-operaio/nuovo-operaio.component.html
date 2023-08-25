@@ -1,4 +1,5 @@
 <!-- NUOVO FORM  -->
+<app-full>
 <mat-card class="w-100">
   <form
     #operai_form="ngForm"
@@ -94,31 +95,98 @@
             Campo obbligatorio!
           </div>
         </div>
-      </div>
-      <hr />
-      <!-- Seconda parte del Form -->
-      <div class="row row_2 my-4">
-        <div class="col-sm-12 col-md-6">
-          <h6>Date Scadenze T. Determinato</h6>
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <button
-            mat-raised-button
-            class="m-1 p-3"
-            type="button"
-            color="primary"
-            (click)="editScadenza('add')"
+        <div *ngIf="form.contratto !== 'Indeterminato'">
+          <div
+            *ngFor="let s of scadenze; let i = index"
+            class="container row m-1"
           >
-            + Aggiungi scadenza
+            <p class="col-md-3 p-1 mx-2">{{ i + 1 }}° Scadenza</p>
+            <input
+              *ngIf="form.scadenze_contratto"
+              class="form-control col-md-6 col-sm-12"
+              [(ngModel)]="form.scadenze_contratto[i]"
+              name="form.scadenze"
+              type="date"
+            />
+          </div>
+        </div>
+        <h3
+          *ngIf="form.contratto === 'Indeterminato'"
+          class="mx-auto text-center"
+        >
+          Scadenza non prevista
+        </h3>
+        <hr />
+        <!-- Terza parte del form -->
+        <div class="row row_3 mb-4">
+          <div class="col-sm-12 col-md-6">
+            <h5 from="nome">Qualifica</h5>
+            <input
+              type="text"
+              id="qualifica"
+              name="qualifica"
+              [(ngModel)]="form.qualifica"
+              class="form-control mb-3 requiredForm"
+              placeholder="Qualifica"
+              [ngClass]="[form.qualifica !== '' ? 'is-valid' : 'is-invalid']"
+            />
+            <div *ngIf="form.qualifica == ''" class="invalid-feedback">
+              Campo obbligatorio!
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <h5 for="data_assicurazione">Visita Medica</h5>
+            <input
+              id="visita_medica"
+              [(ngModel)]="form.visita_medica"
+              class="form-control requiredForm"
+              [ngClass]="[form.visita_medica ? 'is-valid' : 'is-invalid']"
+              type="date"
+              name="Assicurazione"
+            />
+            <div *ngIf="!form.visita_medica" class="invalid-feedback">
+              Campo obbligatorio!
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!-- Quarta parte del form -->
+        <div class="row row_4">
+          <div class="container col-12 m-4"></div>
+          <h5 for="floatingTextarea2">Note</h5>
+          <div class="m-4 col-12">
+            <textarea
+              class="form-control"
+              name="note"
+              [(ngModel)]="form.note"
+              value="form.note"
+              style="height: 100px"
+            ></textarea>
+          </div>
+          <hr class="mx-4" />
+        </div>
+        <hr />
+        <!-- Submit Button -->
+        <div class="row mb-4">
+          <button
+            *ngIf="user"
+            mat-raised-button
+            class="w-75 m-auto"
+            type="submit"
+            color="primary"
+            [disabled]="formValid"
+          >
+            Salva Modifiche
           </button>
           <button
+            *ngIf="!user"
             mat-raised-button
-            type="button"
-            class="m-1 p-3"
-            color="warn"
-            (click)="editScadenza('delete')"
+            class="w-75 m-auto"
+            type="submit"
+            color="primary"
+            [disabled]="formValid"
           >
-            - Elimina Scadenza
+            Crea nuovo operaio
           </button>
         </div>
       </div>
@@ -212,3 +280,4 @@
     </div>
   </form>
 </mat-card>
+</app-full>

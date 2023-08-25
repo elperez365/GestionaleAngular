@@ -1,25 +1,35 @@
-<mat-card>
-  <mat-card-header class="p-20 d-flex justify-content-between">
-    <mat-card-title>Dettaglio</mat-card-title>
-    <button [routerLink]="  modifyProductRoute()       " mat-flat-button color="primary">
-      Modifica
-    </button>
-  </mat-card-header>
-  <mat-divider> </mat-divider>
-  <mat-card-content class="p-20 bg-light">
-    <div class="dettaglioContainer">
-      <mat-card
-        class="dettaglioSingolo rounded"
-        *ngFor="let entries of entriesProduct"
+<app-full>
+  <mat-card>
+    <mat-card-header class="p-20 d-flex justify-content-between">
+      <mat-card-title>Dettaglio</mat-card-title>
+      <button
+        [routerLink]="modifyProductRoute()"
+        mat-flat-button
+        color="primary"
       >
-        <h6 class="w-100 h-50 d-flex justify-content-center align-items-center">
-          <span>{{ entries[0] }}</span>
-        </h6>
+        Modifica
+      </button>
+    </mat-card-header>
+    <mat-divider> </mat-divider>
+    <mat-card-content class="p-20 bg-light">
+      <div class="dettaglioContainer">
+        <mat-card
+          class="dettaglioSingolo rounded"
+          *ngFor="let entries of entriesProduct"
+        >
+          <h6
+            class="w-100 h-50 d-flex justify-content-center align-items-center"
+          >
+            <span>{{ entries[0] }}</span>
+          </h6>
 
-        <p class="w-100 h-50 d-flex justify-content-center align-items-center">
-          <span>{{ entries[1] }}</span>
-        </p>
-      </mat-card>
-    </div>
-  </mat-card-content>
-</mat-card>
+          <p
+            class="w-100 h-50 d-flex justify-content-center align-items-center"
+          >
+            <span>{{ entries[1] }}</span>
+          </p>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</app-full>

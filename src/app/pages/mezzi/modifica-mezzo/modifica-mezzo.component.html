@@ -1,156 +1,172 @@
-<mat-card class="cardWithShadow theme-card">
-  <mat-card-header>
-    <mat-card-title class="m-b-0">Modifica mezzo</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="b-t-1">
-    <form
-      class="formNuovoMezzo"
-      [formGroup]="modificaMezzoForm"
-      (submit)="onSubmit($event)"
-    >
-      <!-- input tipo veicolo-->
-      <div class="INtipoVeicolo">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Tipo veicolo</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <input
-            [(ngModel)]="product.tipo_veicolo"
-            formControlName="tipoVeicolo"
-            matInput
-          />
-        </mat-form-field>
-      </div>
-      <!-- input targa-->
-      <div class="INtargaVeicolo">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Targa</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <input [(ngModel)]="product.targa" formControlName="targa" matInput />
-        </mat-form-field>
-      </div>
-      <!-- input anno revisione-->
-      <div class="INannoRevisione">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Anno revisione</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <input
-            [(ngModel)]="product.anno_revisione"
-            matInput
-            formControlName="annoRevisione"
-          />
-        </mat-form-field>
-      </div>
-
-      <!-- input mese revisione-->
-      <div class="INmeseRevisione">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Mese revisione</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-select [(value)]="selectedMese" formControlName="meseRevisione">
-            <mat-option [value]="option.value" *ngFor="let option of mesi">{{
-              option.viewValue
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <!-- input Note-->
-      <div class="INnoteVeicolo">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Note</mat-label>
-        <mat-form-field appearance="outline" class="w-100" color="primary">
-          <textarea
-            [(ngModel)]="product.note"
-            formControlName="note"
-            matInput
-            rows="5"
-          ></textarea>
-        </mat-form-field>
-      </div>
-
-      <!-- input tipo patente-->
-      <div class="INtipoPatente">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Tipo patente</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-select formControlName="tipoPatente" [(value)]="selectedPatente">
-            <mat-option [value]="option.value" *ngFor="let option of patenti">{{
-              option.viewValue
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <!-- input assicurazione-->
-      <div class="INassicurazione">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Assicurzione</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <input
-            [(ngModel)]="product.assicurazione"
-            formControlName="assicurazione"
-            matInput
-          />
-        </mat-form-field>
-      </div>
-
-      <!-- input scadenza assicurazione-->
-      <div class="INscadenzaAssicurazione">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Scadenza assicurzione</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Choose a date</mat-label>
-          <input
-            [(ngModel)]="scadenzaAssDate"
-            formControlName="scadenzaAssicurazione"
-            matInput
-            [matDatepicker]="picker3"
-          />
-
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker3"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker3></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <!-- input scadenza bollo-->
-      <div class="INscadenzaBollo">
-        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-          >Scadenza bollo</mat-label
-        >
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Choose a date</mat-label>
-          <input
-            [(ngModel)]="scadenzaBoloDate"
-            formControlName="scadenzaBollo"
-            matInput
-            [matDatepicker]="picker4"
-          />
-
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker4"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker4></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <button
-        class="BTsubNewMezzo"
-        mat-flat-button
-        color="primary"
-        type="submit"
+<app-full>
+  <mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Modifica mezzo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <form
+        class="formNuovoMezzo"
+        [formGroup]="modificaMezzoForm"
+        (submit)="onSubmit($event)"
       >
-        Invia Modifica
-      </button>
-    </form>
-  </mat-card-content>
-</mat-card>
+        <!-- input tipo veicolo-->
+        <div class="INtipoVeicolo">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Tipo veicolo</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              [(ngModel)]="product.tipo_veicolo"
+              formControlName="tipoVeicolo"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <!-- input targa-->
+        <div class="INtargaVeicolo">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Targa</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              [(ngModel)]="product.targa"
+              formControlName="targa"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <!-- input anno revisione-->
+        <div class="INannoRevisione">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Anno revisione</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              [(ngModel)]="product.anno_revisione"
+              matInput
+              formControlName="annoRevisione"
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- input mese revisione-->
+        <div class="INmeseRevisione">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Mese revisione</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select
+              [(value)]="selectedMese"
+              formControlName="meseRevisione"
+            >
+              <mat-option [value]="option.value" *ngFor="let option of mesi">{{
+                option.viewValue
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- input Note-->
+        <div class="INnoteVeicolo">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Note</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <textarea
+              [(ngModel)]="product.note"
+              formControlName="note"
+              matInput
+              rows="5"
+            ></textarea>
+          </mat-form-field>
+        </div>
+
+        <!-- input tipo patente-->
+        <div class="INtipoPatente">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Tipo patente</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select
+              formControlName="tipoPatente"
+              [(value)]="selectedPatente"
+            >
+              <mat-option
+                [value]="option.value"
+                *ngFor="let option of patenti"
+                >{{ option.viewValue }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- input assicurazione-->
+        <div class="INassicurazione">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Assicurzione</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              [(ngModel)]="product.assicurazione"
+              formControlName="assicurazione"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- input scadenza assicurazione-->
+        <div class="INscadenzaAssicurazione">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Scadenza assicurzione</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Choose a date</mat-label>
+            <input
+              [(ngModel)]="scadenzaAssDate"
+              formControlName="scadenzaAssicurazione"
+              matInput
+              [matDatepicker]="picker3"
+            />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker3"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- input scadenza bollo-->
+        <div class="INscadenzaBollo">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Scadenza bollo</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Choose a date</mat-label>
+            <input
+              [(ngModel)]="scadenzaBoloDate"
+              formControlName="scadenzaBollo"
+              matInput
+              [matDatepicker]="picker4"
+            />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker4"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <button
+          class="BTsubNewMezzo"
+          mat-flat-button
+          color="primary"
+          type="submit"
+        >
+          Invia Modifica
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</app-full>

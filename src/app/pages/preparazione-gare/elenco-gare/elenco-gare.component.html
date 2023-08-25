@@ -1,11 +1,13 @@
-<div class="d-flex align-items-center justify-content-between">
-  <h1>Elenco Gare</h1>
-  <button mat-raised-button color="primary" routerLink="/gare_nuovo">
-    Nuova Gara
-  </button>
-</div>
-<app-DynamicTable
-  [DynTableHeaders]="gareTableHeaders"
-  [DynTableBody]="gare"
-  [DynTableArgument]="gara"
-></app-DynamicTable>
+<app-full>
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>Elenco Gare</h1>
+    <button mat-raised-button color="primary" routerLink="/gare_nuovo">
+      Nuova Gara
+    </button>
+  </div>
+  <app-DynamicTable
+    [DynTableHeaders]="gareTableHeaders"
+    [DynTableBody]="gare"
+    [DynTableArgument]="gara"
+  ></app-DynamicTable>
+</app-full>

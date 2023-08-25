@@ -1,43 +1,82 @@
-<mat-card class="cardWithShadow theme-card">
+<app-full>
+  <mat-card class="cardWithShadow theme-card">
     <mat-card-header>
       <mat-card-title class="m-b-0">Nuova Impresa appaltante</mat-card-title>
     </mat-card-header>
     <mat-card-content class="b-t-1">
-    <form class=formNewImpresa [formGroup]="stazioneForm" (submit)="onSubmit($event)" >
-    <!-- input nome impresa-->
-    <div class="Nimpresa"><mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Nome impresa</mat-label>
-      <mat-form-field appearance="outline" class="w-100">
-        <input [(ngModel)]="product.nome" formControlName="nome" matInput />
-      </mat-form-field></div>
-    
-    <!-- input contatto principale-->
-    <div class="Ncontact">
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Nome contatto principale</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <input [(ngModel)]="product.nomeContatto" formControlName="nomeContatto" matInput />
-    </mat-form-field>
-  </div>
+      <form
+        class="formNewImpresa"
+        [formGroup]="stazioneForm"
+        (submit)="onSubmit($event)"
+      >
+        <!-- input nome impresa-->
+        <div class="Nimpresa">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Nome impresa</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input [(ngModel)]="product.nome" formControlName="nome" matInput />
+          </mat-form-field>
+        </div>
 
-    <!-- input telefono contatto principale-->
-    <div class="Tcontact">
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"> Telefono conatto principale</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <input [(ngModel)]="product.contatto_Principale" formControlName="contattoPrincipale" matInput />
-    </mat-form-field>
-  </div>
+        <!-- input contatto principale-->
+        <div class="Ncontact">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Nome contatto principale</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              [(ngModel)]="product.nomeContatto"
+              formControlName="nomeContatto"
+              matInput
+            />
+          </mat-form-field>
+        </div>
 
-    <!-- input email-->
-    <div class="Cemail">
-    <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">Email</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <input [(ngModel)]="product.email" type="email" formControlName="email" matInput />
-    </mat-form-field>
-  </div>
+        <!-- input telefono contatto principale-->
+        <div class="Tcontact">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block">
+            Telefono conatto principale</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              [(ngModel)]="product.contatto_Principale"
+              formControlName="contattoPrincipale"
+              matInput
+            />
+          </mat-form-field>
+        </div>
 
-    <!-- to-do  -->
-    <app-to-do [todoMod]="product.altriContatti" class="OTHcontacts"></app-to-do>
+        <!-- input email-->
+        <div class="Cemail">
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Email</mat-label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              [(ngModel)]="product.email"
+              type="email"
+              formControlName="email"
+              matInput
+            />
+          </mat-form-field>
+        </div>
 
-    <button class="BTsubNewImpresa" mat-flat-button color="primary" type="submit">Submit</button>
+        <!-- to-do  -->
+        <app-to-do
+          [todoMod]="product.altriContatti"
+          class="OTHcontacts"
+        ></app-to-do>
 
-    </form>
+        <button
+          class="BTsubNewImpresa"
+          mat-flat-button
+          color="primary"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
     </mat-card-content>
+  </mat-card>
+</app-full>
