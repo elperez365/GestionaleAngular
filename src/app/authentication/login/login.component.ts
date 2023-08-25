@@ -8,7 +8,6 @@ import {
 import { AuthService } from 'src/app/services/shared/auth.service';
 import { Router } from '@angular/router';
 import { lista_utenti } from 'src/app/DB/utenti';
-import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-login.component',
