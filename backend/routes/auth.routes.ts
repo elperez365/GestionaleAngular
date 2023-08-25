@@ -78,7 +78,7 @@ router.post("/signin", (req: any, res: any, next:any) => {
           message: "Authentication failed",
         });
       }
-      let jwtToken = JWT.sign(
+      let jwtToken = Jwt.sign(
         {
           email: getUser.email,
           userId: getUser._id,
