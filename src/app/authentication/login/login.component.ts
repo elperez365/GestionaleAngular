@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
   //====== Locla functions ======
   onSubmit() {
     this.authService.signIn(this.loginForm.value)
-    this.router.navigateByUrl('dashboard');
   }
 
   get email() {
