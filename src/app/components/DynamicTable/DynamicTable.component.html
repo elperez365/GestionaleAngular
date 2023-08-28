@@ -55,7 +55,7 @@
             <button
               mat-mini-fab
               class="rounded-circle text-accent"
-              [routerLink]="modifyElement(item.id)"
+              (click)="goToDetails(item.id)"
               [ngClass]="'text-accent bg-light-accent'"
             >
               <mat-icon>person_outline</mat-icon>
