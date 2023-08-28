@@ -69,6 +69,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { TastoBackComponent } from './components/tasto-back/tasto-back.component';
 import { AuthInterceptor } from './services/shared/authconfig.interceptor';
+import { ProductComponent } from './components/pagina-dettaglio/product/product.component';
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -110,7 +111,8 @@ export function HttpLoaderFactory(http: HttpClient): any {
     ModificaImpresaComponent,
     LoginComponent,
     RegisterComponent,
-    TastoBackComponent
+    TastoBackComponent,
+    ProductComponent
   ],
   exports: [],
   bootstrap: [AppComponent],
