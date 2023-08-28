@@ -217,7 +217,7 @@ export class DynamicTableComponent implements OnInit {
     return routeDetails;
   }
   modifyElement(id: string) {
-    const routeDetails = '/modifica_mezzi/' + this.DynTableArgument + '/' + id;
+    const routeDetails = "/modifica_"+ this.DynTableArgument + "/" + this.DynTableArgument + '/' + id;
     return routeDetails;
   }
 }
