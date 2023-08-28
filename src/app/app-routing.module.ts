@@ -117,7 +117,7 @@ const routes: Routes = [
   },
   {
     path: 'impreseAppaltanti_form',
-    component: NuovaImpresaComponent,
+    component: ModificaImpresaComponent,
     canActivate: [AuthGuard],
   },
   {

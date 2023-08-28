@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lista_mezzi } from 'src/app/DB/Mezzi_DB';
-
+import * as uuid from 'uuid';
 @Component({
   selector: 'app-modifica-mezzo',
   templateUrl: './modifica-mezzo.component.html',
@@ -10,7 +10,15 @@ import { lista_mezzi } from 'src/app/DB/Mezzi_DB';
 })
 export class ModificaMezzoComponent {
   idProduct = this.route.snapshot.paramMap.get('id');
-  product = lista_mezzi!.find((el) => this.idProduct === el.id)!;
+  product = this.route.snapshot.paramMap.get('id')? lista_mezzi!.find((el) => this.idProduct === el.id)!: {id: "",
+  tipo_veicolo: '',
+  anno_revisione: '',
+  targa: '',
+  mese_revisione: '',
+  tipo_patente: '',
+  assicurazione:'',
+  scadenza_assicurazione: '',
+  scadenza_bollo: '',};
   selectedMese: String = this.product.mese_revisione.toLowerCase();
   selectedPatente: String = this.product.tipo_patente.toLowerCase();
   scadenzaBoloDate = new Date(this.product.scadenza_bollo);
@@ -116,6 +124,7 @@ export class ModificaMezzoComponent {
   // }
 
   onSubmit(event: any) {
+    if (this.idProduct){
     let indexProduct = lista_mezzi!.findIndex(
       (el) => this.idProduct === el.id
     )!;
@@ -137,5 +146,23 @@ export class ModificaMezzoComponent {
 
     alert('modifica avvenuta con successo');
     this.router.navigateByUrl('mezzi_elenco');
+  }else if (this.modificaMezzoForm.status === 'VALID') {
+    lista_mezzi.push({
+      id: uuid.v4(),
+      tipo_veicolo: this.modificaMezzoForm.value.tipoVeicolo,
+      anno_revisione: this.modificaMezzoForm.value.annoRevisione,
+      targa: this.modificaMezzoForm.value.targa,
+      mese_revisione: this.modificaMezzoForm.value.meseRevisione,
+      tipo_patente: this.modificaMezzoForm.value.tipoPatente.toUpperCase(),
+      assicurazione: this.modificaMezzoForm.value.assicurazione,
+      scadenza_assicurazione:
+        this.modificaMezzoForm.value.scadenzaAssicurazione.toDateString(),
+      scadenza_bollo: this.modificaMezzoForm.value.scadenzaBollo.toDateString(),
+    });
+
+    alert('Mezzo inserito con successo');
+    this.modificaMezzoForm.reset();
+    this.router.navigateByUrl('mezzi_elenco');
+  } else alert('Operazione non eseguita,controlla i dati inseriti');
   }
 }

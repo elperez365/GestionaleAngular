@@ -32,6 +32,7 @@ export class ModificaImpresaComponent {
   }
 
   onSubmit(event: any) {
+    if (this.idProduct){
     let indexProduct = impreseAppaltanti!.findIndex(
       (el) => this.idProduct === el.id
     )!;
@@ -48,5 +49,18 @@ export class ModificaImpresaComponent {
     impreseAppaltanti[indexProduct].email = this.stazioneForm.value.email;
     alert('Modifica effettuata con successo');
     this.router.navigateByUrl('imprese_elenco');
+      }else if (this.stazioneForm.status === 'VALID') {
+        impreseAppaltanti.push({
+          ...this.stazioneForm.value,
+          contatto_Principale: this.stazioneForm.value.contattoPrincipale,
+          id: uuid.v4(),
+          value: this.stazioneForm.value.nome,
+          viewValue: this.stazioneForm.value.nome.toUpperCase(),
+          altriContatti: [...this.todos],
+        });
+        alert('impresa appaltante inserita con successo');
+        this.stazioneForm.reset();
+        this.router.navigateByUrl('imprese_elenco');
+      } else alert('Operazione non eseguita,controlla i dati inseriti');
   }
 }
