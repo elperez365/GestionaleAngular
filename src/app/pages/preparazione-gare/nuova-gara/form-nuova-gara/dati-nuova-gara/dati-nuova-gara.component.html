@@ -75,7 +75,7 @@
       <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Scadenza</mat-label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="picker2" [(ngModel)]="scadenza" />
+        <input matInput type="date" [matDatepicker]="picker2" [(ngModel)]="scadenza" />
         <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
         <mat-datepicker-toggle
           matIconSuffix
@@ -101,29 +101,20 @@
       <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Apertura</mat-label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="apertura" />
+        <input type="datetime-local" matInput [matDatepicker]="picker" [(ngModel)]="apertura" />
         <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker #picker>ffff</mat-datepicker>
       </mat-form-field>
     </div>
 
     <!-- input oraApertura -->
     <div class="INAPapertura">
       <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Ora apertura</mat-label>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="apertura" />
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <input  type="datetime-local" />
     </div>
 
     <!-- input Criterio Aggiudicazione -->
