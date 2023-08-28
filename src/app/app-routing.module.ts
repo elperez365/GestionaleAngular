@@ -32,16 +32,19 @@ const routes: Routes = [
 
 
   // ===== Private Pages, JWT required =============
+     // ===== Home page =============
   {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
+      // ===== Calendar page =============
   {
     path: 'calendario',
     component: CalendarComponent,
     canActivate: [AuthGuard],
   },
+      // ===== Gare page =============
   {
     path: 'gare',
     component: PreparazioneGareComponent,
@@ -53,15 +56,22 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'gare_nuovo',
+    path: 'gara_form',
+    component: NuovaGaraComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'gara_form/:id',
     component: ModificaGaraComponent,
     canActivate: [AuthGuard],
   },
+      // ===== Appalti page =============
   {
     path: 'appalti',
     component: AppaltiAggiudicatiComponent,
     canActivate: [AuthGuard],
   },
+      // ===== Operai page =============
   {
     path: 'operai_elenco',
     component: ElencoOperaiComponent,
@@ -74,9 +84,11 @@ const routes: Routes = [
   },
   {
     path: 'operai_form/:id',
-    component: NuovoOperaioComponent,
+    component: ModificaOperaioComponent,
     canActivate: [AuthGuard],
   },
+
+      // ===== ;Mezzi page =============
   {
     path: 'mezzi_elenco',
     component: ElencoMezziComponent,
@@ -88,13 +100,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'imprese',
-    component: ImpreseAppaltantiComponent,
+    path: 'mezzi_form/:id',
+    component: ModificaMezzoComponent,
     canActivate: [AuthGuard],
   },
+      // ===== Imprese page =============
   {
-    path: 'imprese_nuovo',
-    component: ModificaImpresaComponent,
+    path: 'imprese',
+    component: ImpreseAppaltantiComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -103,38 +116,31 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'impreseAppaltanti_form',
+    component: NuovaImpresaComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'impreseAppaltanti_form/:id',
+    component: ModificaImpresaComponent,
+    canActivate: [AuthGuard],
+  },
+        // ===== Impostazioni page  =============
+  {
     path: 'impostazioni',
     component: ImpostazioniComponent,
     canActivate: [AuthGuard],
   },
+      // ===== Pagine condivise  =============
   {
     path: 'dettaglio/:cat/:id',
     component: PaginaDettaglioComponent,
     canActivate: [AuthGuard],
   },
-  {
-    path: 'modifica_impreseAppaltanti/:cat/:id',
-    component: ModificaImpresaComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'modifica_mezzi/:cat/:id',
-    component: ModificaMezzoComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'modifica_operai/:cat/:id',
-    component: ModificaOperaioComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'modifica_gara/:cat/:id',
-    component: ModificaGaraComponent,
-    canActivate: [AuthGuard],
-  },
+
   // ================ 404 Page =================
-  { path: '404', component: AppErrorComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '404' },
+  // { path: '404', component: AppErrorComponent},
+  // { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

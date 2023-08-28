@@ -216,8 +216,9 @@ export class DynamicTableComponent implements OnInit {
     const routeDetails = '/dettaglio/' + this.DynTableArgument + '/' + id;
     return routeDetails;
   }
-  modifyElement(id: string) {
-    const routeDetails = "/modifica_"+ this.DynTableArgument + "/" + this.DynTableArgument + '/' + id;
-    return routeDetails;
+
+  goToDetails(id: string) {
+    console.log(this.DynTableArgument)
+    this.router.navigate([`${this.DynTableArgument}_form/${id}`])
   }
 }
