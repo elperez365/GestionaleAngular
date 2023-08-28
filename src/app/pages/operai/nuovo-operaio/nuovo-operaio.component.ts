@@ -18,7 +18,20 @@ export class NuovoOperaioComponent implements OnInit{
   contratti: string[] = ['Indeterminato', 'Determinato', 'Stage', 'Apprendistato'];             //Usata per select input 'Tipi di contratto'
   mansioni: string[] = ['Edile', 'Medico', 'Industriale', 'Elettronico'];
   scadenze: Date[] = [new Date(Date.now())];                       //Usata solo per renderizzare 2 componenti
-  form: Operaio;
+  form: Operaio = {
+    id: uuidv4(),
+    nome: '',
+    contratto: '',
+    mansione: '',
+    agevolazione:'',
+    assicurazione: '',
+    scadenze_contratto: [ 
+      ...this.scadenze
+    ],
+    qualifica: '',
+    visita_medica: '',
+    note: ''
+  } ;
   id = this.route.snapshot.paramMap.get('id');        
   user = lista_operai.find(u => u.id === this.id);
   //Local variables
@@ -29,32 +42,14 @@ export class NuovoOperaioComponent implements OnInit{
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {
+  ) {  }
+  //=============== Angular Hooks ==================
+  ngOnInit() :void {
     if(this.user) {
       this.form = { 
         ...this.user,
       }
     }
-    else {
-      this.form = {
-        id: uuidv4(),
-        nome: '',
-        contratto: '',
-        mansione: '',
-        agevolazione:'',
-        assicurazione: '',
-        scadenze_contratto: [ 
-          ...this.scadenze
-        ],
-        qualifica: '',
-        visita_medica: '',
-        note: ''
-      } 
-    }
-  }
-  //=============== Angular Hooks ==================
-  ngOnInit() :void {
-
     this.operaiForm = this.formBuilder.group({
       nome: new FormControl([
         this.form.nome,
