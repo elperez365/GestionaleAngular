@@ -1,8 +1,11 @@
-export interface ImpreseAppaltanti {
-  id: string,
-  nome: string,
-  nome_contatto: string,
-  telefono: number,
-  email: string
-  contatti: string[]
+
+export type ImpreseAppaltanti = {
+    id: string | null,
+    nome: string,
+    contatto_Principale: string,
+    nomeContatto: string,
+    email: string,
+    value: string,
+    viewValue: string,
+    altriContatti: any,
 }

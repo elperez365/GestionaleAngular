@@ -54,7 +54,7 @@ const routes: Routes = [
   },
   {
     path: 'gare_nuovo',
-    component: NuovaGaraComponent,
+    component: ModificaGaraComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -84,7 +84,7 @@ const routes: Routes = [
   },
   {
     path: 'mezzi_nuovo',
-    component: NuovoMezzoComponent,
+    component: ModificaMezzoComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -94,7 +94,7 @@ const routes: Routes = [
   },
   {
     path: 'imprese_nuovo',
-    component: NuovaImpresaComponent,
+    component: ModificaImpresaComponent,
     canActivate: [AuthGuard],
   },
   {

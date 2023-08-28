@@ -1,4 +1,6 @@
-export const impreseAppaltanti = [
+import { ImpreseAppaltanti } from "../interfaces/imprese_appaltanti";
+
+export const impreseAppaltanti  = [
   {
     id: '1',
     nome: 'ROMA CAPITALE MUNICIPIO XIII',
