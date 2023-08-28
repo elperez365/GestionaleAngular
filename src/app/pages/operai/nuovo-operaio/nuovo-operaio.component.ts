@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Operaio } from 'src/app/interfaces/operai';
 import { lista_operai } from 'src/app/DB/Operai_DB';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-nuovo-operaio',
@@ -18,34 +18,36 @@ export class NuovoOperaioComponent implements OnInit{
   mansioni: string[] = ['Edile', 'Medico', 'Industriale', 'Elettronico'];
   scadenze: Date[] = [new Date(Date.now())];                       //Usata solo per renderizzare 2 componenti
   formValid:boolean = true;
-
-
+  id = this.route.snapshot.paramMap.get('id');        
+  user:any;
   //Local variables
-  user: Operaio | undefined; 
-
   form: Operaio = {
-    id: String(Math.trunc(Math.random() * 999999)),
-    nome: '',
-    contratto: '',
-    mansione: '',
-    agevolazione:'',
-    assicurazione: undefined,
-    scadenze_contratto: [ 
-      ...this.scadenze
-    ],
-    qualifica: '',
-    visita_medica: undefined,
-    note: ''
-  } 
+      id: uuidv4(),
+      nome: '',
+      contratto: '',
+      mansione: '',
+      agevolazione:'',
+      assicurazione: undefined,
+      scadenze_contratto: [ 
+        ...this.scadenze
+      ],
+      qualifica: '',
+      visita_medica: undefined,
+      note: ''
+    } 
 
-  id = this.route.snapshot.paramMap.get('id')
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
   //=============== Angular Hooks ==================
-  ngOnInit() :void { }
+  ngOnInit() :void {
+    if(this.id) {
+      this.user = lista_operai!.find((u) => this.id === u.id)!;
+      this.form = { ...this.user}
+    }
+  }
   // ============= Form controller ==================
   operaiForm = this.formBuilder.group({
     nome: new FormControl([

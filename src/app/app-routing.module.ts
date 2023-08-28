@@ -65,6 +65,10 @@ const routes: Routes = [
     component: ModificaGaraComponent,
     canActivate: [AuthGuard],
   },
+  // {
+  //   path: 'dettaglio/:cat/:id',
+  //   component: DettaglioComponent
+  // },
       // ===== Appalti page =============
   {
     path: 'appalti',
@@ -84,7 +88,7 @@ const routes: Routes = [
   },
   {
     path: 'operai_form/:id',
-    component: ModificaOperaioComponent,
+    component: NuovoOperaioComponent,
     canActivate: [AuthGuard],
   },
 
