@@ -36,7 +36,7 @@ import { AppaltiAggiudicatiComponent } from './pages/appalti-aggiudicati/appalti
 
 import { ImpreseAppaltantiComponent } from './pages/imprese-appaltanti/imprese-appaltanti.component';
 import { ElencoGareComponent } from './pages/preparazione-gare/elenco-gare/elenco-gare.component';
-import { NuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/nuova-gara.component';
+
 import { NuovoOperaioComponent } from './pages/operai/nuovo-operaio/nuovo-operaio.component';
 import { ElencoOperaiComponent } from './pages/operai/elenco-operai/elenco-operai.component';
 import { NuovaImpresaComponent } from './pages/imprese-appaltanti/nuova-impresa/nuova-impresa.component';
@@ -49,7 +49,6 @@ import {
   CalendarDialogComponent,
 } from './pages/calendar/fullcalendar/fullcalendar.component';
 import { CalendarFormDialogComponent } from './pages/calendar/fullcalendar/calendar-form-dialog/calendar-form-dialog.component';
-import { FormNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/form-nuova-gara.component';
 import { CategorieComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/categorie/categorie.component';
 import { DatiNuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/dati-nuova-gara/dati-nuova-gara.component';
 import { RibassiComponent } from './pages/preparazione-gare/nuova-gara/form-nuova-gara/ribassi/ribassi.component';
@@ -63,7 +62,7 @@ import { PaginaDettaglioComponent } from './components/pagina-dettaglio/pagina-d
 import { AppErrorComponent } from './components/error/error.component';
 import { ModificaMezzoComponent } from './pages/mezzi/modifica-mezzo/modifica-mezzo.component';
 import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifica-operaio.component';
-import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
+import { ModificaGaraComponent } from './pages/preparazione-gare/nuova-modifica-gara/modifica-gara.component';
 import { ModificaImpresaComponent } from './pages/imprese-appaltanti/modifica-impresa/modifica-impresa.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
@@ -85,7 +84,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
     AppaltiAggiudicatiComponent,
     ImpreseAppaltantiComponent,
     ElencoGareComponent,
-    NuovaGaraComponent,
     NuovoOperaioComponent,
     ElencoOperaiComponent,
     NuovaImpresaComponent,
@@ -94,7 +92,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
     CalendarDialogComponent,
     AppFullcalendarComponent,
     CalendarFormDialogComponent,
-    FormNuovaGaraComponent,
     CategorieComponent,
     DatiNuovaGaraComponent,
     RibassiComponent,

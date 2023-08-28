@@ -7,7 +7,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./categorie.component.scss'],
 })
 export class CategorieComponent {
-  @Input() product:ElencoGare
+  @Input() product:ElencoGare|undefined
   categories = [
     { value: 'OG1', viewValue: 'OG1' },
     { value: 'OG2', viewValue: 'OG2' },

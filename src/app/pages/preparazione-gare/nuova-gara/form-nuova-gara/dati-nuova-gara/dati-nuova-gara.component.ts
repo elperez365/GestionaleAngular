@@ -11,7 +11,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./dati-nuova-gara.component.scss'],
 })
 export class DatiNuovaGaraComponent {
-  @Input() product: ElencoGare;
+  @Input() product: ElencoGare|undefined;
   numero: string;
   selectedStazione: string;
   apertaRistretta: string;

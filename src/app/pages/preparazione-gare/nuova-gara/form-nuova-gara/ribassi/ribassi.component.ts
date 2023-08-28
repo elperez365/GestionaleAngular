@@ -11,7 +11,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./ribassi.component.scss'],
 })
 export class RibassiComponent {
-  @Input() product: ElencoGare;
+  @Input() product: ElencoGare|undefined;
   sidePanelOpened = true;
   public showSidebar = false;
   inputFg: UntypedFormGroup = Object.create(null);
@@ -46,7 +46,7 @@ export class RibassiComponent {
   }
 
   ngOnInit(): void {
-    if (this.product) {
+    if (this.product && this.product.categoria !== "") {
       this.todos = [{ message: this.product.ribasso, id: 0, edit: false }];
       this,
         (this.copyTodos = [

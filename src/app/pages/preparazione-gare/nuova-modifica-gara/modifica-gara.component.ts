@@ -11,7 +11,20 @@ import { NuovaGaraService } from 'src/app/services/nuova-gara.service';
 export class ModificaGaraComponent {
   inviata: boolean;
   idProduct = this.route.snapshot.paramMap.get('id');
-  product = Gare!.find((el) => this.idProduct === el.id)!;
+  product = this.route.snapshot.paramMap.get('id')? Gare!.find((el) => this.idProduct === el.id): {
+    id: '',
+    stazione_appaltante: '',
+    Procedura: '',
+    oggetto: '',
+    importo: '',
+    scadenza: '',
+    ora: '',
+    apertura: '',
+    criterio_aggiudicazione: '',
+    categoria: '',
+    inviata: '',
+    ribasso: "",
+  };
 
   constructor(
     public NuovaGara: NuovaGaraService,
@@ -52,7 +65,8 @@ export class ModificaGaraComponent {
       allFormDatas.apertura &&
       allFormDatas.criterio_aggiudicazione &&
       allFormDatas.categoria &&
-      allFormDatas.ribasso
+      allFormDatas.ribasso && 
+      this.idProduct
     ) {
       let indexProduct = Gare!.findIndex((el) => this.idProduct === el.id)!;
       Gare[indexProduct].id = allFormDatas.id;
@@ -69,8 +83,22 @@ export class ModificaGaraComponent {
       Gare[indexProduct].ribasso = allFormDatas.ribasso;
       alert('Modifica avvenuta con successo');
       this.router.navigateByUrl('gare_elenco');
-    } else {
-      alert('qualcosa non va, controlla i dati inseriti');
-    }
+    } else if (
+      allFormDatas.id &&
+      allFormDatas.stazione_appaltante &&
+      allFormDatas.Procedura &&
+      allFormDatas.oggetto &&
+      allFormDatas.importo &&
+      allFormDatas.scadenza &&
+      allFormDatas.ora &&
+      allFormDatas.apertura &&
+      allFormDatas.criterio_aggiudicazione &&
+      allFormDatas.categoria &&
+      allFormDatas.ribasso
+    ) {
+      Gare.push(allFormDatas);
+      alert('La nuova Gara è stata inserita');
+      this.router.navigateByUrl('gare_elenco');
+    } else alert('qualcosa non va, controlla i dati inseriti');
   }
 }

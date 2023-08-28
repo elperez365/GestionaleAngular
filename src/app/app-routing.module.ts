@@ -4,7 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { PreparazioneGareComponent } from './pages/preparazione-gare/preparazione-gare.component';
 import { ElencoGareComponent } from './pages/preparazione-gare/elenco-gare/elenco-gare.component';
-import { NuovaGaraComponent } from './pages/preparazione-gare/nuova-gara/nuova-gara.component';
+
 import { AppaltiAggiudicatiComponent } from './pages/appalti-aggiudicati/appalti-aggiudicati.component';
 import { ElencoOperaiComponent } from './pages/operai/elenco-operai/elenco-operai.component';
 import { NuovoOperaioComponent } from './pages/operai/nuovo-operaio/nuovo-operaio.component';
@@ -19,7 +19,7 @@ import { AppErrorComponent } from './components/error/error.component';
 import { ModificaImpresaComponent } from './pages/imprese-appaltanti/modifica-impresa/modifica-impresa.component';
 import { ModificaMezzoComponent } from './pages/mezzi/modifica-mezzo/modifica-mezzo.component';
 import { ModificaOperaioComponent } from './pages/operai/modifica-operaio/modifica-operaio.component';
-import { ModificaGaraComponent } from './pages/preparazione-gare/modifica-gara/modifica-gara.component';
+import { ModificaGaraComponent } from './pages/preparazione-gare/nuova-modifica-gara/modifica-gara.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { AuthGuard } from './services/shared/auth.guard';
@@ -57,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'gara_form',
-    component: NuovaGaraComponent,
+    component: ModificaGaraComponent,
     canActivate: [AuthGuard],
   },
   {
