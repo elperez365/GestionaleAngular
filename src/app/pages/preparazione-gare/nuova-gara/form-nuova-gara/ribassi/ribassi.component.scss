@@ -1,0 +1,15 @@
+.input-symbol-percent {
+  position: relative;
+}
+
+.input-symbol-percent input {
+  padding-left: 18px;
+}
+
+.input-symbol-percent:before {
+  position: absolute;
+  top: 16px;
+  content: "%";
+  left: 5px;
+  font-size: 20px;
+}
