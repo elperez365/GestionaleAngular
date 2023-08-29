@@ -10,116 +10,91 @@
       #operai_form="ngForm"
       class="needs-validation"
       [formGroup]="operaiForm"
-      (ngSubmit)="handleSubmit(operai_form)"
+      (ngSubmit)="onSubmit($event)"
     >
       <div class="container">
         <!-- Prima parte del Form -->
         <div class="row row_1">
           <div class="col-sm-12 col-md-6 mt-sm-4">
-            <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-            >Operaio*</mat-label
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Nome e Cognome * </mat-label
           >
+          <mat-form-field appearance="outline" class="w-100">
             <input
-              type="text"
-              id="nome"
-              name="nome"
               [(ngModel)]="form.nome"
-              class="form-control mb-3 requiredForm"
               formControlName="nome"
-              placeholder="Nome, Cognome"
-              [ngClass]="[form.nome !== '' ? 'is-valid' : 'is-invalid']"
-              required
+              matInput
             />
-            <div *ngIf="nome.errors && nome.touched" class="invalid-feedback">
-              Campo obbligatorio!
-            </div>
-            <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-w-600 mt-4 m-b-8 d-block"
             >Agevolazione</mat-label
           >
+          <mat-form-field appearance="outline" class="w-100">
             <input
               [(ngModel)]="form.agevolazione"
-              type="text"
-              id="agevolazione"
-              name="agevolazione"
-              class="form-control"
-              value="form.agevolazione"
-              placeholder="Agevolazione contributiva"
               formControlName="agevolazione"
+              matInput
             />
+          </mat-form-field>
           </div>
           <div class="col-sm-12 col-md-6 mt-sm-4">
             <div class="row mb-4">
               <div class="col-6">
-                <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                >Tipo di contratto*</mat-label
-              >
-                <select
-                  id="contratto"
-                  name="contratto"
-                  class="custom-select requiredForm"
-                  formControlName="contratto"
-                  [ngClass]="[
-                    form.contratto !== '' ? 'is-valid' : 'is-invalid'
-                  ]"
-                  [(ngModel)]="form.contratto"
-                  required
-                >
-                  <option *ngFor="let c of contratti" [ngValue]="c" selected>
-                    {{ c }}
-                  </option>
-                </select>
-                <div
-                  *ngIf="contratto.errors && contratto.touched"
-                  class="invalid-feedback"
-                >
-                  Campo obbligatorio!
+                <div class="INcontratto">
+                  <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+                    >Tipo di contratto *</mat-label
+                  >
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-select
+                      formControlName="contratto"
+                    >
+                      <mat-option
+                        [value]="option"
+                        *ngFor="let option of contratti"
+                        >{{ option }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
                 </div>
+        
               </div>
               <div class="col-6">
-                <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-                >Mansione* </mat-label
-              >
-                <select
-                  id="mansione"
-                  name="mansione"
-                  class="custom-select requiredForm"
-                  formControlName="mansione"
-                  [ngClass]="[form.mansione !== '' ? 'is-valid' : 'is-invalid']"
-                  [(ngModel)]="form.mansione"
-                  value="form.mansione"
-                  required
-                >
-                  <option *ngFor="let c of mansioni" [ngValue]="c" selected>
-                    {{ c }}
-                  </option>
-                </select>
-                <div
-                  *ngIf="mansione.errors && mansione.touched"
-                  class="invalid-feedback"
-                >
-                  Campo obbligatorio!
-                </div>
+                <div class="INcontratto">
+                  <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+                    >Mansione *</mat-label
+                  >
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-select
+                      formControlName="mansione"
+                    >
+                      <mat-option
+                        [value]="option"
+                        *ngFor="let option of mansioni"
+                        >{{ option }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>   
               </div>
             </div>
             <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-            >Data assicurzione*</mat-label
+            >Data assicurazione*</mat-label
           >
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Choose a date</mat-label>
             <input
-              id="data_assicurazione"
               [(ngModel)]="form.assicurazione"
-              class="form-control requiredForm"
-              [ngClass]="[form.assicurazione ? 'is-valid' : 'is-invalid']"
               formControlName="assicurazione"
-              type="date"
-              name="Assicurazione"
-              required
+              matInput
+              [matDatepicker]="picker4"
             />
-            <div
-              *ngIf="assicurazione.errors && assicurazione.touched"
-              class="invalid-feedback"
-            >
-              Campo obbligatorio!
-            </div>
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker4"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
+          </mat-form-field>
           </div>
         </div>
         <hr />
@@ -151,19 +126,24 @@
             </button>
           </div>
         </div>
-        <div *ngIf="form.contratto !== 'Indeterminato'">
+        <div formControlName="contratto" *ngIf="form.contratto !== 'Indeterminato'">
           <div
             *ngFor="let s of scadenze; let i = index"
             class="container row m-1"
           >
             <p class="col-md-3 p-1 mx-2">{{ i + 1 }}° Scadenza</p>
             <input
-              *ngIf="form.scadenze_contratto"
-              class="form-control col-md-6 col-sm-12"
-              [(ngModel)]="form.scadenze_contratto[i]"
-              name="form.scadenze"
-              type="date"
+              [(ngModel)]="form.scadenze_contratto"
+              formControlName="scadenze_contratto"
+              matInput
+              [matDatepicker]="picker4"
             />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker4"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
           </div>
         </div>
         <h3
@@ -176,47 +156,36 @@
         <!-- Terza parte del form -->
         <div class="row row_3 mb-4">
           <div class="col-sm-12 col-md-6">
-            <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-            >Qualifica</mat-label
+          <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+            >Qualifica *</mat-label
           >
+          <mat-form-field appearance="outline" class="w-100">
             <input
-              type="text"
-              id="qualifica"
-              name="qualifica"
               [(ngModel)]="form.qualifica"
-              class="form-control mb-3 requiredForm"
-              placeholder="Qualifica"
               formControlName="qualifica"
-              [ngClass]="[form.qualifica !== '' ? 'is-valid' : 'is-invalid']"
-              required
+              matInput
             />
-            <div
-              *ngIf="qualifica.errors && qualifica.touched"
-              class="invalid-feedback"
-            >
-              Campo obbligatorio!
-            </div>
+          </mat-form-field>
           </div>
           <div class="col-sm-12 col-md-6">
             <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
-            >Visita Medica</mat-label
+            >Visita Medica*</mat-label
           >
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Scegli una data</mat-label>
             <input
-              id="visita_medica"
               [(ngModel)]="form.visita_medica"
-              class="form-control requiredForm"
-              [ngClass]="[form.visita_medica ? 'is-valid' : 'is-invalid']"
-              type="date"
-              formControlName="visita_medica"
-              name="Assicurazione"
-              required
+              formControlName="scadenzaBollo"
+              matInput
+              [matDatepicker]="picker4"
             />
-            <div
-              *ngIf="visita_medica.errors && !visita_medica.pristine"
-              class="invalid-feedback"
-            >
-              Campo obbligatorio!
-            </div>
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker4"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
+          </mat-form-field>
           </div>
         </div>
         <hr />
@@ -243,7 +212,6 @@
             class="w-75 m-auto"
             type="submit"
             color="primary"
-            [disabled]="!operaiForm.valid"
           >
             Crea nuovo operaio
           </button>

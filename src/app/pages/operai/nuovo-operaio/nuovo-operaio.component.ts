@@ -1,139 +1,112 @@
-import { Component, OnInit, OnChanges} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Operaio } from 'src/app/interfaces/operai';
 import { lista_operai } from 'src/app/DB/Operai_DB';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
 import { v4 as uuidv4 } from 'uuid';
-
 
 @Component({
   selector: 'app-nuovo-operaio',
   templateUrl: './nuovo-operaio.component.html',
-  styleUrls: ['./nuovo-operaio.component.scss']
+  styleUrls: ['./nuovo-operaio.component.scss'],
 })
-
-
-export class NuovoOperaioComponent implements OnInit{
+export class NuovoOperaioComponent implements OnInit {
   //Variabili esclusive per rappresentazione HTML
-  contratti: string[] = ['Indeterminato', 'Determinato', 'Stage', 'Apprendistato'];             //Usata per select input 'Tipi di contratto'
+  contratti: string[] = [
+    'Indeterminato',
+    'Determinato',
+    'Stage',
+    'Apprendistato',
+  ]; //Usata per select input 'Tipi di contratto'
   mansioni: string[] = ['Edile', 'Medico', 'Industriale', 'Elettronico'];
-  scadenze: Date[] = [new Date(Date.now())];                       //Usata solo per renderizzare 2 componenti
+  scadenze: Date[] = [new Date(Date.now())]; //Usata solo per renderizzare 2 componenti
   form: Operaio = {
     id: uuidv4(),
     nome: '',
     contratto: '',
     mansione: '',
-    agevolazione:'',
+    agevolazione: '',
     assicurazione: '',
-    scadenze_contratto: [ 
-      ...this.scadenze
-    ],
+    scadenze_contratto: [...this.scadenze],
     qualifica: '',
     visita_medica: '',
-    note: ''
-  } ;
-  id = this.route.snapshot.paramMap.get('id');        
-  user = lista_operai.find(u => u.id === this.id);
+    note: '',
+  };
+  id = this.route.snapshot.paramMap.get('id');
+  user = lista_operai.find((u) => u.id === this.id);
   //Local variables
 
-  operaiForm:FormGroup;
+  operaiForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private router: Router
-  ) {  }
+  ) {}
   //=============== Angular Hooks ==================
-  ngOnInit() :void {
-    if(this.user) {
-      this.form = { 
+  ngOnInit(): void {
+    if (this.user) {
+      this.form = {
         ...this.user,
-      }
+      };
+    } else {
+      this.operaiForm = new FormGroup({
+        nome: new FormControl(this.form.nome, Validators.required),
+        contratto: new FormControl(this.form.contratto, Validators.required),
+        mansione: new FormControl(this.form.mansione, Validators.required),
+        agevolazione: new FormControl(
+          this.form.agevolazione,
+          Validators.required
+        ),
+        assicurazione: new FormControl(
+          this.form.assicurazione,
+          Validators.required
+        ),
+        scadenze_contratto: new FormControl(this.form.scadenze_contratto),
+        qualifica: new FormControl(this.form.qualifica, Validators.required),
+        visita_medica: new FormControl(
+          this.form.visita_medica,
+          Validators.required
+        ),
+        note: new FormControl(this.form.note),
+      });
     }
-    this.operaiForm = this.formBuilder.group({
-      nome: new FormControl([
-        this.form.nome,
-        {
-          validators: [Validators.required],
-        },
-      ]),
-      agevolazione: new FormControl([
-        this.form.agevolazione,
-        {
-        },
-      ]),
-      contratto: new FormControl([
-        this.form.contratto,
-        {
-          validators: [Validators.required],
-        },
-      ]),
-      mansione: new FormControl([
-        this.form.mansione,
-        {
-          validators: [Validators.required],
-        },
-      ]),
-      assicurazione: new FormControl([
-        this.form.assicurazione,
-        {
-          validators: [Validators.required],
-        },
-      ]),
-      qualifica: new FormControl([
-        this.form.qualifica,
-        {
-          validators: [Validators.required],
-        },
-      ]),
-      visita_medica: new FormControl([
-        this.form.visita_medica,
-        {
-          validators: [Validators.required],
-        },
-      ]),
-    });
   }
-  // ============= Form controller ==================
-
-
-  // ============= Form getters ==================
-  get nome() {
-    return this.operaiForm.controls['nome']
-  }
-  get contratto() {
-    return this.operaiForm.controls['contratto']
-  }
-  get mansione() {
-    return this.operaiForm.controls['mansione']
-  }
-  get assicurazione() {
-    return this.operaiForm.controls['assicurazione']
-  }
-  get qualifica() {
-    return this.operaiForm.controls['qualifica']
-  }
-  get visita_medica() {
-    return this.operaiForm.controls['visita_medica']
-  }
-    // ============= Local functions ==================
-  editScadenza(option: string):void {
-    switch(option) {
-      case 'add' :
-        this.scadenze.push(new Date())
+  // ============= Local functions ==================
+  editScadenza(option: string): void {
+    switch (option) {
+      case 'add':
+        this.scadenze.push(new Date());
         break;
-      case 'delete': 
-        if( this.scadenze.length > 1) {
-          this.scadenze.pop()
+      case 'delete':
+        if (this.scadenze.length > 1) {
+          this.scadenze.pop();
         }
         break;
     }
   }
 
-  handleSubmit(s: any) {
-    lista_operai.push(this.form)
-    this.router.navigateByUrl('operai_elenco')
-  } 
+  onSubmit(event: any) {
+    if (this.operaiForm.status === 'VALID') {
+      lista_operai.push({
+        id: this.form.id,
+        nome: this.operaiForm.value.nome,
+        contratto: this.operaiForm.value.contratto,
+        mansione: this.operaiForm.value.mansione,
+        agevolazione: this.operaiForm.value.agevolazione,
+        assicurazione: this.operaiForm.value.assicurazione,
+        scadenze_contratto: this.operaiForm.value.scadenze_contratto,
+        qualifica:
+          this.operaiForm.value.qualifica,
+          visita_medica: this.operaiForm.value.visita_medica.toDateString(),
+      });
+      this.operaiForm.reset();
+      this.router.navigateByUrl('operai_elenco');
+    } else alert('Operazione non eseguita,controlla i dati inseriti');
+  }
 }
-
-
