@@ -1,6 +1,6 @@
-import { ImpreseAppaltanti } from "../interfaces/imprese_appaltanti";
+import { ImpreseAppaltanti } from '../interfaces/imprese_appaltanti';
 
-export const impreseAppaltanti  = [
+export const impreseAppaltanti = [
   {
     id: '1',
     nome: 'ROMA CAPITALE MUNICIPIO XIII',
@@ -9,7 +9,10 @@ export const impreseAppaltanti  = [
     email: 'giacomo.g@g.it',
     value: 'ROMA CAPITALE MUNICIPIO XIII',
     viewValue: 'ROMA CAPITALE MUNICIPIO XIII',
-    altriContatti: [{ message: '09u8709787' }, { message: '0970970jbiijfiuw' }],
+    altriContatti: [
+      { message: 'giuseppe - 3332255999 - giuseppe.giu@gm.it' },
+      { message: 'giacomo - 3232155999 - giacomo@gm.it' },
+    ],
   },
   {
     id: '2',
