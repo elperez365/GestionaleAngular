@@ -1,5 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
 
@@ -16,18 +21,14 @@ export class ToDoComponent {
   todoId = 6;
   copyTodos: ToDo[];
   selectedCategory = 'all';
-  searchText: string | null = null;
   editSave = 'Edit';
-
+  isDisabled: Boolean = false;
   todos: ToDo[];
+  impreseForm: FormGroup;
   // = this.todoService.getTodos();
 
   constructor(public fb: UntypedFormBuilder, public todoService: TodoService) {
     this.copyTodos = this.todos;
-  }
-
-  isOver(): boolean {
-    return window.matchMedia(`(max-width: 960px)`).matches;
   }
 
   mobileSidebar(): void {
@@ -35,6 +36,11 @@ export class ToDoComponent {
   }
 
   ngOnInit(): void {
+    this.impreseForm = new FormGroup({
+      newName: new FormControl(''),
+      newTel: new FormControl(''),
+      newEmail: new FormControl(''),
+    });
     this.todoMod
       ? (this.todos = this.todoMod)
       : (this.todos = this.todoService.getTodos());
@@ -46,13 +52,30 @@ export class ToDoComponent {
     });
   }
 
-  addTodo(value: string): void {
-    if (this.inputFg?.get('mess')?.value.trim().length === 0) {
-      return;
-    }
+  ngDoCheck(): void {
+    console.log(this.impreseForm.value);
+    // this.isDisabled = () => {
+    //   const newName = this.inputFg.get('newName');
+    //   const newTel = this.inputFg.get('newTel');
+    //   const newMail = this.inputFg.get('newMail');
+    //   if (!newTel && !newName && !newMail) {
+    //     return false;
+    //   } else return true;
+    // };
+  }
+
+  addTodo(): void {
+    // if (this.inputFg?.get('mess')?.value.trim().length === 0) {
+    //   return;
+    // }
     this.todos.splice(0, 0, {
       id: this.todoId,
-      message: this.inputFg?.get('mess')?.value,
+      message:
+        this.impreseForm.value.newName +
+        ' - ' +
+        this.impreseForm.value.newTel +
+        ' - ' +
+        this.impreseForm.value.newEmail,
       completionStatus: false,
       edit: false,
       date: new Date(),
@@ -62,27 +85,6 @@ export class ToDoComponent {
     this.inputFg.patchValue({
       mess: '',
     });
-  }
-
-  allTodos(): void {
-    // tslint:disable-next-line - Disables all
-    this.todos.forEach(
-      (todo) =>
-        (todo.completionStatus = (<HTMLInputElement>event!.target).checked)
-    );
-  }
-
-  selectionlblClick(val: string): void {
-    if (val === 'all') {
-      this.copyTodos = this.todos;
-      this.selectedCategory = 'all';
-    } else if (val === 'uncomplete') {
-      this.copyTodos = this.todos.filter((todo) => !todo.completionStatus);
-      this.selectedCategory = 'uncomplete';
-    } else if (val === 'complete') {
-      this.copyTodos = this.todos.filter((x) => x.completionStatus);
-      this.selectedCategory = 'complete';
-    }
   }
 
   editTodo(i: number, str: string): void {

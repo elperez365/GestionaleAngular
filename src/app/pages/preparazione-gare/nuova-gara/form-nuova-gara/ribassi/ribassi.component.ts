@@ -11,7 +11,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./ribassi.component.scss'],
 })
 export class RibassiComponent {
-  @Input() product: ElencoGare|undefined;
+  @Input() product: ElencoGare | undefined;
   sidePanelOpened = true;
   public showSidebar = false;
   inputFg: UntypedFormGroup = Object.create(null);
@@ -46,7 +46,7 @@ export class RibassiComponent {
   }
 
   ngOnInit(): void {
-    if (this.product && this.product.categoria !== "") {
+    if (this.product && this.product.categoria !== '') {
       this.todos = [{ message: this.product.ribasso, id: 0, edit: false }];
       this,
         (this.copyTodos = [
@@ -64,7 +64,7 @@ export class RibassiComponent {
     }
     this.todos.splice(0, 0, {
       id: this.todoId,
-      message: this.inputFg?.get('mess')?.value,
+      message: this.inputFg?.get('mess')?.value + ' %',
       completionStatus: false,
       edit: false,
       date: new Date(),

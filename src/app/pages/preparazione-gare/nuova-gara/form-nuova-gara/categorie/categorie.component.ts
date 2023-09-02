@@ -7,7 +7,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./categorie.component.scss'],
 })
 export class CategorieComponent {
-  @Input() product:ElencoGare|undefined
+  @Input() product: ElencoGare | undefined;
   categories = [
     { value: 'OG1', viewValue: 'OG1' },
     { value: 'OG2', viewValue: 'OG2' },
@@ -62,7 +62,7 @@ export class CategorieComponent {
     { value: 'OS35', viewValue: 'OS35' },
   ];
 
-  selectedCategory = this.categories[1].value;
+  selectedCategory = '';
 
   soaQual = [
     { value: 'I', viewValue: 'I (fino a euro 258.000)' },
@@ -77,5 +77,5 @@ export class CategorieComponent {
     { value: 'VIII', viewValue: 'VIII (fino a euro 15.494.000)' },
   ];
 
-  selectedSoaQual = this.soaQual[1].value;
+  selectedSoaQual = '';
 }

@@ -65,40 +65,45 @@
     <!-- input Importo -->
     <div class="INimporto">
       <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Importo</mat-label>
-      <mat-form-field appearance="outline" class="w-100" color="primary">
+      <mat-form-field
+        appearance="outline"
+        class="w-100 input-symbol-euro"
+        color="primary"
+      >
         <input matInput [(ngModel)]="importo" />
+        <!-- <i>€</i> -->
       </mat-form-field>
     </div>
 
     <!-- input Scadenza -->
     <div class="INscadenza">
-      <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Scadenza</mat-label>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="picker2" [(ngModel)]="scadenza" />
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker2"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
+      <mat-label class="mat-subtitle-2 f-w-600 m-b-8"
+        >Data e ora scadenza</mat-label
+      >
+      <input class="dateTime" type="datetime-local" [(ngModel)]="scadenza" />
     </div>
+
+    <!-- input oraScadenza -->
+    <!-- <div class="INapertura">
+      <mat-label class="mat-subtitle-2 f-w-600 m-b-8"
+        >Data e ora scadenza</mat-label
+      >
+      <input class="dateTime" type="datetime-local" [(ngModel)]="scadenza" />
+    </div> -->
 
     <!-- input Apertura -->
     <div class="INapertura">
-      <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Apertura</mat-label>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="apertura" />
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <mat-label class="mat-subtitle-2 f-w-600 m-b-8"
+        >Data e ora apertura</mat-label
+      >
+      <input class="dateTime" type="datetime-local" [(ngModel)]="apertura" />
     </div>
+
+    <!-- input oraApertura -->
+    <!-- <div class="INAPapertura">
+      <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Ora apertura</mat-label>
+      <input class="dateTime" type="datetime-local" [(ngModel)]="apertura" />
+    </div> -->
 
     <!-- input Criterio Aggiudicazione -->
     <div class="INcriterio">

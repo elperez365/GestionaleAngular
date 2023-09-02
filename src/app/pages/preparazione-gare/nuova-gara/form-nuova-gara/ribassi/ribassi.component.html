@@ -14,7 +14,10 @@
                 <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
                   >Nuovo ribasso</mat-label
                 >
-                <mat-form-field appearance="outline" class="w-100 hide-hint">
+                <mat-form-field
+                  appearance="outline"
+                  class="w-100 hide-hint input-symbol-percent"
+                >
                   <input
                     matInput
                     #inputData
@@ -52,9 +55,11 @@
         >
           <mat-card class="rounded" style="max-width: 30rem">
             <div class="d-flex align-items-center justify-content-center">
-              <span class="mat-subheading-1 m-b-0 m-x-30 f-s-18 f-w-50">{{
-                todo.message
-              }}</span>
+              <span
+                *ngIf="!todo.edit"
+                class="mat-subheading-1 m-b-0 m-x-30 f-s-18 f-w-50"
+                >{{ todo.message }}</span
+              >
 
               <div class="w-70">
                 <div

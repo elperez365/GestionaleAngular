@@ -11,7 +11,7 @@ import { ElencoGare } from 'src/app/interfaces/elenco_gare';
   styleUrls: ['./dati-nuova-gara.component.scss'],
 })
 export class DatiNuovaGaraComponent {
-  @Input() product: ElencoGare|undefined;
+  @Input() product: ElencoGare | undefined;
   numero: string;
   selectedStazione: string;
   apertaRistretta: string;
@@ -19,8 +19,8 @@ export class DatiNuovaGaraComponent {
   gareGroup2: string;
   note: string;
   importo: string = '€';
-  scadenza: Date;
-  apertura: Date;
+  scadenza: String;
+  apertura: String;
   selectedCriterio: string;
   StazioniAppaltanti = impreseAppaltanti;
   criteriAggiudicazione = CriteriAggiudicazione;
@@ -34,8 +34,8 @@ export class DatiNuovaGaraComponent {
       this.selectedStazione = this.product.stazione_appaltante;
       this.apertaRistretta = this.product.Procedura;
       this.importo = this.product.importo;
-      this.scadenza = new Date(this.product.scadenza);
-      this.apertura = new Date(this.product.apertura);
+      this.scadenza = this.product.scadenza;
+      this.apertura = this.product.apertura;
       this.note = this.product.oggetto;
       this.selectedCriterio = this.product.criterio_aggiudicazione;
     }
@@ -50,10 +50,11 @@ export class DatiNuovaGaraComponent {
     this.nuovaGaraService.Gara.note = this.note;
     this.nuovaGaraService.Gara.importo = this.importo;
     this.scadenza &&
-      (this.nuovaGaraService.Gara.scadenza = this.scadenza.toDateString());
+      (this.nuovaGaraService.Gara.scadenza = this.scadenza.toString());
     this.apertura &&
-      (this.nuovaGaraService.Gara.apertura = this.apertura.toDateString());
+      (this.nuovaGaraService.Gara.apertura = this.apertura.toString());
     this.nuovaGaraService.Gara.selectedCriterio = this.selectedCriterio;
+    console.log(this.scadenza);
   }
 }
 
