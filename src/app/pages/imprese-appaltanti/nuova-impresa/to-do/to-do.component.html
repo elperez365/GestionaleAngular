@@ -7,14 +7,12 @@
 
       <mat-divider></mat-divider>
       <div class="p-16 bg-white">
-        <form [formGroup]="inputFg">
+        <form [formGroup]="impreseForm">
           <div class="todoDiv">
             <div>
               <mat-form-field appearance="outline" class="w-100 hide-hint">
                 <input
                   matInput
-                  #inputName
-                  [(ngModel)]="newName"
                   formControlName="newName"
                   placeholder="Nome contatto"
                 />
@@ -24,8 +22,6 @@
               <mat-form-field appearance="outline" class="w-100 hide-hint">
                 <input
                   matInput
-                  #inputTel
-                  [(ngModel)]="newTel"
                   formControlName="newTel"
                   placeholder="Telefono contatto"
                 />
@@ -35,9 +31,7 @@
               <mat-form-field appearance="outline" class="w-100 hide-hint">
                 <input
                   matInput
-                  #inputMail
-                  [(ngModel)]="newMail"
-                  formControlName="newMail"
+                  formControlName="newEmail"
                   placeholder="Email contatto"
                 />
               </mat-form-field>
@@ -49,7 +43,7 @@
                 [disabled]="isDisabled"
                 class="w-100"
                 id="btnAddTodo"
-                (click)="addTodo(inputName.value)"
+                (click)="addTodo()"
               >
                 Aggiungi
               </button>
@@ -68,11 +62,13 @@
           *ngFor="let todo of copyTodos; let i = index"
           class="todo-item p-y-12 p-x-8 b-b-1 d-flex justify-content-around"
         >
-          <mat-card class="rounded" style="max-width: 30rem">
+          <mat-card class="rounded" style="max-width: 50rem">
             <div class="d-flex align-items-center justify-content-center">
-              <span class="mat-subheading-1 m-b-0 m-x-30 f-s-18 f-w-50">{{
-                todo.message
-              }}</span>
+              <span
+                *ngIf="!todo.edit"
+                class="mat-subheading-1 m-b-0 m-x-30 f-s-18 f-w-50"
+                >{{ todo.message }}</span
+              >
 
               <div class="w-70">
                 <div
