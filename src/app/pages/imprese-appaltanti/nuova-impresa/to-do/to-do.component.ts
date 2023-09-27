@@ -16,9 +16,12 @@ export class ToDoComponent {
   todoId = 6;
   copyTodos: ToDo[];
   selectedCategory = 'all';
-  searchText: string | null = null;
+  newName: string | null = null;
+  newTel: string | null = null;
+  newMail: string | null = null;
   editSave = 'Edit';
-
+  isDisabled: Boolean | (() => Boolean) =
+    !this.newTel && !this.newName && !this.newMail;
   todos: ToDo[];
   // = this.todoService.getTodos();
 
@@ -44,6 +47,18 @@ export class ToDoComponent {
     this.inputFg = this.fb.group({
       mess: [],
     });
+  }
+
+  ngDoCheck(): void {
+    console.log(this.inputFg);
+    // this.isDisabled = () => {
+    //   const newName = this.inputFg.get('newName');
+    //   const newTel = this.inputFg.get('newTel');
+    //   const newMail = this.inputFg.get('newMail');
+    //   if (!newTel && !newName && !newMail) {
+    //     return false;
+    //   } else return true;
+    // };
   }
 
   addTodo(value: string): void {
