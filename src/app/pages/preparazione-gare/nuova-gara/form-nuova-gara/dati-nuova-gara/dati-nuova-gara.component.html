@@ -65,8 +65,13 @@
     <!-- input Importo -->
     <div class="INimporto">
       <mat-label class="mat-subtitle-2 f-w-600 m-b-8">Importo</mat-label>
-      <mat-form-field appearance="outline" class="w-100" color="primary">
+      <mat-form-field
+        appearance="outline"
+        class="w-100 input-symbol-euro"
+        color="primary"
+      >
         <input matInput [(ngModel)]="importo" />
+        <!-- <i>€</i> -->
       </mat-form-field>
     </div>
 
