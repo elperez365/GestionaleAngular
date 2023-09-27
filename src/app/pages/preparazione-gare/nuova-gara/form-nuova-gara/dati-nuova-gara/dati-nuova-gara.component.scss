@@ -6,10 +6,10 @@
     align-content:space-around;
     
     grid-template-areas:
-    "numero        stazione      importo "
-    "procedura     scadenza    apertura  "
-    "note           note        criterio "
-    "note           note              .  ";
+    "numero      stazione      importo     "
+    "scadenza    oraScad      procedura    "
+    "apertura          oraApert            criterio  "
+    "note            note                     .     ";
     
     .INnumero{
         grid-area:numero;
@@ -48,6 +48,13 @@
 
     .INcriterio{
         grid-area:criterio;
+    }
+
+    .INAPscadenza{
+        grid-area:oraScad;
+    }
+    .INAPApertura{
+        grid-area:oraApert;
     }
 
     
